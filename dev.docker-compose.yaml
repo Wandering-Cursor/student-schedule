@@ -1,0 +1,17 @@
+name: "student-schedule"
+
+services:
+  backend:
+    image: studentScheduleBackend
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+  database:
+    image: postgres:17
+    

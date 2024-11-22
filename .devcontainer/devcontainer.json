@@ -1,0 +1,36 @@
+{
+	"name": "Student Schedule Backend",
+	"workspaceFolder": "/app",
+	"shutdownAction": "stopCompose",
+    "dockerComposeFile": "../dev.docker-compose.yml",
+    "service": "backend",
+	"forwardPorts": [
+        8000
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.black-formatter",
+				"streetsidesoftware.code-spell-checker",
+				"phil294.git-log--graph",
+				"ms-python.isort",
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-python.debugpy",
+				"charliermarsh.ruff",
+				"inferrinizzard.prettier-sql-vscode",
+				"Vue.volar",
+				"EFanZh.graphviz-preview",
+				"ms-vscode.vscode-typescript-next"
+			],
+			"settings": {
+				"python.defaultInterpreterPath": "/app/.venv/bin/python",
+				"editor.defaultFormatter": "charliermarsh.ruff",
+				"editor.formatOnSave": true,
+				"editor.codeActionsOnSave": {
+					"source.organizeImports.ruff": "explicit"
+				}
+			}
+		}
+	}
+}
