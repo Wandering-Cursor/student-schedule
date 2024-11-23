@@ -13,7 +13,8 @@
             ],
             "django": true,
             "autoStartBrowser": false,
-            "program": "${workspaceFolder}/student_schedule/manage.py"
+            "program": "${workspaceFolder}/student_schedule/manage.py",
+            "justMyCode": false,
         }
     ]
 }

@@ -6,6 +6,9 @@ class Settings(BaseSettings):
     debug: bool = False
     timezone: str = "UTC"
 
+    default_admin_username: str = "admin"
+    default_admin_password: str = "i9G6QDF8MoGW"
+
     secret_key: str = pydantic.Field(
         default="O2k7vQEhqp5BhfMtIsTfTjHngcCJyITodacfPjBapaE",
         description='Generate using: `uv run python -c "import secrets; print(secrets.token_urlsafe(32))"`',
