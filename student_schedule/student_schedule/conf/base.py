@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = settings.secret_key
 SECRET_KEY_FALLBACKS = [
-    os.environ["SECRET_KEY_FALLBACK"],
+    os.environ.get("SECRET_KEY_FALLBACK", "NoBackupSecretKey"),
 ]
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -83,7 +83,7 @@ WSGI_APPLICATION = "student_schedule.wsgi.application"
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=settings.database_url,
+        default=str(settings.database_url),
         conn_max_age=600,
         conn_health_checks=True,
     )
