@@ -2,7 +2,7 @@ name: "student-schedule"
 
 services:
   backend:
-    image: studentScheduleBackend
+    image: student-schedule-backend
     build:
       context: .
       dockerfile: dev.Dockerfile
