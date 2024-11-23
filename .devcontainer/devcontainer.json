@@ -4,6 +4,7 @@
 	"shutdownAction": "stopCompose",
     "dockerComposeFile": "../dev.docker-compose.yaml",
     "service": "backend",
+	"postAttachCommand": "uv sync --frozen",
 	"forwardPorts": [
         8000
 	],
@@ -17,6 +18,7 @@
 				"ms-python.vscode-pylance",
 				"ms-python.debugpy",
 				"charliermarsh.ruff",
+				"ms-azuretools.vscode-docker"
 			],
 			"settings": {
 				"python.defaultInterpreterPath": "/app/.venv/bin/python",

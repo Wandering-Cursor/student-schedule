@@ -14,4 +14,20 @@ services:
 
   database:
     image: postgres:17
-    
+    environment:
+      POSTGRES_DB: DevDB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - databaseData:/var/lib/postgresql/data
+  
+  pgAdmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: mail@mail.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - ":80"
+
+volumes:
+  databaseData:

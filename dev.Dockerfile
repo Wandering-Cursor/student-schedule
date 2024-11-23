@@ -6,5 +6,3 @@ ADD . /app
 
 WORKDIR /app
 
-RUN uv sync --frozen
-
