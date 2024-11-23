@@ -20,9 +20,10 @@ class Schedule(BaseModel):
         default=get_tomorrow,
     )
 
-    photo_schedules: models.QuerySet["PhotoSchedule"] = models.ManyToManyField(
+    photo_schedules: "PhotoSchedule | None" = models.ForeignKey(
         "schedule_admin.PhotoSchedule",
-        related_name="schedules",
-        verbose_name=_("Photo Schedules"),
+        on_delete=models.DO_NOTHING,
+        verbose_name=_("Photo Schedule"),
         blank=True,
+        null=True,
     )
