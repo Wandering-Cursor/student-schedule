@@ -3,7 +3,12 @@ from rest_framework import routers
 from schedule_api import views
 
 router = routers.DefaultRouter()
-router.register(r"users", views.UserViewSet)
+router.register(r"org/specialty", views.SpecialtyViewSet)
+router.register(r"org/group", views.GroupViewSet)
+router.register(r"org/teacher", views.TeacherViewSet)
+router.register(r"schedule", views.ScheduleViewSet)
+router.register(r"photo_schedule", views.PhotoScheduleViewSet)
+router.register(r"group_schedule", views.GroupScheduleViewSet)
 
 
 urlpatterns = [

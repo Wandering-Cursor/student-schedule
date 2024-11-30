@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from schedule_admin.models.base import BaseModel
 
 if typing.TYPE_CHECKING:
+    from student_schedule.schedule_admin.models.group_schedule import GroupSchedule
     from student_schedule.schedule_admin.models.photo_schedule import PhotoSchedule
 
 
@@ -26,4 +27,10 @@ class Schedule(BaseModel):
         verbose_name=_("Photo Schedule"),
         blank=True,
         null=True,
+    )
+    group_schedules: "models.Manager[GroupSchedule] | None" = models.ManyToManyField(
+        "schedule_admin.GroupSchedule",
+        verbose_name=_("Group Schedules"),
+        related_name="schedules",
+        blank=True,
     )
