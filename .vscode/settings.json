@@ -1,5 +1,14 @@
 {
-    "python.autoComplete.extraPaths": [
-        "./students_schedule/"
-    ]
+    "python.analysis.extraPaths": [
+        "./student_schedule"
+    ],
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}/student_schedule"
+    },
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}\\student_schedule"
+    },
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "${workspaceFolder}/student_schedule"
+    }
 }

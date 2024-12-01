@@ -1,0 +1,40 @@
+{% load static %}
+{% load i18n %}
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}" media="screen">
+
+
+{% if errors %}
+<div class="alert alert-danger" role="alert">
+    {% for field, value in errors.items %}
+    {{ field }}: {{ value }}
+    {% endfor %}
+</div>
+
+{% endif %}
+
+<div class="container-xl p-2">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="for_date" class="form-label">{% translate "For date" %}</label>
+            <input type="date" class="form-control" id="for_date" name="for_date" aria-describedby="for_date_help">
+            <div id="for_date_help" class="form-text">{% translate "Date for which you are uploading the schedule" %}
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="photos" class="form-label">{% translate "Photos" %}</label>
+            <input class="form-control" type="file" id="photos" name="photos"
+                accept=".apng,.avif,.bmp,.gif,.jfif,.jpeg,.jpg,.pjp,.pjpeg,.png,.svg,.tif,.tiff,.webp" multiple>
+        </div>
+        <div class="mb-3">
+            <label for="file" class="form-label">
+                {% translate "File" %}
+            </label>
+            <input type="file" class="form-control" id="file" aria-describedby="file_help" name="file" accept=".csv">
+            <div id="file_help" class="form-text">{% translate "Upload the schedule in CSV format" %}</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>

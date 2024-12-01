@@ -34,3 +34,8 @@ class Schedule(BaseModel):
         related_name="schedules",
         blank=True,
     )
+
+    class Meta:
+        verbose_name = _("Schedule")
+        verbose_name_plural = _("Schedules")
+        ordering = ["for_date"]

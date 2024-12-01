@@ -29,6 +29,7 @@ class PhotoSchedulePhoto(BaseModel):
     file = models.FileField(
         verbose_name=_("File"),
         upload_to="schedule/photos/",
+        max_length=255,
     )
 
     def clean_fields(self, exclude: Collection[str] | None) -> None:

@@ -13,5 +13,10 @@ router.register(r"group_schedule", views.GroupScheduleViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
+    path(
+        "admin/schedule/",
+        view=views.UploadScheduleView.as_view(),
+        name="upload_schedule",
+    ),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
 ]

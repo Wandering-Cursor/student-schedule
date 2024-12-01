@@ -11,12 +11,5 @@ class SpecialtySerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Specialty
-        fields = [
-            "uuid",
-            "name",
-            "full_name",
-            "groups",
-            "created_at",
-            "updated_at",
-        ]
+        fields = "__all__"
         read_only_fields = ["uuid", "created_at", "updated_at"]

@@ -164,3 +164,4 @@ cython_debug/
 !.gitkeep
 media/
 static/
+!student_schedule/schedule_admin/static/

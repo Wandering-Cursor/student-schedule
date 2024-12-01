@@ -80,6 +80,7 @@ class GroupSchedule(BaseModel):
             models.UniqueConstraint(
                 fields=[
                     "group",
+                    "for_date",
                 ],
                 name="unique_group_schedule",
             )
