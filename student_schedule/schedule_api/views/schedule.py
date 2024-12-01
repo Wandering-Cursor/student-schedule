@@ -108,9 +108,7 @@ class UploadScheduleView(TemplateView):
             serializer.is_valid(raise_exception=True)
         except Exception as e:
             return self._return_error(request, e)
-        schedule = serializer.save()
-
-        print(schedule)
+        serializer.save()
 
         return render(
             request=request,

@@ -173,9 +173,13 @@ class ScheduleUploadSerializer(serializers.Serializer):
                 group_schedule.save()
                 groups_schedules.append(group_schedule)
 
-        schedule = Schedule.objects.create(for_date=for_date)
-        schedule.group_schedules.set(groups_schedules)
-        schedule.photo_schedules = photo_schedule
+        schedule, _ = Schedule.objects.get_or_create(for_date=for_date)
+
+        if groups_schedules:
+            schedule.group_schedules.set(groups_schedules)
+        if photo_schedule:
+            schedule.photo_schedules = photo_schedule
+
         schedule.save()
 
         return schedule
