@@ -1,0 +1,15 @@
+name: "student-schedule"
+
+services:
+  frontend:
+    image: student-schedule-frontend
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - frontendData:/app
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+
+volumes:
+  frontendData:
