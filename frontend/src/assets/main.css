@@ -1,0 +1,23 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+a.p-button {
+  text-decoration: none;
+}

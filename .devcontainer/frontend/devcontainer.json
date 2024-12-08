@@ -1,0 +1,19 @@
+{
+    "name": "Student Schedule Frontend",
+    "workspaceFolder": "/app",
+    "shutdownAction": "stopCompose",
+    "dockerComposeFile": "../../frontend-dev.docker-compose.yaml",
+    "service": "frontend",
+    "forwardPorts": [
+        3000
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "streetsidesoftware.code-spell-checker",
+                "phil294.git-log--graph",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+}
