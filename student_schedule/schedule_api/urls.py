@@ -19,4 +19,5 @@ urlpatterns = [
         name="upload_schedule",
     ),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    path("csrf/", views.csrf),
 ]
