@@ -1,23 +1,26 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import { ref } from 'vue'
+import { useUserStore } from './stores/login';
+
+const userGroupStore = useUserStore();
 
 const menuItems = ref(
   [
     {
       label: 'Home',
       icon: 'pi pi-fw pi-home',
-      to: '/'
+      url: '/'
     },
     {
       label: "Schedule",
       icon: "pi pi-fw pi-calendar",
-      to: "/schedule"
+      url: "/schedule"
     },
     {
       label: "Documents",
       icon: "pi pi-fw pi-file",
-      to: "/documents"
+      url: "/documents"
     }
   ]
 )
@@ -28,13 +31,14 @@ const menuItems = ref(
   <div class="app-container">
     <MegaMenu :model="menuItems">
       <template #start>
-          <img class="logo" src="./assets/logo.svg" alt="Vue logo" />
+        <img class="logo" src="./assets/logo.svg" alt="Vue logo" />
       </template>
-      <template #item="{item}">
-        <Button as="router-link" :icon="item.icon" :label="item.label" :to="item.to"/>
+      <template #item="{ item }">
+        <Button as="router-link" :icon="item.icon" :label="item.label" :to="item.url" />
       </template>
       <template #end>
-          <InputText placeholder="Search" />
+        <Button as="router-link" icon="pi pi-fw pi-sign-in" label="Login" to="/login" v-if="!userGroupStore.isGroupSet()" />
+        <Button as="router-link" icon="pi pi-fw pi-sign-out" label="Logout" to="/logout" v-else />
       </template>
     </MegaMenu>
     <RouterView class="main-content" />
@@ -42,11 +46,13 @@ const menuItems = ref(
 </template>
 
 <style scoped>
-.app-container, .main-content {
+.app-container,
+.main-content {
   height: 100%;
   width: 100%;
-  
+
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
+  gap: 1rem;
 }
 </style>

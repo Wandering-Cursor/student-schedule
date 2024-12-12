@@ -1,8 +1,8 @@
-import { ref, computed, type Ref } from 'vue'
+import { ref, type Ref } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useCounterStore = defineStore('login', () => {
-    const group: Ref<string | null> = ref(null)
+export const useUserStore = defineStore('login', () => {
+    const group: Ref<string | null> = ref(null);
 
     function setGroup(newGroup: string) {
         group.value = newGroup
@@ -13,6 +13,9 @@ export const useCounterStore = defineStore('login', () => {
     function getGroup() {
         return group.value
     }
+    function isGroupSet() {
+        return group.value !== null
+    }
 
-    return { setGroup, clearGroup, getGroup }
+    return { setGroup, clearGroup, getGroup, isGroupSet }
 })
