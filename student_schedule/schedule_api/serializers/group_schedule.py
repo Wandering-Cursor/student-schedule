@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from schedule_admin.models.group_schedule import GroupSchedule, ScheduledPair
 from schedule_admin.models.pair_schedule import Pair
+from schedule_api.serializers.base import HyperlinkedUUIDSerializer
 from schedule_api.serializers.group import ShortGroupSerializer
 from schedule_api.serializers.teacher import ShortTeacherSerializer
 
@@ -22,7 +23,7 @@ class ScheduledPairSerializer(serializers.ModelSerializer):
         read_only_fields = ["uuid", "created_at", "updated_at"]
 
 
-class GroupScheduleSerializer(serializers.HyperlinkedModelSerializer):
+class GroupScheduleSerializer(HyperlinkedUUIDSerializer):
     scheduled_pairs = ScheduledPairSerializer(
         many=True,
     )
@@ -33,7 +34,7 @@ class GroupScheduleSerializer(serializers.HyperlinkedModelSerializer):
         read_only_fields = ["uuid", "created_at", "updated_at"]
 
 
-class ShortGroupScheduleInfo(serializers.HyperlinkedModelSerializer):
+class ShortGroupScheduleInfo(HyperlinkedUUIDSerializer):
     group = ShortGroupSerializer()
 
     class Meta:

@@ -1,4 +1,4 @@
-from .csrf import csrf
+from .auth import LoginView
 from .group import GroupViewSet
 from .schedule import (
     GroupScheduleViewSet,
@@ -17,5 +17,5 @@ __all__ = [
     "SpecialtyViewSet",
     "TeacherViewSet",
     "UploadScheduleView",
-    "csrf",
+    "LoginView",
 ]

@@ -9,13 +9,14 @@ from schedule_admin.models.pair_schedule import Pair
 from schedule_admin.models.photo_schedule import PhotoSchedule, PhotoSchedulePhoto
 from schedule_admin.models.schedule import Schedule
 from schedule_admin.models.teacher import Teacher
+from schedule_api.serializers.base import HyperlinkedUUIDSerializer
 from schedule_api.serializers.group_schedule import ShortGroupScheduleInfo
 
 if typing.TYPE_CHECKING:
     from django.core.files.uploadedfile import InMemoryUploadedFile
 
 
-class ScheduleSerializer(serializers.HyperlinkedModelSerializer):
+class ScheduleSerializer(HyperlinkedUUIDSerializer):
     group_schedules = ShortGroupScheduleInfo(many=True)
 
     class Meta:

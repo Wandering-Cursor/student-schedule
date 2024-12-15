@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from schedule_admin.models.photo_schedule import PhotoSchedule, PhotoSchedulePhoto
+from schedule_api.serializers.base import HyperlinkedUUIDSerializer
 
 
 class PhotoSchedulePhotoSerializer(serializers.ModelSerializer):
@@ -9,7 +10,7 @@ class PhotoSchedulePhotoSerializer(serializers.ModelSerializer):
         read_only_fields = ["uuid", "created_at", "updated_at", "file"]
 
 
-class PhotoScheduleSerializer(serializers.HyperlinkedModelSerializer):
+class PhotoScheduleSerializer(HyperlinkedUUIDSerializer):
     photos = PhotoSchedulePhotoSerializer(
         many=True,
     )
