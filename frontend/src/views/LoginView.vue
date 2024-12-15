@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-import { performLoginRequest } from '@/api/login';
 import { Password } from 'primevue';
 import { reactive } from 'vue';
 
@@ -26,12 +25,7 @@ const resolver = ({ values }) => {
 
 const chooseGroup = (e) => {
     if (e.valid) {
-        let values = e.states;
-        let result = performLoginRequest(
-            values.username,
-            values.password
-        )
-        console.log(result);
+
     }
 };
 

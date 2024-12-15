@@ -16,6 +16,8 @@
     "@primevue/forms": "^4.2.5",
     "@primevue/themes": "^4.2.4",
     "axios": "^1.7.9",
+    "openapi-client-axios": "^7.5.5",
+    "openapi-client-axios-typegen": "^7.7.0",
     "pinia": "^2.2.6",
     "primeicons": "^7.0.0",
     "primevue": "^4.2.4",
