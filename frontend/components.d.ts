@@ -16,6 +16,7 @@ declare module 'vue' {
     Divider: typeof import('primevue/divider')['default']
     Form: typeof import('@primevue/forms/form')['default']
     Galleria: typeof import('primevue/galleria')['default']
+    GroupSchedule: typeof import('./src/components/schedule/GroupSchedule.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     HomeComponent: typeof import('./src/components/HomeComponent.vue')['default']
     HomeView: typeof import('./src/components/HomeView.vue')['default']

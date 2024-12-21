@@ -22,6 +22,11 @@ const router = createRouter({
           name: 'photo-schedule',
           component: () => import('../views/PhotoScheduleView.vue'),
         },
+        {
+          path: 'group/:id',
+          name: 'group-schedule',
+          component: () => import('../views/GroupScheduleView.vue'),
+        },
       ],
     },
     {

@@ -23,4 +23,11 @@ async function getPhotoSchedule(params: { id: string }) {
   })
 }
 
-export { getSchedule, getPhotoSchedule }
+async function getGroupSchedule(params: { id: string }) {
+  const client = await api.getClient<StudentScheduleClient>()
+  return await client.group_schedule_retrieve({
+    uuid: params.id,
+  })
+}
+
+export { getSchedule, getPhotoSchedule, getGroupSchedule }
