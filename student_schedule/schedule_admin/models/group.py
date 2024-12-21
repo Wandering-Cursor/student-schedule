@@ -16,6 +16,16 @@ class Group(BaseModel):
         verbose_name=_("Name"),
     )
 
+    def create_user(self: "Group") -> None:
+        from schedule_admin.models import User
+
+        user = User.objects.create(
+            username=self.name,
+            related_group=self,
+        )
+        user.set_password(self.name)
+        user.save()
+
     def __str__(self) -> str:
         return self.name
 
