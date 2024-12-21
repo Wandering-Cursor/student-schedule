@@ -12,13 +12,9 @@ onMounted(async () => {
 </script>
 
 <template>
-    <main>
-        <h1>Welcome to the Group Manager</h1>
-        <p>Here you can manage your groups</p>
-        <ul>
-            <li v-for="group in groups" :key="group.uuid">
-                <router-link :to="'/group/' + group.uuid">{{ group.name }}</router-link>
-            </li>
-        </ul>
-    </main>
+    <Panel :header="$t('home.welcome')">
+        {{
+            $t('home.description')
+        }}
+    </Panel>
 </template>

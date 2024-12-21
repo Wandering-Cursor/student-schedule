@@ -6,9 +6,37 @@ import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config';
 import Aura from '@primevue/themes/aura';
 import { definePreset } from "@primevue/themes";
+import { createI18n } from 'vue-i18n'
+import ToastService from 'primevue/toastservice';
 
 import App from './App.vue'
 import router from './router'
+
+const messages = {
+    ua: {
+        app: 'Рокзлад ФКПАІТ ОНТУ',
+        home: {
+            welcome: 'Вітаємо на головній сторінці {\'"\'}@:app{\'"\'}',
+            description: 'На цьому веб-сайті можна знайти розклад у вигляді фотографій, чи у вигляді таблиці для вашої групи. Скористайтесь кнопками вишче для навігації.'
+        },
+        schedule: {
+            title: 'Розклад',
+            description: 'Виберіть вашу групу та семестр для перегляду розкладу.',
+        },
+        labels: {
+            home: 'Головна',
+            schedule: 'Розклад',
+            docs: 'Документи',
+            login: 'Увійти',
+            logout: 'Вийти',
+        }
+    },
+}
+
+const i18n = createI18n({
+    locale: 'ua',
+    messages: messages,
+})
 
 const app = createApp(App)
 
@@ -670,6 +698,7 @@ const MyPreset = definePreset(Aura, {
     }
 });
 
+app.use(i18n)
 app.use(createPinia())
 app.use(router)
 app.use(PrimeVue, {
@@ -681,5 +710,6 @@ app.use(PrimeVue, {
         }
     }
 })
+app.use(ToastService);
 
 app.mount('#app')

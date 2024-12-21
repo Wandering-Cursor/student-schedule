@@ -9,8 +9,12 @@ declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('primevue/button')['default']
     Card: typeof import('primevue/card')['default']
+    CombinedSchedule: typeof import('./src/components/schedule/CombinedSchedule.vue')['default']
+    CombinedScheduleCard: typeof import('./src/components/schedule/CombinedScheduleCard.vue')['default']
+    DataView: typeof import('primevue/dataview')['default']
     Form: typeof import('@primevue/forms/form')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    HomeComponent: typeof import('./src/components/HomeComponent.vue')['default']
     HomeView: typeof import('./src/components/HomeView.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
@@ -20,10 +24,15 @@ declare module 'vue' {
     InputText: typeof import('primevue/inputtext')['default']
     MegaMenu: typeof import('primevue/megamenu')['default']
     Message: typeof import('primevue/message')['default']
+    Paginator: typeof import('primevue/paginator')['default']
+    Panel: typeof import('primevue/panel')['default']
+    PhotoSchedule: typeof import('./src/components/schedule/PhotoSchedule.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TableSchedule: typeof import('./src/components/schedule/TableSchedule.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     TheWellcome: typeof import('./src/components/TheWellcome.vue')['default']
+    Toast: typeof import('primevue/toast')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
 }

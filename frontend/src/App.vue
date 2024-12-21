@@ -8,17 +8,17 @@ const userGroupStore = useUserStore();
 const menuItems = ref(
   [
     {
-      label: 'Home',
+      label: 'labels.home',
       icon: 'pi pi-fw pi-home',
       url: '/'
     },
     {
-      label: "Schedule",
+      label: "labels.schedule",
       icon: "pi pi-fw pi-calendar",
       url: "/schedule"
     },
     {
-      label: "Documents",
+      label: "labels.docs",
       icon: "pi pi-fw pi-file",
       url: "/documents"
     }
@@ -34,15 +34,16 @@ const menuItems = ref(
         <img class="logo" src="./assets/logo.svg" alt="Vue logo" />
       </template>
       <template #item="{ item }">
-        <Button as="router-link" :icon="item.icon" :label="item.label" :to="item.url" />
+        <Button as="router-link" :icon="item.icon" :label="$t(item.label)" :to="item.url" />
       </template>
       <template #end>
-        <Button as="router-link" icon="pi pi-fw pi-sign-in" label="Login" to="/login" v-if="!userGroupStore.isGroupSet()" />
-        <Button as="router-link" icon="pi pi-fw pi-sign-out" label="Logout" to="/logout" v-else />
+        <Button as="router-link" icon="pi pi-fw pi-sign-in" :label="$t('labels.login')" to="/login" v-if="!userGroupStore.isTokenSet()" />
+        <Button as="router-link" icon="pi pi-fw pi-sign-out" :label="$t('labels.logout')" to="/logout" v-else />
       </template>
     </MegaMenu>
     <RouterView class="main-content" />
   </div>
+  <Toast/>
 </template>
 
 <style scoped>
@@ -54,5 +55,9 @@ const menuItems = ref(
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.app-container{
+  max-width: 1920px;
 }
 </style>

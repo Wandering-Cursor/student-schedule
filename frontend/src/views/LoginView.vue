@@ -1,48 +1,78 @@
 <script setup lang="ts">
 
 import { Password } from 'primevue';
-import { reactive } from 'vue';
+import { ref } from 'vue';
 
-const initialValues = reactive({
-    username: 'КП-181',
-    password: 'Secret Password'
+import {login} from "@/api/login";
+import { useToast } from 'primevue/usetoast';
+import { useUserStore } from '@/stores/login';
+import router from '@/router';
+
+const toast = useToast();
+const userStore = useUserStore()
+
+const placeholders = {
+    username: "КП-181",
+    password: "КП-181"
+}
+
+const formData = ref({
+    username: '',
+    password: ''
 });
 
-const resolver = ({ values }) => {
-    const errors = {};
+const resolver = (data: {username: string | null, password: string | null}) => {
+    const errors = {
+        username: [],
+        password: []
+    };
 
-    if (!values.username) {
+    if (!data.username) {
         errors.username = [{ message: 'Username is required.' }];
     }
-    if (!values.password) {
+    if (!data.password) {
         errors.password = [{ message: 'Password is required.' }];
     }
 
-    return {
-        errors
-    };
+    return errors;
 };
 
-const chooseGroup = (e) => {
-    if (e.valid) {
-
+const chooseGroup = async () => {
+    let errorsExist = false;
+    let errors = resolver(formData.value);
+    for (let key in errors) {
+        if (errors[key].length > 0) {
+            errorsExist = true;
+            for (let i = 0; i < errors[key].length; i++) {
+                toast.add(
+                    {
+                        severity: "error",
+                        detail: errors[key][i].message,
+                        life: 5000,
+                    }
+                )
+            }
+        }
     }
+    if (errorsExist) {
+        return;
+    }
+
+    let response = await login(formData.value);
+    userStore.setToken(response.data.token);
+    router.push('/');
 };
 
 </script>
 
 <template>
-    <Form v-slot="$form" :initialValues :resolver @submit="chooseGroup" class="flex flex-col gap-4 w-full sm:w-56">
+    <div class="flex flex-col gap-4 w-full sm:w-56">
         <div class="flex flex-col gap-1">
-            <InputText name="username" type="text" :placeholder="initialValues.username" fluid />
-            <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">{{
-                $form.username.error?.message }}</Message>
+            <InputText v-model="formData.username" name="username" type="text" :placeholder="placeholders.username" fluid />
         </div>
-        <div>
-            <Password name="password" :placeholder="initialValues.password" :feedback="false" toggleMask fluid />
-            <Message v-if="$form.password?.invalid" severity="error" size="small" variant="simple">{{
-                $form.password.error?.message }}</Message>
+        <div class="flex flex-col gap-1">
+            <Password v-model="formData.password" name="password" :placeholder="placeholders.password" :feedback="false" toggleMask fluid />
         </div>
-        <Button type="submit" severity="secondary" label="Submit" />
-    </Form>
+        <Button type="submit" severity="secondary" :label="$t('button.submit')" :onclick="chooseGroup" />
+    </div>
 </template>

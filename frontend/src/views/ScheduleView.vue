@@ -1,13 +1,12 @@
 <script setup lang="ts">
+import CombinedSchedule from '@/components/schedule/CombinedSchedule.vue'
 </script>
 
 <template>
   <main>
-    <Card>
-        <template #content>
-            <h1>Schedule</h1>
-            <p>Here is the schedule for the week</p>
-        </template>
-    </Card>
+    <Panel :header="$t('schedule.title')">
+      {{$t('schedule.description')}}
+    </Panel>
+    <CombinedSchedule/>
   </main>
 </template>
