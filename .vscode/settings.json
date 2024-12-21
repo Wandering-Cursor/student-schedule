@@ -11,5 +11,8 @@
     "terminal.integrated.env.osx": {
         "PYTHONPATH": "${workspaceFolder}/student_schedule"
     },
-    "editor.defaultFormatter": "Vue.volar"
+    "editor.defaultFormatter": "Vue.volar",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
