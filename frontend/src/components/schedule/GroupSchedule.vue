@@ -4,6 +4,7 @@ import { getGroupSchedule } from '@/api/schedule'
 import { onMounted, ref } from 'vue'
 import { getLocalDateFromString } from '@/utils/datetime'
 import GroupLink from '@/components/groups/GroupLink.vue'
+import Variant from '@/enums/Variant'
 
 const groupScheduleInfo = ref<Components.Schemas.GroupSchedule>()
 
@@ -33,7 +34,7 @@ onMounted(() => {
       <GroupLink
         :group-i-d="groupScheduleInfo.group.uuid"
         :group-name="groupScheduleInfo.group.name"
-        variant="H1"
+        :variant="Variant.H1"
       />
       <p>
         {{

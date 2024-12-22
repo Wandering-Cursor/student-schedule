@@ -1,16 +1,14 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <main>
     <div class="error-container">
-        <Message severity="error">Page you're looking for doesn't exist</Message>
+      <Message severity="error">Page you're looking for doesn't exist</Message>
     </div>
   </main>
 </template>
 
 <style scoped>
-
 .error-container {
   display: flex;
   flex-direction: column;
@@ -19,5 +17,4 @@
   align-items: center;
   height: 100%;
 }
-
 </style>

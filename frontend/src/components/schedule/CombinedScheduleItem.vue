@@ -4,6 +4,7 @@ import type { PropType } from 'vue'
 import { defineProps } from 'vue'
 import { getLocalDateFromString } from '@/utils/datetime'
 import GroupLink from '@/components/groups/GroupLink.vue'
+import Variant from '@/enums/Variant'
 
 const props = defineProps({
   schedule: {
@@ -41,7 +42,7 @@ const getLastPart = (url: string) => {
               <GroupLink
                 :group-i-d="item.group.uuid"
                 :group-name="item.group.name"
-                variant="P"
+                :variant="Variant.P"
                 class="group-schedule-item-content"
               />
             </template>

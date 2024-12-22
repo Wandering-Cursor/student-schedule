@@ -5,8 +5,8 @@ import CombinedSchedule from '@/components/schedule/CombinedSchedule.vue'
 <template>
   <main>
     <Panel :header="$t('schedule.title')">
-      {{$t('schedule.description')}}
+      {{ $t('schedule.description') }}
     </Panel>
-    <CombinedSchedule/>
+    <CombinedSchedule />
   </main>
 </template>
