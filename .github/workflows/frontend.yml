@@ -25,6 +25,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
         working-directory: ./frontend
+        env:
+          PUBLIC_PATH: ${{ github.repository.name }}
 
       - name: Cache dependencies
         uses: actions/cache@v4
@@ -69,6 +71,8 @@ jobs:
       - name: Build
         run: npm run build-only
         working-directory: ./frontend
+        env:
+          PUBLIC_PATH: ${{ github.repository.name }}
       
       - name: Create 404 file
         run: cp ./dist/index.html ./dist/404.html
