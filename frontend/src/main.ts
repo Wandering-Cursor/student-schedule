@@ -27,12 +27,20 @@ const messages = {
       group: 'Розклад для груп',
       view: 'Переглянути',
       combined: 'Загальний рокзалд',
+      teacherName: "Ім'я викладача",
+      roomName: 'Аудиторія',
     },
     photoSchedule: {
       noName: 'Без назви',
       title: 'Фото розклад',
       noPhotos: 'Фотографій розкладу не знайдено.',
       description: 'Тут зібрані фотографії розкладу для всіх груп.',
+    },
+    groupSchedule: {
+      forDate: 'Розклад на {date}',
+      pairsList: 'Список пар:',
+      title: 'Розклад для групи',
+      description: 'Тут ви можете знайти розклад для вашої групи.',
     },
     labels: {
       home: 'Головна',

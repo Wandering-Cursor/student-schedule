@@ -3,6 +3,7 @@ import type { Components } from '@/api/openapi'
 import type { PropType } from 'vue'
 import { defineProps } from 'vue'
 import { getLocalDateFromString } from '@/utils/datetime'
+import GroupLink from '@/components/groups/GroupLink.vue'
 
 const props = defineProps({
   schedule: {
@@ -36,14 +37,20 @@ const getLastPart = (url: string) => {
         {{ $t('schedule.group') }}
         <div class="group-schedule-container">
           <Card v-for="item in schedule.group_schedules" :key="schedule.uuid">
-            <template #title>
-              {{ item.group.name }}
-            </template>
             <template #content>
+              <GroupLink
+                :group-i-d="item.group.uuid"
+                :group-name="item.group.name"
+                variant="P"
+                class="group-schedule-item-content"
+              />
+            </template>
+            <template #footer>
               <Button
                 as="router-link"
                 :label="$t('schedule.view')"
                 :to="`/schedule/group/${item.uuid}`"
+                class="group-schedule-item-content"
               />
             </template>
           </Card>
@@ -58,5 +65,8 @@ const getLastPart = (url: string) => {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
+}
+.group-schedule-item-content {
+  width: 100%;
 }
 </style>

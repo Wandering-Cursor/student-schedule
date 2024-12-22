@@ -25,10 +25,10 @@ declare namespace Components {
             url: string; // uri
             uuid: string; // uuid
             scheduled_pairs: ScheduledPair[];
+            group: ShortGroup;
             created_at: string; // date-time
             updated_at: string; // date-time
             for_date: string; // date
-            group: string; // uri
         }
         /**
          * * `1` - First

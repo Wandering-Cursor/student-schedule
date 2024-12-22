@@ -34,13 +34,15 @@ onMounted(() => {
     <div v-if="photoScheduleInfo.photos">
       <Galleria
         :value="photoScheduleInfo.photos"
-        :numVisible="5"
+        :numVisible="3"
         :showThumbnails="false"
         :showIndicators="true"
         :showItemNavigators="true"
       >
         <template #item="slotProps">
-          <img :src="slotProps.item.file" :alt="slotProps.item.alt" style="width: 100%" />
+          <a :href="slotProps.item.file" target="_blank">
+            <img :src="slotProps.item.file" class="image" />
+          </a>
         </template>
       </Galleria>
     </div>
@@ -56,5 +58,13 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+}
+.p-galleria {
+  max-width: 90vw;
+}
+.image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 </style>

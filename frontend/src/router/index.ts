@@ -10,6 +10,21 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/group',
+      children: [
+        {
+          path: '',
+          name: 'group-list',
+          component: () => import('../views/GroupListView.vue'),
+        },
+        {
+          path: ':id',
+          name: 'group-detail',
+          component: () => import('../views/GroupDetailView.vue'),
+        },
+      ],
+    },
+    {
       path: '/schedule',
       children: [
         {
