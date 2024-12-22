@@ -1,8 +1,9 @@
 from rest_framework import serializers
 from schedule_admin.models.specialty import Specialty
+from schedule_api.serializers.base import HyperlinkedUUIDSerializer
 
 
-class SpecialtySerializer(serializers.HyperlinkedModelSerializer):
+class SpecialtySerializer(HyperlinkedUUIDSerializer):
     groups = serializers.HyperlinkedRelatedField(
         many=True,
         read_only=True,

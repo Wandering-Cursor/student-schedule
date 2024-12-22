@@ -5,11 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "command": "npm run dev -- --host --port 3000",
+            "name": "Run npm start",
+            "request": "launch",
+            "type": "node-terminal",
+            "cwd": "${workspaceFolder}/frontend"
+        },
+        {
             "name": "Python Debugger: Django",
             "type": "debugpy",
             "request": "launch",
             "args": [
-                "runserver"
+                "runserver",
+                "0.0.0.0:8000"
             ],
             "django": true,
             "autoStartBrowser": false,

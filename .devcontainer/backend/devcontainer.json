@@ -2,11 +2,11 @@
 	"name": "Student Schedule Backend",
 	"workspaceFolder": "/app",
 	"shutdownAction": "stopCompose",
-    "dockerComposeFile": "../dev.docker-compose.yaml",
-    "service": "backend",
+	"dockerComposeFile": "../../dev.docker-compose.yaml",
+	"service": "backend",
 	"postAttachCommand": "uv sync --frozen",
 	"forwardPorts": [
-        8000
+		8000
 	],
 	"customizations": {
 		"vscode": {

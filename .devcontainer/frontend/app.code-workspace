@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "/app/frontend"
+		},
+		{
+			"path": "/app"
+		},
+	],
+	"settings": {
+		"terminal.integrated.env.linux": {
+			"PYTHONPATH": "${workspaceFolder}/student_schedule"
+		},
+		"terminal.integrated.env.windows": {
+			"PYTHONPATH": "${workspaceFolder}\\student_schedule"
+		},
+		"terminal.integrated.env.osx": {
+			"PYTHONPATH": "${workspaceFolder}/student_schedule"
+		}
+	}
+}
