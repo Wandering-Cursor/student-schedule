@@ -69,6 +69,8 @@ jobs:
       - name: Build
         run: npm run build-only
         working-directory: ./frontend
+        env:
+          PUBLIC_PATH: ${{ github.repository }}
       
       - name: Create 404 file
         run: cp ./dist/index.html ./dist/404.html
