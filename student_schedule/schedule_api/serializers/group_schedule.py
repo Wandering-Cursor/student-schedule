@@ -27,6 +27,7 @@ class GroupScheduleSerializer(HyperlinkedUUIDSerializer):
     scheduled_pairs = ScheduledPairSerializer(
         many=True,
     )
+    group = ShortGroupSerializer()
 
     class Meta:
         model = GroupSchedule
