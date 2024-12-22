@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+      - dev
 
 jobs:
   tests:
@@ -29,6 +33,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: tests
+    if: github.event_name == 'push'
 
     steps:
       - name: Checkout
