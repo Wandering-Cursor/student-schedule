@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@primevue/auto-import-resolver": "^4.2.4",
-    "@tsconfig/node23": "^23.0.0",
+    "@tsconfig/node22": "^22.0.0",
     "@types/node": "^22.10.1",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vitejs/plugin-vue-jsx": "^4.1.1",
