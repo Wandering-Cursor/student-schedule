@@ -1,0 +1,33 @@
+name: Run Docker Compose
+on:
+  workflow_run:
+    workflows: ["Create and push Docker image"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  start-containers:
+    runs-on: self-hosted
+
+    steps:
+      - name: Log In
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Fetch new images (backend)
+        run: docker pull ghcr.io/wandering-cursor/student-schedule:latest
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          clean: false
+
+      - name: Create secret files
+        run: |
+          echo "${{ secrets.env }}" > .secrets/.env
+          echo "${{ secrets.POSTGRES_DB }}" > .secrets/POSTGRES_DB
+          echo "${{ secrets.POSTGRES_USER }}" > .secrets/POSTGRES_USER
+          echo "${{ secrets.POSTGRES_PASSWORD }}" > .secrets/POSTGRES_PASSWORD
+
+      - name: Start containers
+        run: docker compose -f "docker-compose.yaml" up -d --remove-orphans
