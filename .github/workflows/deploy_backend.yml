@@ -31,3 +31,9 @@ jobs:
 
       - name: Start containers
         run: docker compose -f "docker-compose.yaml" up -d --remove-orphans
+      
+      - name: Check containers
+        run: docker ps -a
+      
+      - name: Copy static files
+        run: docker cp student-schedule-backend-1:/app/static /var/www/schedule
