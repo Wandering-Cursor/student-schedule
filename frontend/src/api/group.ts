@@ -6,4 +6,9 @@ async function getGroups(params: { name?: string; page?: number; specialty?: str
   return await client.org_group_list(params)
 }
 
-export { getGroups }
+async function getGroup(params: { uuid: string }) {
+  const client = await api.getClient<StudentScheduleClient>()
+  return await client.org_group_retrieve(params)
+}
+
+export { getGroups, getGroup }

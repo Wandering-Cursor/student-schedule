@@ -31,7 +31,6 @@ const messages = {
       roomName: 'Аудиторія',
     },
     photoSchedule: {
-      noName: 'Без назви',
       title: 'Фото розклад',
       noPhotos: 'Фотографій розкладу не знайдено.',
       description: 'Тут зібрані фотографії розкладу для всіх груп.',
@@ -48,6 +47,12 @@ const messages = {
       docs: 'Документи',
       login: 'Увійти',
       logout: 'Вийти',
+      groups: 'Групи',
+      noName: 'Без назви',
+      submit: 'Відправити',
+    },
+    specialty: {
+      formatted: 'Спеціальність: {name}',
     },
   },
 }

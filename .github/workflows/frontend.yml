@@ -66,6 +66,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      - name: Load .env file
+        uses: SpicyPizza/create-envfile@v2
+        with:
+          envkey_VITE_API_URL: ${{ vars.VITE_API_URL }}
+
       - name: Build
         run: npm run build-only -- --base="/student-schedule/"
         working-directory: ./frontend

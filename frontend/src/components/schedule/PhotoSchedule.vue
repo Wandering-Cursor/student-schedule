@@ -29,7 +29,7 @@ onMounted(() => {
   <Panel
     v-if="photoScheduleInfo"
     class="photos-content"
-    :header="photoScheduleInfo.name || $t('photoSchedule.noName')"
+    :header="photoScheduleInfo.name || $t('labels.noName')"
   >
     <div v-if="photoScheduleInfo.photos">
       <Galleria
