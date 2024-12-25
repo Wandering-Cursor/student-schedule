@@ -8,6 +8,8 @@ WORKDIR /app
 
 RUN uv sync --frozen
 
+RUN uv run --no-dev student_schedule/manage.py collectstatic --noinput
+
 WORKDIR /app/student_schedule
 
 ENTRYPOINT [ "gunicorn", "student_schedule.wsgi" ]
