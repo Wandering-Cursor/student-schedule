@@ -1,7 +1,7 @@
 from typing import Annotated, Callable
 
 import pydantic
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 def convert_string_to_list(v: str | list) -> Callable[..., list[str]]:
@@ -36,10 +36,12 @@ class Settings(BaseSettings):
         description="It's mandatory to use a `postgresql:// URL",
     )
 
+    model_config = SettingsConfigDict(
+        env_file=(
+            ".env",
+            "/run/secrets/env_file",
+        ),
+    )
 
-settings = Settings(
-    env_file=(
-        ".env",
-        "/run/secrets/env_file",
-    ),
-)
+
+settings = Settings()
