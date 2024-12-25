@@ -37,4 +37,9 @@ class Settings(BaseSettings):
     )
 
 
-settings = Settings()
+settings = Settings(
+    env_file=(
+        ".env",
+        "/run/secrets/env_file",
+    ),
+)

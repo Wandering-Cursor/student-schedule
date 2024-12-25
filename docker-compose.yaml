@@ -3,8 +3,8 @@ name: "student-schedule"
 services:
   backend:
     image: ghcr.io/wandering-cursor/student-schedule:latest
-    env_file:
-      - .env
+    secrets:
+      - env_file
     ports:
       - "8002:8000"
 
