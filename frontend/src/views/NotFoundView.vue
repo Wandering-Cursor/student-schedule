@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <main>
+  <main class="centered-wrapper">
     <div class="error-container">
       <Message severity="error">Page you're looking for doesn't exist</Message>
     </div>
@@ -13,6 +13,12 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.centered-wrapper {
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;

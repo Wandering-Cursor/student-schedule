@@ -42,25 +42,17 @@ onMounted(() => {
         }}
       </p>
       <p>{{ $t('groupSchedule.pairsList') }}</p>
-      <ScrollPanel class="pairs-list">
-        <div v-for="pair in groupScheduleInfo.scheduled_pairs" :key="pair.uuid">
-          <Card>
-            <template #title> {{ pair.pair.name }} - {{ pair.name }} </template>
-            <template #subtitle> {{ pair.pair.start_time }} - {{ pair.pair.end_time }} </template>
-            <template #content>
-              <p>{{ $t('schedule.teacherName') }}: {{ pair.teacher.name }}</p>
-            </template>
-            <template #footer> {{ $t('schedule.roomName') }}: {{ pair.room }} </template>
-          </Card>
-          <Divider />
-        </div>
-      </ScrollPanel>
+      <div v-for="pair in groupScheduleInfo.scheduled_pairs" :key="pair.uuid">
+        <Card>
+          <template #title> {{ pair.pair.name }} - {{ pair.name }} </template>
+          <template #subtitle> {{ pair.pair.start_time }} - {{ pair.pair.end_time }} </template>
+          <template #content>
+            <p>{{ $t('schedule.teacherName') }}: {{ pair.teacher.name }}</p>
+          </template>
+          <template #footer> {{ $t('schedule.roomName') }}: {{ pair.room }} </template>
+        </Card>
+        <Divider />
+      </div>
     </template>
   </Panel>
 </template>
-
-<style scoped>
-.pairs-list {
-  max-height: 50vh;
-}
-</style>

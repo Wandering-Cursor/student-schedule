@@ -56,13 +56,13 @@ const chooseGroup = async () => {
   }
 
   const response = await login(formData.value)
-  userStore.setToken(response.data.token)
+  userStore.setToken(response.data.token as string)
   router.push('/')
 }
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 w-full sm:w-56">
+  <main class="contained-wrapper">
     <div class="flex flex-col gap-1">
       <InputText
         v-model="formData.username"
@@ -85,8 +85,8 @@ const chooseGroup = async () => {
     <Button
       type="submit"
       severity="secondary"
-      :label="$t('button.submit')"
+      :label="$t('labels.submit')"
       :onclick="chooseGroup"
     />
-  </div>
+  </main>
 </template>

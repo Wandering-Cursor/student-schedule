@@ -21,3 +21,9 @@ body {
 a.p-button {
   text-decoration: none;
 }
+
+.contained-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

@@ -15,7 +15,7 @@ const onLoaded = () => {
 </script>
 
 <template>
-  <main>
+  <main class="contained-wrapper">
     <Panel :header="$t('groupSchedule.title')">
       {{ $t('groupSchedule.description') }}
     </Panel>

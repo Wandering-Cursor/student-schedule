@@ -11,17 +11,15 @@ declare namespace Components {
     export interface AuthToken {
       username: string
       password: string
-    }
-    export interface AuthTokenResponse {
-      token: string
+      token?: string
     }
     export interface Group {
       url: string // uri
       uuid: string // uuid
+      specialty: ShortSpecialty
       created_at: string // date-time
       updated_at: string // date-time
       name: string
-      specialty: string // uri
     }
     export interface GroupSchedule {
       url: string // uri
@@ -186,6 +184,14 @@ declare namespace Components {
       url: string // uri
       group: ShortGroup
     }
+    export interface ShortSpecialty {
+      /**
+       * ID
+       */
+      uuid: string // uuid
+      url: string // uri
+      name: string
+    }
     export interface ShortTeacher {
       uuid: string // uuid
       url: string // uri
@@ -216,7 +222,7 @@ declare namespace Paths {
   namespace AuthLoginCreate {
     export type RequestBody = Components.Schemas.AuthToken
     namespace Responses {
-      export type $200 = Components.Schemas.AuthTokenResponse
+      export type $200 = Components.Schemas.AuthToken
     }
   }
   namespace AuthLogoutCreate {

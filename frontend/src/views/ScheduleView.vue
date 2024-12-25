@@ -3,7 +3,7 @@ import CombinedSchedule from '@/components/schedule/CombinedSchedule.vue'
 </script>
 
 <template>
-  <main>
+  <main class="contained-wrapper">
     <Panel :header="$t('schedule.title')">
       {{ $t('schedule.description') }}
     </Panel>

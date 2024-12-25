@@ -25,6 +25,21 @@ const router = createRouter({
       ],
     },
     {
+      path: '/specialty',
+      children: [
+        {
+          path: '',
+          name: 'specialty-list',
+          component: () => import('../views/SpecialtyListView.vue'),
+        },
+        {
+          path: ':id',
+          name: 'specialty-detail',
+          component: () => import('../views/SpecialtyDetailView.vue'),
+        },
+      ],
+    },
+    {
       path: '/schedule',
       children: [
         {
