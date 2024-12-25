@@ -29,6 +29,7 @@ class Settings(BaseSettings):
         description='Generate using: `uv run python -c "import secrets; print(secrets.token_urlsafe(32))"`',
     )
     allowed_hosts: StringListValidator = ["*"]
+    allowed_cors_origins: StringListValidator = ["*"]
     trusted_origins: StringListValidator = ["*"]
 
     database_url: pydantic.AnyUrl = pydantic.Field(
