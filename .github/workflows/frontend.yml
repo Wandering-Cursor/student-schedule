@@ -69,6 +69,7 @@ jobs:
       - name: Load .env file
         uses: SpicyPizza/create-envfile@v2
         with:
+          directory: ./frontend
           envkey_VITE_API_URL: ${{ vars.VITE_API_URL }}
 
       - name: Build
