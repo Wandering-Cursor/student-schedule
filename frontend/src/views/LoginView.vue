@@ -56,7 +56,7 @@ const chooseGroup = async () => {
   }
 
   const response = await login(formData.value)
-  userStore.setToken(response.data.token)
+  userStore.setToken(response.data.token as string)
   router.push('/')
 }
 </script>

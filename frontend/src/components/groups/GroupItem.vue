@@ -3,6 +3,7 @@ import { defineProps, type PropType } from 'vue'
 import GroupLink from '@/components/groups/GroupLink.vue'
 import type { Components } from '@/api/openapi'
 import SpecialtyLink from '@/components/specialty/SpecialtyLink.vue'
+import Variant from '@/enums/Variant'
 
 const props = defineProps({
   group: {
@@ -21,7 +22,7 @@ const props = defineProps({
       <SpecialtyLink
         :specialty-i-d="group.specialty.uuid"
         :specialty-name="group.specialty.name"
-        variant="H3"
+        :variant="Variant.H3"
       />
     </template>
   </Card>
