@@ -36,6 +36,11 @@ class Settings(BaseSettings):
         description="It's mandatory to use a `postgresql:// URL",
     )
 
+    settings_module: str = pydantic.Field(
+        default="student_schedule.conf.local",
+        validation_alias="DJANGO_SETTINGS_MODULE",
+    )
+
     model_config = SettingsConfigDict(
         env_file=(
             ".env",

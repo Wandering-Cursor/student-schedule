@@ -11,6 +11,9 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "student_schedule.conf.local")
+from student_schedule.settings import settings
+
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings.settings_module)
 
 application = get_wsgi_application()

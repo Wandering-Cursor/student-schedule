@@ -11,6 +11,8 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "student_schedule.conf.local")
+from student_schedule.settings import settings
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings.settings_module)
 
 application = get_asgi_application()
