@@ -1,9 +1,12 @@
 from rest_framework import serializers
 from schedule_admin.models.group import Group
 from schedule_api.serializers.base import HyperlinkedUUIDSerializer
+from schedule_api.serializers.specialty import ShortSpecialtySerializer
 
 
 class GroupSerializer(HyperlinkedUUIDSerializer):
+    specialty = ShortSpecialtySerializer()
+
     class Meta:
         model = Group
         fields = "__all__"

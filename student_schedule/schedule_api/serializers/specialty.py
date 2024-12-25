@@ -14,3 +14,10 @@ class SpecialtySerializer(HyperlinkedUUIDSerializer):
         model = Specialty
         fields = "__all__"
         read_only_fields = ["uuid", "created_at", "updated_at"]
+
+
+class ShortSpecialtySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Specialty
+        fields = ["uuid", "url", "name"]
+        read_only_fields = ["uuid", "url", "name"]
