@@ -26,11 +26,9 @@ declare module 'vue' {
     PhotoSchedule: typeof import('./src/components/schedule/PhotoSchedule.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    ScrollPanel: typeof import('primevue/scrollpanel')['default']
     Skeleton: typeof import('primevue/skeleton')['default']
     SpecialtyLink: typeof import('./src/components/specialty/SpecialtyLink.vue')['default']
     TableSchedule: typeof import('./src/components/schedule/TableSchedule.vue')['default']
     Toast: typeof import('primevue/toast')['default']
-    VirtualScroller: typeof import('primevue/virtualscroller')['default']
   }
 }
