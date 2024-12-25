@@ -24,10 +24,10 @@ jobs:
 
       - name: Create secret files
         run: |
-          echo "${{ secrets.env }}" > .secrets/.env
-          echo "${{ secrets.POSTGRES_DB }}" > .secrets/POSTGRES_DB
-          echo "${{ secrets.POSTGRES_USER }}" > .secrets/POSTGRES_USER
-          echo "${{ secrets.POSTGRES_PASSWORD }}" > .secrets/POSTGRES_PASSWORD
+          echo "${{ secrets.env }}" > .env
+          echo "${{ secrets.POSTGRES_DB }}" > POSTGRES_DB
+          echo "${{ secrets.POSTGRES_USER }}" > POSTGRES_USER
+          echo "${{ secrets.POSTGRES_PASSWORD }}" > POSTGRES_PASSWORD
 
       - name: Start containers
         run: docker compose -f "docker-compose.yaml" up -d --remove-orphans

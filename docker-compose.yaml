@@ -31,10 +31,10 @@ volumes:
 
 secrets:
   POSTGRES_DB:
-    file: .secrets/POSTGRES_DB
+    file: POSTGRES_DB
   POSTGRES_USER:
-    file: .secrets/POSTGRES_USER
+    file: POSTGRES_USER
   POSTGRES_PASSWORD:
-    file: .secrets/POSTGRES_PASSWORD
+    file: POSTGRES_PASSWORD
   env_file:
-    file: ./secrets/.env
+    file: .env
