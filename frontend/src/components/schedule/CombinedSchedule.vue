@@ -26,11 +26,9 @@ onMounted(async () => {
       <Skeleton v-if="loading" width="100%" height="50vh" />
       <DataView v-if="!loading" :value="data" data-key="uuid" paginator :rows="5">
         <template #list="slotProps">
-          <div class="p-grid grid-cols-12 gap-4">
-            <div v-for="item in slotProps.items">
-              <CombinedScheduleItem :schedule="item" />
-              <Divider />
-            </div>
+          <div v-for="item in slotProps.items">
+            <CombinedScheduleItem :schedule="item" />
+            <Divider />
           </div>
         </template>
       </DataView>

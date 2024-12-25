@@ -13,6 +13,11 @@ const menuItems = ref([
       url: '/',
     },
     {
+      label: 'labels.groups',
+      icon: 'pi pi-fw pi-users',
+      url: '/group',
+    },
+    {
       label: 'labels.schedule',
       icon: 'pi pi-fw pi-calendar',
       url: '/schedule',
@@ -60,7 +65,11 @@ const menuItems = ref([
         />
       </template>
     </MegaMenu>
-    <RouterView class="main-content" />
+    <div class="main-content">
+      <div class="scrollable-content">
+        <RouterView />
+      </div>
+    </div>
   </div>
   <Toast />
 </template>
@@ -70,7 +79,6 @@ const menuItems = ref([
 .main-content {
   height: 100%;
   width: 100%;
-
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -79,10 +87,23 @@ const menuItems = ref([
 .app-container {
   max-width: 1920px;
 }
+
 .menu-items {
   display: flex;
   gap: 1rem;
 }
+
+.main-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.scrollable-content {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
 @media screen and (max-width: 768px) {
   .menu-items {
     flex-direction: column;
