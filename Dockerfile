@@ -14,4 +14,4 @@ RUN uv run --no-dev student_schedule/manage.py collectstatic --noinput
 
 WORKDIR /app/student_schedule
 
-ENTRYPOINT [ "gunicorn", "student_schedule.wsgi" ]
+ENTRYPOINT [ "uv", "run", "gunicorn", "student_schedule.wsgi" ]
