@@ -41,6 +41,7 @@ class Settings(BaseSettings):
             ".env",
             "/run/secrets/env_file",
         ),
+        extra="ignore",
     )
 
 
