@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from schedule_admin.models.group import Group
 from schedule_api.serializers.base import HyperlinkedUUIDSerializer
-from schedule_api.serializers.specialty import ShortSpecialtySerializer
+from schedule_api.serializers.ShortSpecialtySerializer import ShortSpecialtySerializer
 
 
 class GroupSerializer(HyperlinkedUUIDSerializer):

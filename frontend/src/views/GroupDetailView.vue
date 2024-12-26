@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { getGroup } from '@/api/group'
 import type { Components } from '@/api/openapi'
+import SpecialtyLink from '@/components/specialty/SpecialtyLink.vue'
+import Variant from '@/enums/Variant'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -22,7 +24,11 @@ onMounted(async () => {
         <h1>{{ groupEntity.name }}</h1>
       </template>
       <template #default>
-        {{ $t('specialty.formatted', { name: groupEntity.specialty.name }) }}
+        <SpecialtyLink
+          :specialty-i-d="groupEntity.specialty.uuid"
+          :specialty-name="groupEntity.specialty.name"
+          :variant="Variant.P"
+        />
       </template>
     </Panel>
     <Skeleton v-else width="100%" height="50vh" />

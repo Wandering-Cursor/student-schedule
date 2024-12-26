@@ -34,9 +34,6 @@ const menuItems = ref([
 <template>
   <div class="app-container">
     <MegaMenu :model="menuItems">
-      <template #start>
-        <img class="logo" src="./assets/logo.svg" alt="Vue logo" />
-      </template>
       <template #item="{ item }">
         <div class="menu-items">
           <Button

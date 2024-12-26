@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AnyLink: typeof import('./src/components/common/AnyLink.vue')['default']
     Button: typeof import('primevue/button')['default']
     Card: typeof import('primevue/card')['default']
     CombinedSchedule: typeof import('./src/components/schedule/CombinedSchedule.vue')['default']
@@ -18,6 +19,7 @@ declare module 'vue' {
     GroupLink: typeof import('./src/components/groups/GroupLink.vue')['default']
     GroupSchedule: typeof import('./src/components/schedule/GroupSchedule.vue')['default']
     HomeComponent: typeof import('./src/components/HomeComponent.vue')['default']
+    InputGroup: typeof import('primevue/inputgroup')['default']
     InputText: typeof import('primevue/inputtext')['default']
     MegaMenu: typeof import('primevue/megamenu')['default']
     Message: typeof import('primevue/message')['default']
@@ -26,8 +28,10 @@ declare module 'vue' {
     PhotoSchedule: typeof import('./src/components/schedule/PhotoSchedule.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Select: typeof import('primevue/select')['default']
     Skeleton: typeof import('primevue/skeleton')['default']
     SpecialtyLink: typeof import('./src/components/specialty/SpecialtyLink.vue')['default']
+    SpecialtySelector: typeof import('./src/components/specialty/SpecialtySelector.vue')['default']
     TableSchedule: typeof import('./src/components/schedule/TableSchedule.vue')['default']
     Toast: typeof import('primevue/toast')['default']
   }

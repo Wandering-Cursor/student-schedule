@@ -201,7 +201,7 @@ declare namespace Components {
     export interface Specialty {
       url: string // uri
       uuid: string // uuid
-      groups: string /* uri */[]
+      groups: ShortGroup[]
       created_at: string // date-time
       updated_at: string // date-time
       name: string
