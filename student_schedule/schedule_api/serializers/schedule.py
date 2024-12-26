@@ -73,10 +73,13 @@ class ScheduleUploadSerializer(serializers.Serializer):
     )
     file = serializers.FileField(
         required=False,
+        allow_null=True,
     )
 
     def validate_file(self, value: "InMemoryUploadedFile"):
         file = value
+        if not file:
+            return []
         if not file.name.endswith(".csv"):
             raise serializers.ValidationError("File should be CSV")
 
