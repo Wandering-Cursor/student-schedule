@@ -7,6 +7,8 @@ services:
       - env_file
     ports:
       - "8002:8000"
+    volumes:
+      - /var/www/schedule/media:/app/media
 
   database:
     image: postgres:17

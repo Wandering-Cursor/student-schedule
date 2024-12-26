@@ -5,6 +5,7 @@
 
 {% if errors %}
 <div class="alert alert-danger" role="alert">
+    {{errors}}
     {% for field, value in errors.items %}
     {{ field }}: {{ value }}
     {% endfor %}
