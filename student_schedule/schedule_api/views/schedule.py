@@ -84,7 +84,7 @@ class UploadScheduleView(TemplateView):
     success_template_name = "schedule_admin/upload_schedule_success.html"
 
     def _return_error(self, request, errors):
-        render(
+        return render(
             request,
             self.template_name,
             {
