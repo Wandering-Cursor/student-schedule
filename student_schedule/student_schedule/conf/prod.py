@@ -13,3 +13,6 @@ CSRF_TRUSTED_ORIGINS = settings.trusted_origins
 
 STATIC_URL = "/schedule/static/"
 MEDIA_URL = "/schedule/media/"
+
+STATIC_ROOT = "/app/static/"
+MEDIA_ROOT = "/app/media/"
