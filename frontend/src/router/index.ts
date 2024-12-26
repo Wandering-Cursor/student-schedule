@@ -27,11 +27,12 @@ const router = createRouter({
     {
       path: '/specialty',
       children: [
-        {
-          path: '',
-          name: 'specialty-list',
-          component: () => import('../views/SpecialtyListView.vue'),
-        },
+        // Not used
+        // {
+        //   path: '',
+        //   name: 'specialty-list',
+        //   component: () => import('../views/SpecialtyListView.vue'),
+        // },
         {
           path: ':id',
           name: 'specialty-detail',
