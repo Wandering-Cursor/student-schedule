@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; url=./index.html">
+    <script type="text/javascript">
+      // Redirect to the index.html page with the correct path
+      var path = window.location.pathname;
+      var newUrl = window.location.origin + '/student-schedule/index.html' + '#' + path;
+      window.location.replace(newUrl);
+    </script>
   </head>
   <body>
   </body>
