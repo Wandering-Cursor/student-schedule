@@ -4,7 +4,7 @@
     <script type="text/javascript">
       // Redirect to the index.html page with the correct path
       var path = window.location.pathname;
-      var newUrl = window.location.origin + '/student-schedule/index.html' + '#' + path;
+      var newUrl = window.location.origin + '/student-schedule/index.html' + '#' + path.replace('/student-schedule', '');
       window.location.replace(newUrl);
     </script>
   </head>
