@@ -28,8 +28,10 @@ onMounted(() => {
 <template>
   <Panel
     v-if="photoScheduleInfo"
-    class="photos-content"
     :header="photoScheduleInfo.name || $t('labels.noName')"
+    :pt="{
+      contentContainer: { class: 'photos-content' },
+    }"
   >
     <div v-if="photoScheduleInfo.photos">
       <Galleria
@@ -58,9 +60,6 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-}
-.p-galleria {
-  max-width: 90vw;
 }
 .image {
   max-width: 100%;
