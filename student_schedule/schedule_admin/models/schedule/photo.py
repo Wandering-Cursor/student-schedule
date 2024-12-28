@@ -6,7 +6,9 @@ from django.utils.translation import gettext_lazy as _
 from schedule_admin.models.base import BaseModel
 
 
-class PhotoSchedulePhoto(BaseModel):
+class SchedulePhoto(BaseModel):
+    """Entity representing a photography of a schedule"""
+
     ALLOWED_EXTENSIONS = [
         "apng",
         "avif",
@@ -36,7 +38,7 @@ class PhotoSchedulePhoto(BaseModel):
         base = super().clean_fields(exclude)
 
         extension = self.file.name.split(".")[-1]
-        if extension not in PhotoSchedulePhoto.ALLOWED_EXTENSIONS:
+        if extension not in SchedulePhoto.ALLOWED_EXTENSIONS:
             raise ValidationError(
                 {
                     "file": _("Invalid file supplied"),
@@ -45,18 +47,22 @@ class PhotoSchedulePhoto(BaseModel):
 
         return base
 
-    def __str__(self: "PhotoSchedulePhoto") -> str:
+    def __str__(self: "SchedulePhoto") -> str:
         return f"File: {self.file.name}"
 
 
 class PhotoSchedule(BaseModel):
+    """
+    Entity representing a collection of photos of a schedule for some date
+    """
+
     name = models.CharField(
         verbose_name=_("Name"),
         blank=True,
     )
 
     photos = models.ManyToManyField(
-        PhotoSchedulePhoto,
+        SchedulePhoto,
         verbose_name=_("Photos"),
         related_name="photo_schedule_photos",
     )

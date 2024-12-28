@@ -24,11 +24,23 @@ declare namespace Components {
     export interface GroupSchedule {
       url: string // uri
       uuid: string // uuid
-      scheduled_pairs: ScheduledPair[]
+      lessons: Lesson[]
       group: ShortGroup
       created_at: string // date-time
       updated_at: string // date-time
       for_date: string // date
+    }
+    export interface Lesson {
+      /**
+       * ID
+       */
+      uuid: string // uuid
+      pair: Pair
+      teacher: ShortTeacher
+      created_at: string // date-time
+      updated_at: string // date-time
+      name: string
+      room: string
     }
     /**
      * * `1` - First
@@ -154,22 +166,7 @@ declare namespace Components {
       created_at: string // date-time
       updated_at: string // date-time
       for_date?: string // date
-      /**
-       * Photo Schedule
-       */
-      photo_schedules?: string | null // uri
-    }
-    export interface ScheduledPair {
-      /**
-       * ID
-       */
-      uuid: string // uuid
-      pair: Pair
-      teacher: ShortTeacher
-      created_at: string // date-time
-      updated_at: string // date-time
-      name: string
-      room: string
+      photo_schedule?: string | null // uri
     }
     export interface ShortGroup {
       /**

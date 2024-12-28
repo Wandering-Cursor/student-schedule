@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('schedule_admin', '0004_alter_photoschedule_uuid_and_more'),
+        ("schedule_admin", "0004_alter_photoschedule_uuid_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='photoschedule',
-            name='name',
-            field=models.CharField(blank=True, verbose_name='Name'),
+            model_name="photoschedule",
+            name="name",
+            field=models.CharField(blank=True, verbose_name="Name"),
         ),
     ]

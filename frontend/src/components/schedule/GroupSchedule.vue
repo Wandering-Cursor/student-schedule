@@ -42,7 +42,7 @@ onMounted(() => {
         }}
       </p>
       <p>{{ $t('groupSchedule.pairsList') }}</p>
-      <div v-for="pair in groupScheduleInfo.scheduled_pairs" :key="pair.uuid">
+      <div v-for="pair in groupScheduleInfo.lessons" :key="pair.uuid">
         <Card>
           <template #title> {{ pair.pair.name }} - {{ pair.name }} </template>
           <template #subtitle> {{ pair.pair.start_time }} - {{ pair.pair.end_time }} </template>

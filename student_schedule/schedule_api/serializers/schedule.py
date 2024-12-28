@@ -4,10 +4,10 @@ import typing
 
 from rest_framework import serializers
 from schedule_admin.models.group import Group
-from schedule_admin.models.group_schedule import GroupSchedule, ScheduledPair
-from schedule_admin.models.pair_schedule import Pair
-from schedule_admin.models.photo_schedule import PhotoSchedule, PhotoSchedulePhoto
-from schedule_admin.models.schedule import Schedule
+from schedule_admin.models.schedule.group import GroupSchedule, Lesson
+from schedule_admin.models.schedule.pairs import Pair
+from schedule_admin.models.schedule.photo import PhotoSchedule, SchedulePhoto
+from schedule_admin.models.schedule.schedule import Schedule
 from schedule_admin.models.teacher import Teacher
 from schedule_api.serializers.base import HyperlinkedUUIDSerializer
 from schedule_api.serializers.group_schedule import ShortGroupScheduleInfo
@@ -25,9 +25,9 @@ class ScheduleSerializer(HyperlinkedUUIDSerializer):
         read_only_fields = ["uuid", "created_at", "updated_at"]
 
 
-class PairRepresentation:
+class LessonRepresentation:
     def __init__(
-        self: "PairRepresentation",
+        self: "LessonRepresentation",
         pair_no: str,
         name: str,
         teacher: str,
@@ -38,20 +38,20 @@ class PairRepresentation:
         self.teacher = teacher
         self.room = room
 
-    def __str__(self: "PairRepresentation") -> str:
+    def __str__(self: "LessonRepresentation") -> str:
         return f"{self.pair_no}. {self.name} ({self.room}) - {self.teacher}"
 
-    def __repr__(self: "PairRepresentation") -> str:
+    def __repr__(self: "LessonRepresentation") -> str:
         pair_no = self.pair_no
         name = self.name
         teacher = self.teacher
         room = self.room
 
-        return f"PairRepresentation({pair_no=}, {name=}, {teacher=}, {room=})"
+        return f"LessonRepresentation({pair_no=}, {name=}, {teacher=}, {room=})"
 
 
 class GroupRepresentation:
-    def __init__(self, name: str, pairs: list[PairRepresentation]):
+    def __init__(self, name: str, pairs: list[LessonRepresentation]):
         self.name = name
         self.pairs = pairs
 
@@ -84,7 +84,7 @@ class ScheduleUploadSerializer(serializers.Serializer):
             raise serializers.ValidationError("File should be CSV")
 
         reader = csv.reader(file.read().decode("utf-8").splitlines())
-        all_rows = [row for row in reader]
+        all_rows = list(reader)
 
         headers = all_rows.pop(0)
 
@@ -100,7 +100,7 @@ class ScheduleUploadSerializer(serializers.Serializer):
             for iterator, pair_name in enumerate(group[0][1:]):
                 iterator += 1
                 pairs.append(
-                    PairRepresentation(
+                    LessonRepresentation(
                         pair_no=headers[iterator],
                         name=pair_name,
                         teacher=group[1][iterator],
@@ -127,6 +127,7 @@ class ScheduleUploadSerializer(serializers.Serializer):
         return attrs
 
     def create(self, validated_data) -> Schedule:
+        """Make a list of schedules from the uploaded file before creating the schedule (in validation)"""
         for_date: datetime.date = validated_data["for_date"]
 
         photos: list["InMemoryUploadedFile"] = validated_data.get("photos")
@@ -140,7 +141,7 @@ class ScheduleUploadSerializer(serializers.Serializer):
             photo_schedule.save()
 
             for photo in photos:
-                photo_object = PhotoSchedulePhoto(file=photo)
+                photo_object = SchedulePhoto(file=photo)
                 photo_object.save()
 
                 photo_schedule.photos.add(photo_object)
@@ -154,7 +155,7 @@ class ScheduleUploadSerializer(serializers.Serializer):
                     group=group,
                     for_date=for_date,
                 )
-                group_schedule.scheduled_pairs.clear()
+                group_schedule.lessons.clear()
 
                 for pair in schedule.pairs:
                     if pair.name == "":
@@ -166,8 +167,8 @@ class ScheduleUploadSerializer(serializers.Serializer):
                         first_name=teacher_names[1],
                         middle_name="".join(teacher_names[2:]) or "",
                     )
-                    group_schedule.scheduled_pairs.add(
-                        ScheduledPair.objects.get_or_create(
+                    group_schedule.lessons.add(
+                        Lesson.objects.get_or_create(
                             pair=Pair.objects.get(name=pair.pair_no),
                             name=pair.name,
                             teacher=teacher,
@@ -182,7 +183,7 @@ class ScheduleUploadSerializer(serializers.Serializer):
         if groups_schedules:
             schedule.group_schedules.set(groups_schedules)
         if photo_schedule:
-            schedule.photo_schedules = photo_schedule
+            schedule.photo_schedule = photo_schedule
 
         schedule.save()
 

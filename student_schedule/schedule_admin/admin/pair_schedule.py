@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from schedule_admin.admin.base import BaseAdmin
-from schedule_admin.models.pair_schedule import Pair
+from schedule_admin.models.schedule.pairs import Pair
 
 
 @admin.register(Pair)

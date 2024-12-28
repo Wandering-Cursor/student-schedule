@@ -6,136 +6,303 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('schedule_admin', '0006_remove_schedule_photo_schedules_and_more'),
+        ("schedule_admin", "0006_remove_schedule_photo_schedules_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Group',
+            name="Group",
             fields=[
-                ('uuid', models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created At')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated At')),
-                ('name', models.CharField(max_length=255, verbose_name='Name')),
+                (
+                    "uuid",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created At"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated At"),
+                ),
+                ("name", models.CharField(max_length=255, verbose_name="Name")),
             ],
             options={
-                'verbose_name': 'Group',
-                'verbose_name_plural': 'Groups',
-                'ordering': ['specialty', 'name'],
+                "verbose_name": "Group",
+                "verbose_name_plural": "Groups",
+                "ordering": ["specialty", "name"],
             },
         ),
         migrations.CreateModel(
-            name='GroupSchedule',
+            name="GroupSchedule",
             fields=[
-                ('uuid', models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created At')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated At')),
-                ('group', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='schedule_admin.group', verbose_name='Group')),
+                (
+                    "uuid",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created At"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated At"),
+                ),
+                (
+                    "group",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="schedule_admin.group",
+                        verbose_name="Group",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Group Schedule',
-                'verbose_name_plural': 'Group Schedules',
-                'ordering': ['group'],
+                "verbose_name": "Group Schedule",
+                "verbose_name_plural": "Group Schedules",
+                "ordering": ["group"],
             },
         ),
         migrations.AddField(
-            model_name='schedule',
-            name='group_schedules',
-            field=models.ManyToManyField(blank=True, related_name='schedules', to='schedule_admin.groupschedule', verbose_name='Group Schedules'),
+            model_name="schedule",
+            name="group_schedules",
+            field=models.ManyToManyField(
+                blank=True,
+                related_name="schedules",
+                to="schedule_admin.groupschedule",
+                verbose_name="Group Schedules",
+            ),
         ),
         migrations.CreateModel(
-            name='Pair',
+            name="Pair",
             fields=[
-                ('uuid', models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created At')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated At')),
-                ('name', models.CharField(choices=[('1', 'First'), ('2', 'Second'), ('3', 'Third'), ('4', 'Fourth'), ('5', 'Fifth'), ('6', 'Sixth'), ('0', 'Zeroth'), ('C', 'Consultation'), ('X', 'Custom')], max_length=255, verbose_name='Name')),
-                ('start_time', models.TimeField(blank=True, null=True, verbose_name='Start Time')),
-                ('end_time', models.TimeField(blank=True, null=True, verbose_name='End Time')),
+                (
+                    "uuid",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created At"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated At"),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        choices=[
+                            ("1", "First"),
+                            ("2", "Second"),
+                            ("3", "Third"),
+                            ("4", "Fourth"),
+                            ("5", "Fifth"),
+                            ("6", "Sixth"),
+                            ("0", "Zeroth"),
+                            ("C", "Consultation"),
+                            ("X", "Custom"),
+                        ],
+                        max_length=255,
+                        verbose_name="Name",
+                    ),
+                ),
+                (
+                    "start_time",
+                    models.TimeField(blank=True, null=True, verbose_name="Start Time"),
+                ),
+                (
+                    "end_time",
+                    models.TimeField(blank=True, null=True, verbose_name="End Time"),
+                ),
             ],
             options={
-                'verbose_name': 'Pair',
-                'verbose_name_plural': 'Pairs',
-                'ordering': ['start_time'],
-                'constraints': [models.UniqueConstraint(fields=('name',), name='unique_pair')],
+                "verbose_name": "Pair",
+                "verbose_name_plural": "Pairs",
+                "ordering": ["start_time"],
+                "constraints": [
+                    models.UniqueConstraint(fields=("name",), name="unique_pair")
+                ],
             },
         ),
         migrations.CreateModel(
-            name='ScheduledPair',
+            name="ScheduledPair",
             fields=[
-                ('uuid', models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created At')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated At')),
-                ('name', models.CharField(max_length=255, verbose_name='Name')),
-                ('room', models.CharField(max_length=255, verbose_name='Room')),
-                ('pair', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='schedule_admin.pair', verbose_name='Pair')),
+                (
+                    "uuid",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created At"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated At"),
+                ),
+                ("name", models.CharField(max_length=255, verbose_name="Name")),
+                ("room", models.CharField(max_length=255, verbose_name="Room")),
+                (
+                    "pair",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="schedule_admin.pair",
+                        verbose_name="Pair",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Scheduled Pair',
-                'verbose_name_plural': 'Scheduled Pairs',
-                'ordering': ['pair', 'teacher', 'room', 'name'],
+                "verbose_name": "Scheduled Pair",
+                "verbose_name_plural": "Scheduled Pairs",
+                "ordering": ["pair", "teacher", "room", "name"],
             },
         ),
         migrations.AddField(
-            model_name='groupschedule',
-            name='scheduled_pairs',
-            field=models.ManyToManyField(to='schedule_admin.scheduledpair', verbose_name='Scheduled Pairs'),
+            model_name="groupschedule",
+            name="scheduled_pairs",
+            field=models.ManyToManyField(
+                to="schedule_admin.scheduledpair", verbose_name="Scheduled Pairs"
+            ),
         ),
         migrations.CreateModel(
-            name='Specialty',
+            name="Specialty",
             fields=[
-                ('uuid', models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created At')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated At')),
-                ('name', models.CharField(max_length=255, verbose_name='Name')),
-                ('full_name', models.CharField(max_length=512, verbose_name='Full Name')),
+                (
+                    "uuid",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created At"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated At"),
+                ),
+                ("name", models.CharField(max_length=255, verbose_name="Name")),
+                (
+                    "full_name",
+                    models.CharField(max_length=512, verbose_name="Full Name"),
+                ),
             ],
             options={
-                'verbose_name': 'Specialty',
-                'verbose_name_plural': 'Specialties',
-                'ordering': ['name'],
-                'constraints': [models.UniqueConstraint(fields=('name',), name='unique_specialty')],
+                "verbose_name": "Specialty",
+                "verbose_name_plural": "Specialties",
+                "ordering": ["name"],
+                "constraints": [
+                    models.UniqueConstraint(fields=("name",), name="unique_specialty")
+                ],
             },
         ),
         migrations.AddField(
-            model_name='group',
-            name='specialty',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='schedule_admin.specialty', verbose_name='Specialty'),
+            model_name="group",
+            name="specialty",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                to="schedule_admin.specialty",
+                verbose_name="Specialty",
+            ),
         ),
         migrations.CreateModel(
-            name='Teacher',
+            name="Teacher",
             fields=[
-                ('uuid', models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created At')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated At')),
-                ('first_name', models.CharField(max_length=255, verbose_name='First Name')),
-                ('last_name', models.CharField(max_length=255, verbose_name='Last Name')),
-                ('middle_name', models.CharField(blank=True, max_length=255, null=True, verbose_name='Middle Name')),
+                (
+                    "uuid",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created At"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated At"),
+                ),
+                (
+                    "first_name",
+                    models.CharField(max_length=255, verbose_name="First Name"),
+                ),
+                (
+                    "last_name",
+                    models.CharField(max_length=255, verbose_name="Last Name"),
+                ),
+                (
+                    "middle_name",
+                    models.CharField(
+                        blank=True,
+                        max_length=255,
+                        null=True,
+                        verbose_name="Middle Name",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Teacher',
-                'verbose_name_plural': 'Teachers',
-                'ordering': ['last_name', 'first_name'],
-                'constraints': [models.UniqueConstraint(fields=('first_name', 'last_name', 'middle_name'), name='unique_teacher')],
+                "verbose_name": "Teacher",
+                "verbose_name_plural": "Teachers",
+                "ordering": ["last_name", "first_name"],
+                "constraints": [
+                    models.UniqueConstraint(
+                        fields=("first_name", "last_name", "middle_name"),
+                        name="unique_teacher",
+                    )
+                ],
             },
         ),
         migrations.AddField(
-            model_name='scheduledpair',
-            name='teacher',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='schedule_admin.teacher', verbose_name='Teacher'),
+            model_name="scheduledpair",
+            name="teacher",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                to="schedule_admin.teacher",
+                verbose_name="Teacher",
+            ),
         ),
         migrations.AddConstraint(
-            model_name='groupschedule',
-            constraint=models.UniqueConstraint(fields=('group',), name='unique_group_schedule'),
+            model_name="groupschedule",
+            constraint=models.UniqueConstraint(
+                fields=("group",), name="unique_group_schedule"
+            ),
         ),
         migrations.AddConstraint(
-            model_name='group',
-            constraint=models.UniqueConstraint(fields=('specialty', 'name'), name='unique_group'),
+            model_name="group",
+            constraint=models.UniqueConstraint(
+                fields=("specialty", "name"), name="unique_group"
+            ),
         ),
         migrations.AddConstraint(
-            model_name='scheduledpair',
-            constraint=models.UniqueConstraint(fields=('pair', 'name', 'teacher', 'room'), name='unique_scheduled_pair'),
+            model_name="scheduledpair",
+            constraint=models.UniqueConstraint(
+                fields=("pair", "name", "teacher", "room"), name="unique_scheduled_pair"
+            ),
         ),
     ]

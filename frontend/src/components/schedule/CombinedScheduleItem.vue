@@ -5,6 +5,7 @@ import { defineProps } from 'vue'
 import { getLocalDateFromString } from '@/utils/datetime'
 import GroupLink from '@/components/groups/GroupLink.vue'
 import Variant from '@/enums/Variant'
+import { getLastPart } from '@/utils/urls'
 
 const props = defineProps({
   schedule: {
@@ -12,14 +13,6 @@ const props = defineProps({
     required: true,
   },
 })
-
-const getLastPart = (url: string) => {
-  if (url.endsWith('/')) {
-    url = url.slice(0, -1)
-  }
-  const parts = url.split('/')
-  return parts[parts.length - 1]
-}
 </script>
 
 <template>
@@ -29,8 +22,8 @@ const getLastPart = (url: string) => {
     </template>
     <template #content>
       <RouterLink
-        :to="`/schedule/photo/${getLastPart(schedule.photo_schedules)}`"
-        v-if="schedule.photo_schedules"
+        :to="`/schedule/photo/${getLastPart(schedule.photo_schedule)}`"
+        v-if="schedule.photo_schedule"
       >
         <h3>{{ $t('schedule.photo') }}</h3>
       </RouterLink>
