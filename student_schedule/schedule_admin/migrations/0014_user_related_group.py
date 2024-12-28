@@ -5,15 +5,20 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('schedule_admin', '0013_remove_groupschedule_unique_group_schedule_and_more'),
+        ("schedule_admin", "0013_remove_groupschedule_unique_group_schedule_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='user',
-            name='related_group',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='users', to='schedule_admin.group'),
+            model_name="user",
+            name="related_group",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="users",
+                to="schedule_admin.group",
+            ),
         ),
     ]

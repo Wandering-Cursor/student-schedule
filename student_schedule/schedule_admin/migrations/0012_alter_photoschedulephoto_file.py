@@ -4,15 +4,16 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('schedule_admin', '0011_alter_schedule_options'),
+        ("schedule_admin", "0011_alter_schedule_options"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='photoschedulephoto',
-            name='file',
-            field=models.FileField(max_length=255, upload_to='schedule/photos/', verbose_name='File'),
+            model_name="photoschedulephoto",
+            name="file",
+            field=models.FileField(
+                max_length=255, upload_to="schedule/photos/", verbose_name="File"
+            ),
         ),
     ]

@@ -4,9 +4,9 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView
 from django_filters import rest_framework as filters
 from rest_framework import mixins, permissions, viewsets
-from schedule_admin.models.group_schedule import GroupSchedule
-from schedule_admin.models.photo_schedule import PhotoSchedule
-from schedule_admin.models.schedule import Schedule
+from schedule_admin.models.schedule.group import GroupSchedule
+from schedule_admin.models.schedule.photo import PhotoSchedule
+from schedule_admin.models.schedule.schedule import Schedule
 from schedule_api.filters.schedule import ScheduleFilter
 from schedule_api.serializers.group_schedule import GroupScheduleSerializer
 from schedule_api.serializers.photo_schedule import PhotoScheduleSerializer

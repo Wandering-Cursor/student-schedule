@@ -1,15 +1,15 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from schedule_admin.admin.base import BaseAdmin
-from schedule_admin.models.group_schedule import GroupSchedule, ScheduledPair
+from schedule_admin.models.schedule.group import GroupSchedule, Lesson
 
 
-@admin.register(ScheduledPair)
-class ScheduledPairAdmin(BaseAdmin):
+@admin.register(Lesson)
+class LessonAdmin(BaseAdmin):
     fieldsets = [
         *BaseAdmin.fieldsets,
         (
-            _("Scheduled Pair"),
+            _("Lesson"),
             {
                 "fields": [
                     "pair",
@@ -41,7 +41,7 @@ class GroupScheduleAdmin(BaseAdmin):
                 "fields": [
                     "group",
                     "for_date",
-                    "scheduled_pairs",
+                    "lessons",
                 ]
             },
         ),
@@ -55,5 +55,5 @@ class GroupScheduleAdmin(BaseAdmin):
     ]
 
     filter_vertical = [
-        "scheduled_pairs",
+        "lessons",
     ]

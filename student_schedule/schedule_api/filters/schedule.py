@@ -1,5 +1,5 @@
 import django_filters
-from schedule_admin.models.schedule import Schedule
+from schedule_admin.models.schedule.schedule import Schedule
 
 
 class ScheduleFilter(django_filters.FilterSet):

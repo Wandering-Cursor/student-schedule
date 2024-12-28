@@ -5,25 +5,30 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('schedule_admin', '0003_alter_schedule_photo_schedules'),
+        ("schedule_admin", "0003_alter_schedule_photo_schedules"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='photoschedule',
-            name='uuid',
-            field=models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="photoschedule",
+            name="uuid",
+            field=models.UUIDField(
+                default=uuid.uuid4, primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
         migrations.AlterField(
-            model_name='photoschedulephoto',
-            name='uuid',
-            field=models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="photoschedulephoto",
+            name="uuid",
+            field=models.UUIDField(
+                default=uuid.uuid4, primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
         migrations.AlterField(
-            model_name='schedule',
-            name='uuid',
-            field=models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="schedule",
+            name="uuid",
+            field=models.UUIDField(
+                default=uuid.uuid4, primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
     ]

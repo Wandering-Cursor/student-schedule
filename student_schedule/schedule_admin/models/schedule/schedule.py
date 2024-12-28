@@ -7,8 +7,8 @@ from django.utils.translation import gettext_lazy as _
 from schedule_admin.models.base import BaseModel
 
 if typing.TYPE_CHECKING:
-    from student_schedule.schedule_admin.models.group_schedule import GroupSchedule
-    from student_schedule.schedule_admin.models.photo_schedule import PhotoSchedule
+    from schedule_admin.models.schedule.group import GroupSchedule
+    from schedule_admin.models.schedule.photo import PhotoSchedule
 
 
 def get_tomorrow() -> "datetime.date":
@@ -16,12 +16,14 @@ def get_tomorrow() -> "datetime.date":
 
 
 class Schedule(BaseModel):
+    """A entity combining photo schedule and group schedules"""
+
     for_date = models.DateField(
         verbose_name=_("For Date"),
         default=get_tomorrow,
     )
 
-    photo_schedules: "PhotoSchedule | None" = models.ForeignKey(
+    photo_schedule: "PhotoSchedule | None" = models.ForeignKey(
         "schedule_admin.PhotoSchedule",
         on_delete=models.DO_NOTHING,
         verbose_name=_("Photo Schedule"),

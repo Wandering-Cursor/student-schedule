@@ -5,19 +5,24 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('schedule_admin', '0005_photoschedule_name'),
+        ("schedule_admin", "0005_photoschedule_name"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='schedule',
-            name='photo_schedules',
+            model_name="schedule",
+            name="photo_schedules",
         ),
         migrations.AddField(
-            model_name='schedule',
-            name='photo_schedules',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='schedule_admin.photoschedule', verbose_name='Photo Schedule'),
+            model_name="schedule",
+            name="photo_schedules",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.DO_NOTHING,
+                to="schedule_admin.photoschedule",
+                verbose_name="Photo Schedule",
+            ),
         ),
     ]

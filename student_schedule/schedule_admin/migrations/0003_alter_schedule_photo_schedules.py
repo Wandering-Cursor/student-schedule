@@ -4,15 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('schedule_admin', '0002_photoschedulephoto_photoschedule_schedule'),
+        ("schedule_admin", "0002_photoschedulephoto_photoschedule_schedule"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='schedule',
-            name='photo_schedules',
-            field=models.ManyToManyField(blank=True, related_name='schedules', to='schedule_admin.photoschedule', verbose_name='Photo Schedules'),
+            model_name="schedule",
+            name="photo_schedules",
+            field=models.ManyToManyField(
+                blank=True,
+                related_name="schedules",
+                to="schedule_admin.photoschedule",
+                verbose_name="Photo Schedules",
+            ),
         ),
     ]

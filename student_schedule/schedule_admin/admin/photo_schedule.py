@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from schedule_admin.admin.base import BaseAdmin
-from schedule_admin.models.photo_schedule import PhotoSchedule, PhotoSchedulePhoto
+from schedule_admin.models.schedule.photo import PhotoSchedule, SchedulePhoto
 
 
 @admin.register(PhotoSchedule)
@@ -28,7 +28,7 @@ class PhotoScheduleAdmin(BaseAdmin):
     FIRST_FIELD_PADDING = BaseAdmin.FIRST_FIELD_PADDING + 1
 
 
-@admin.register(PhotoSchedulePhoto)
+@admin.register(SchedulePhoto)
 class PhotoSchedulePhotoAdmin(BaseAdmin):
     fieldsets = [
         *BaseAdmin.fieldsets,

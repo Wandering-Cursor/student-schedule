@@ -5,16 +5,23 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('schedule_admin', '0007_group_groupschedule_schedule_group_schedules_pair_and_more'),
+        (
+            "schedule_admin",
+            "0007_group_groupschedule_schedule_group_schedules_pair_and_more",
+        ),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='groupschedule',
-            name='for_date',
-            field=models.DateField(default=datetime.datetime(2024, 11, 30, 9, 24, 41, 155841, tzinfo=datetime.timezone.utc), verbose_name='For Date'),
+            model_name="groupschedule",
+            name="for_date",
+            field=models.DateField(
+                default=datetime.datetime(
+                    2024, 11, 30, 9, 24, 41, 155841, tzinfo=datetime.timezone.utc
+                ),
+                verbose_name="For Date",
+            ),
             preserve_default=False,
         ),
     ]

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from schedule_admin.admin.base import BaseAdmin
-from schedule_admin.models.schedule import Schedule
+from schedule_admin.models.schedule.schedule import Schedule
 
 
 @admin.register(Schedule)
@@ -13,7 +13,7 @@ class ScheduleAdmin(BaseAdmin):
             {
                 "fields": [
                     "for_date",
-                    "photo_schedules",
+                    "photo_schedule",
                     "group_schedules",
                 ]
             },
