@@ -23,7 +23,7 @@ const searchInput = ref('')
 
 const search = async () => {
   loading.value = true
-  let response = await getSpecialties({ name: searchInput.value })
+  const response = await getSpecialties({ name: searchInput.value })
   options.value = response.data.results
   loading.value = false
 }

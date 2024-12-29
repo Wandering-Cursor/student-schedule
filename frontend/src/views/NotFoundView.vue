@@ -3,7 +3,7 @@
 <template>
   <main class="centered-wrapper">
     <div class="error-container">
-      <Message severity="error">Page you're looking for doesn't exist</Message>
+      <Message severity="error">{{ $t('labels.pageDoesNotExist') }}</Message>
     </div>
   </main>
 </template>

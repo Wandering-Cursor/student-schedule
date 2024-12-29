@@ -15,12 +15,12 @@ const router = createRouter({
         {
           path: '',
           name: 'group-list',
-          component: () => import('../views/GroupListView.vue'),
+          component: () => import('../views/group/GroupListView.vue'),
         },
         {
           path: ':id',
           name: 'group-detail',
-          component: () => import('../views/GroupDetailView.vue'),
+          component: () => import('../views/group/GroupDetailView.vue'),
         },
       ],
     },
@@ -36,7 +36,7 @@ const router = createRouter({
         {
           path: ':id',
           name: 'specialty-detail',
-          component: () => import('../views/SpecialtyDetailView.vue'),
+          component: () => import('../views/specialty/SpecialtyDetailView.vue'),
         },
       ],
     },
@@ -46,24 +46,34 @@ const router = createRouter({
         {
           path: '',
           name: 'schedule',
-          component: () => import('../views/ScheduleView.vue'),
+          component: () => import('../views/schedule/ScheduleView.vue'),
         },
         {
           path: 'photo/:id',
           name: 'photo-schedule',
-          component: () => import('../views/PhotoScheduleView.vue'),
+          component: () => import('../views/schedule/PhotoScheduleView.vue'),
         },
         {
           path: 'group/:id',
           name: 'group-schedule',
-          component: () => import('../views/GroupScheduleView.vue'),
+          component: () => import('../views/schedule/GroupScheduleView.vue'),
         },
       ],
     },
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/LoginView.vue'),
+      component: () => import('../views/auth/LoginView.vue'),
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: () => import('../views/auth/LogoutView.vue'),
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: () => import('../views/auth/LoginView.vue'),
     },
     {
       path: '/:pathMatch(.*)*',

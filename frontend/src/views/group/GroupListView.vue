@@ -25,7 +25,7 @@ const filters: Reactive<{ name?: string; specialty?: string }> = reactive({
 const loadGroupData = async () => {
   loading.value = true
   try {
-    let response = await getGroups({ page: page.value, ...filters })
+    const response = await getGroups({ page: page.value, ...filters })
     groupData.value = response.data
     firstItem.value = page.value * 10 - 10
   } catch (error) {

@@ -9,9 +9,11 @@ import type {
 declare namespace Components {
   namespace Schemas {
     export interface AuthToken {
+      token: string
+    }
+    export interface AuthTokenRequest {
       username: string
       password: string
-      token?: string
     }
     export interface Group {
       url: string // uri
@@ -213,11 +215,46 @@ declare namespace Components {
       last_name: string
       middle_name: string | null
     }
+    export interface UploadSchedule {
+      for_date: string // date
+      photos?: string /* uri */[]
+      file?: string | null // uri
+    }
+    export interface UploadScheduleRequest {
+      for_date: string // date
+      photos?: string /* binary */[]
+      file?: string | null // binary
+    }
+    export interface UserInfoResponse {
+      username: string
+      is_staff: boolean
+      first_name: string
+      last_name: string
+      related_group: {
+        /**
+         * ID
+         */
+        uuid: string // uuid
+        url: string // uri
+        name: string
+      } | null
+    }
   }
 }
 declare namespace Paths {
+  namespace AdminScheduleCreate {
+    export type RequestBody = Components.Schemas.UploadScheduleRequest
+    namespace Responses {
+      export type $200 = Components.Schemas.UploadSchedule
+    }
+  }
+  namespace AuthInfoRetrieve {
+    namespace Responses {
+      export type $200 = Components.Schemas.UserInfoResponse
+    }
+  }
   namespace AuthLoginCreate {
-    export type RequestBody = Components.Schemas.AuthToken
+    export type RequestBody = Components.Schemas.AuthTokenRequest
     namespace Responses {
       export type $200 = Components.Schemas.AuthToken
     }
@@ -380,6 +417,22 @@ declare namespace Paths {
 
 export interface OperationMethods {
   /**
+   * admin_schedule_create
+   */
+  'admin_schedule_create'(
+    parameters?: Parameters<UnknownParamsObject> | null,
+    data?: Paths.AdminScheduleCreate.RequestBody,
+    config?: AxiosRequestConfig,
+  ): OperationResponse<Paths.AdminScheduleCreate.Responses.$200>
+  /**
+   * auth_info_retrieve
+   */
+  'auth_info_retrieve'(
+    parameters?: Parameters<UnknownParamsObject> | null,
+    data?: any,
+    config?: AxiosRequestConfig,
+  ): OperationResponse<Paths.AuthInfoRetrieve.Responses.$200>
+  /**
    * auth_login_create
    */
   'auth_login_create'(
@@ -487,6 +540,26 @@ export interface OperationMethods {
 }
 
 export interface PathsDictionary {
+  ['/api/admin/schedule/']: {
+    /**
+     * admin_schedule_create
+     */
+    'post'(
+      parameters?: Parameters<UnknownParamsObject> | null,
+      data?: Paths.AdminScheduleCreate.RequestBody,
+      config?: AxiosRequestConfig,
+    ): OperationResponse<Paths.AdminScheduleCreate.Responses.$200>
+  }
+  ['/api/auth/info/']: {
+    /**
+     * auth_info_retrieve
+     */
+    'get'(
+      parameters?: Parameters<UnknownParamsObject> | null,
+      data?: any,
+      config?: AxiosRequestConfig,
+    ): OperationResponse<Paths.AuthInfoRetrieve.Responses.$200>
+  }
   ['/api/auth/login/']: {
     /**
      * auth_login_create
