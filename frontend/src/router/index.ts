@@ -10,6 +10,26 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/admin',
+      children: [
+        {
+          path: '',
+          name: 'admin',
+          component: () => import('../views/admin/AdminView.vue'),
+        },
+        {
+          path: 'schedule',
+          children: [
+            {
+              path: 'upload',
+              name: 'schedule-upload',
+              component: () => import('../views/admin/schedule/UploadScheduleView.vue'),
+            },
+          ],
+        },
+      ],
+    },
+    {
       path: '/group',
       children: [
         {

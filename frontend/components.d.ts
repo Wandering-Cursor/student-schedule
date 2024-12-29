@@ -22,6 +22,7 @@ declare module 'vue' {
     InputGroup: typeof import('primevue/inputgroup')['default']
     InputText: typeof import('primevue/inputtext')['default']
     MegaMenu: typeof import('primevue/megamenu')['default']
+    Menu: typeof import('primevue/menu')['default']
     Menubar: typeof import('primevue/menubar')['default']
     Message: typeof import('primevue/message')['default']
     Paginator: typeof import('primevue/paginator')['default']

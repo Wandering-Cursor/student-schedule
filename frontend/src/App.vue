@@ -24,7 +24,7 @@ const menuItems = ref([
     route: '/documents',
   },
   {
-    label: 'labels.admin',
+    label: 'admin.label',
     icon: 'pi pi-fw pi-cog',
     route: '/admin',
     visible: () => userGroupStore.isAdmin(),
