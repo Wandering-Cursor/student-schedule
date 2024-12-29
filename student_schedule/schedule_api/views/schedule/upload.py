@@ -18,6 +18,7 @@ class UploadScheduleAPIView(AuthenticatedView):
     @extend_schema(
         request={
             "multipart/form-data": UploadScheduleSerializer,
+            "application/json": UploadScheduleSerializer,
         }
     )
     def post(self, request: "Request", *args, **kwargs):

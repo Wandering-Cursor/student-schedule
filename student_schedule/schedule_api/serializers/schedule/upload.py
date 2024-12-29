@@ -53,6 +53,12 @@ class GroupRepresentation:
 
 class UploadScheduleSerializer(serializers.Serializer):
     for_date = serializers.DateField()
+
+    name = serializers.CharField(
+        required=False,
+        allow_blank=True,
+    )
+
     photos = serializers.ListField(
         required=False,
         child=serializers.ImageField(),
@@ -142,7 +148,7 @@ class UploadScheduleSerializer(serializers.Serializer):
     def validate(self, attrs):
         for_date: datetime.date = attrs["for_date"]
         photos = attrs.get("photos")
-        groups: list[GroupRepresentation] = attrs.get("file")
+        groups: list[GroupRepresentation] = attrs.get("file", [])
 
         file: list[GroupRepresentation] | None = attrs.get("file")
         if not photos and not file:
@@ -193,7 +199,7 @@ class UploadScheduleSerializer(serializers.Serializer):
         photo_schedule: PhotoSchedule | None = None
 
         if photos:
-            photo_schedule = PhotoSchedule()
+            photo_schedule = PhotoSchedule(name=validated_data.get("name", ""))
             photo_schedule.save()
 
             for photo in photos:

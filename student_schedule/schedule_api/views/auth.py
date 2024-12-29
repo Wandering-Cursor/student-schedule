@@ -1,4 +1,5 @@
 from django.contrib.auth import login
+from drf_spectacular.utils import extend_schema
 from knox.auth import TokenAuthentication
 from knox.views import LoginView as KnoxLoginView
 from rest_framework import permissions
@@ -31,6 +32,11 @@ class UserInfoView(APIView):
     serializer_class = UserInfoSerializer
     output_serializer_class = UserInfoResponseSerializer
 
+    @extend_schema(
+        responses={
+            200: UserInfoResponseSerializer,
+        }
+    )
     def get(self, request: "Request"):
         input_serializer = self.serializer_class(
             data={},
