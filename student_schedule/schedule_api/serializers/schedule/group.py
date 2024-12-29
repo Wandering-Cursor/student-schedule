@@ -1,16 +1,9 @@
 from rest_framework import serializers
 from schedule_admin.models.schedule.group import GroupSchedule, Lesson
-from schedule_admin.models.schedule.pairs import Pair
 from schedule_api.serializers.base import HyperlinkedUUIDSerializer
-from schedule_api.serializers.group import ShortGroupSerializer
-from schedule_api.serializers.teacher import ShortTeacherSerializer
-
-
-class PairSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Pair
-        fields = ["name", "start_time", "end_time"]
-        read_only_fields = ["name", "start_time", "end_time"]
+from schedule_api.serializers.group.short import ShortGroupSerializer
+from schedule_api.serializers.pair.pair import PairSerializer
+from schedule_api.serializers.teacher.short import ShortTeacherSerializer
 
 
 class LessonSerializer(serializers.ModelSerializer):

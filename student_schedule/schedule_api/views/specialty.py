@@ -1,6 +1,6 @@
 from rest_framework import permissions, viewsets
 from schedule_admin.models.specialty import Specialty
-from schedule_api.serializers.specialty import SpecialtySerializer
+from schedule_api.serializers.specialty.full import SpecialtySerializer
 
 
 class SpecialtyViewSet(viewsets.ReadOnlyModelViewSet):

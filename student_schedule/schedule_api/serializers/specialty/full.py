@@ -1,6 +1,6 @@
 from schedule_admin.models.specialty import Specialty
 from schedule_api.serializers.base import HyperlinkedUUIDSerializer
-from schedule_api.serializers.group import ShortGroupSerializer
+from schedule_api.serializers.group.short import ShortGroupSerializer
 
 
 class SpecialtySerializer(HyperlinkedUUIDSerializer):

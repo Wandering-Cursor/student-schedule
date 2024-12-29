@@ -2,7 +2,7 @@ from django_filters import rest_framework as filters
 from rest_framework import permissions, viewsets
 from schedule_admin.models.group import Group
 from schedule_api.filters.group import GroupFilter
-from schedule_api.serializers.group import GroupSerializer
+from schedule_api.serializers.group import full
 
 
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
@@ -11,7 +11,7 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     """
 
     queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+    serializer_class = full
     permission_classes = [permissions.AllowAny]
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = GroupFilter
