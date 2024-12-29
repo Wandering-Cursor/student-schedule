@@ -1,4 +1,4 @@
-import{B as a,o,c as i,m as s,s as l}from"./index-C65pz5Po.js";var d=function(t){var e=t.dt;return`
+import{B as a,o,c as i,m as s,s as l}from"./index-BrBohaib.js";var d=function(t){var e=t.dt;return`
 .p-skeleton {
     overflow: hidden;
     background: `.concat(e("skeleton.background"),`;
