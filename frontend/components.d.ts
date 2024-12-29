@@ -8,20 +8,29 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AnyLink: typeof import('./src/components/common/AnyLink.vue')['default']
+    Avatar: typeof import('primevue/avatar')['default']
+    Badge: typeof import('primevue/badge')['default']
     Button: typeof import('primevue/button')['default']
     Card: typeof import('primevue/card')['default']
     CombinedSchedule: typeof import('./src/components/schedule/CombinedSchedule.vue')['default']
     CombinedScheduleItem: typeof import('./src/components/schedule/CombinedScheduleItem.vue')['default']
     DataView: typeof import('primevue/dataview')['default']
+    DatePicker: typeof import('primevue/datepicker')['default']
     Divider: typeof import('primevue/divider')['default']
+    Fieldset: typeof import('primevue/fieldset')['default']
+    FileUpload: typeof import('primevue/fileupload')['default']
+    FloatLabel: typeof import('primevue/floatlabel')['default']
     Galleria: typeof import('primevue/galleria')['default']
     GroupItem: typeof import('./src/components/groups/GroupItem.vue')['default']
     GroupLink: typeof import('./src/components/groups/GroupLink.vue')['default']
     GroupSchedule: typeof import('./src/components/schedule/GroupSchedule.vue')['default']
     HomeComponent: typeof import('./src/components/HomeComponent.vue')['default']
+    IftaLabel: typeof import('primevue/iftalabel')['default']
     InputGroup: typeof import('primevue/inputgroup')['default']
     InputText: typeof import('primevue/inputtext')['default']
     MegaMenu: typeof import('primevue/megamenu')['default']
+    Menu: typeof import('primevue/menu')['default']
+    Menubar: typeof import('primevue/menubar')['default']
     Message: typeof import('primevue/message')['default']
     Paginator: typeof import('primevue/paginator')['default']
     Panel: typeof import('primevue/panel')['default']
@@ -34,5 +43,9 @@ declare module 'vue' {
     SpecialtySelector: typeof import('./src/components/specialty/SpecialtySelector.vue')['default']
     TableSchedule: typeof import('./src/components/schedule/TableSchedule.vue')['default']
     Toast: typeof import('primevue/toast')['default']
+    UploadScheduleForm: typeof import('./src/components/admin/UploadScheduleForm.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    Ripple: typeof import('primevue/ripple')['default']
   }
 }

@@ -40,4 +40,4 @@ class Schedule(BaseModel):
     class Meta:
         verbose_name = _("Schedule")
         verbose_name_plural = _("Schedules")
-        ordering = ["for_date"]
+        ordering = ["-for_date"]

@@ -1,6 +1,6 @@
 import { OpenAPIClientAxios } from 'openapi-client-axios/client'
 
-let baseAPIUrl = import.meta.env.VITE_API_URL
+const baseAPIUrl = import.meta.env.VITE_API_URL
   ? import.meta.env.VITE_API_URL
   : 'http://localhost:8000'
 
@@ -16,4 +16,10 @@ const api = new OpenAPIClientAxios({
 })
 api.init()
 
-export { api }
+function getTokenAuthorization(token: string): {
+  headers: { Authorization: string; 'Content-Type': string | undefined }
+} {
+  return { headers: { Authorization: `Token ${token}`, 'Content-Type': undefined } }
+}
+
+export { api, getTokenAuthorization }

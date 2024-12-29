@@ -32,6 +32,7 @@ onMounted(async () => {
                 :group-i-d="value.uuid"
                 :groupName="value.name"
                 v-for="value in slotProps.items"
+                v-bind:key="value.uuid"
               />
             </div>
           </template>

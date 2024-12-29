@@ -2,7 +2,7 @@ from django_filters import rest_framework as filters
 from rest_framework import permissions, viewsets
 from schedule_admin.models.teacher import Teacher
 from schedule_api.filters.teacher import TeacherFilter
-from schedule_api.serializers.teacher import TeacherSerializer
+from schedule_api.serializers.teacher.full import TeacherSerializer
 
 
 class TeacherViewSet(viewsets.ReadOnlyModelViewSet):

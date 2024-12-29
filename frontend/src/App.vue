@@ -6,69 +6,85 @@ import { useUserStore } from './stores/login'
 const userGroupStore = useUserStore()
 
 const menuItems = ref([
-  [
-    {
-      label: 'labels.home',
-      icon: 'pi pi-fw pi-home',
-      url: '/',
-    },
-    {
-      label: 'labels.groups',
-      icon: 'pi pi-fw pi-users',
-      url: '/group',
-    },
-    {
-      label: 'labels.schedule',
-      icon: 'pi pi-fw pi-calendar',
-      url: '/schedule',
-    },
-    {
-      label: 'labels.docs',
-      icon: 'pi pi-fw pi-file',
-      url: '/documents',
-    },
-  ],
+  {
+    label: 'labels.home',
+    root: true,
+    icon: 'pi pi-fw pi-home',
+    route: '/',
+  },
+  {
+    label: 'labels.groups',
+    icon: 'pi pi-fw pi-users',
+    route: '/group',
+  },
+  { label: 'labels.schedule', icon: 'pi pi-fw pi-calendar', route: '/schedule' },
+  {
+    label: 'labels.docs',
+    icon: 'pi pi-fw pi-file',
+    route: '/documents',
+  },
+  {
+    label: 'admin.label',
+    icon: 'pi pi-fw pi-cog',
+    route: '/admin',
+    visible: () => userGroupStore.isAdmin(),
+  },
 ])
 </script>
 
 <template>
   <div class="app-container">
-    <MegaMenu :model="menuItems">
-      <template #item="{ item }">
+    <Menubar :model="menuItems">
+      <template #item="{ item, props, hasSubmenu }">
+        <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
+          <a v-ripple :href="href" v-bind="props.action" @click="navigate">
+            <span :class="item.icon" />
+            <span>{{ $t(item.label as string) }}</span>
+          </a>
+        </router-link>
+        <a v-else v-ripple :href="item.url" :target="item.target" v-bind="props.action">
+          <span :class="item.icon" />
+          <span>{{ $t(item.label as string) }}</span>
+          <span v-if="hasSubmenu" class="pi pi-fw pi-angle-down" />
+        </a>
+      </template>
+      <template #end>
         <div class="menu-items">
           <Button
             as="router-link"
-            :icon="subitem.icon"
-            :label="$t(subitem.label as string)"
-            :to="subitem.url"
-            v-for="subitem in item"
+            icon="pi pi-fw pi-sign-in"
+            :label="$t('labels.login')"
+            to="/login"
+            v-if="!userGroupStore.isTokenSet()"
+          />
+          <Button
+            as="router-link"
+            icon="pi pi-fw pi-sign-out"
+            :label="$t('labels.logout')"
+            to="/logout"
+            v-else
           />
         </div>
       </template>
-      <template #end>
-        <Button
-          as="router-link"
-          icon="pi pi-fw pi-sign-in"
-          :label="$t('labels.login')"
-          to="/login"
-          v-if="!userGroupStore.isTokenSet()"
-        />
-        <Button
-          as="router-link"
-          icon="pi pi-fw pi-sign-out"
-          :label="$t('labels.logout')"
-          to="/logout"
-          v-else
-        />
-      </template>
-    </MegaMenu>
+    </Menubar>
     <div class="main-content">
       <div class="scrollable-content">
         <RouterView />
       </div>
     </div>
   </div>
-  <Toast />
+  <Toast>
+    <template #message="slotProps">
+      <div class="p-toast-message-text" data-pc-section="messagetext">
+        <span class="p-toast-summary" data-pc-section="summary">{{
+          $t(slotProps.message.summary)
+        }}</span>
+        <div class="p-toast-detail" data-pc-section="detail">
+          <span>{{ $t(slotProps.message.detail) }}</span>
+        </div>
+      </div>
+    </template>
+  </Toast>
 </template>
 
 <style scoped>

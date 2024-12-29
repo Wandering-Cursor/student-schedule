@@ -1,17 +1,18 @@
 import { api } from '@/api/base.ts'
 import type { Client as StudentScheduleClient } from '@/api/openapi.d.ts'
+import { getISODateWithoutTZ } from '@/utils/datetime'
 
 async function getSchedule(params: {
-  dateFrom?: string
-  dateTo?: string
-  forDate?: string
+  dateFrom?: Date
+  dateTo?: Date
+  forDate?: Date
   page: number
 }) {
   const client = await api.getClient<StudentScheduleClient>()
   return await client.schedule_list({
-    date__lte: params.dateTo,
-    date__gte: params.dateFrom,
-    for_date: params.forDate,
+    date__lte: getISODateWithoutTZ(params.dateTo),
+    date__gte: getISODateWithoutTZ(params.dateFrom),
+    for_date: getISODateWithoutTZ(params.forDate),
     page: params.page,
   })
 }
