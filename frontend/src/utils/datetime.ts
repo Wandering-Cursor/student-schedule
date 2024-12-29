@@ -1,3 +1,24 @@
+function getISODateFormat(date: Date | null | undefined): string | undefined {
+  if (date === null) {
+    return undefined
+  }
+  if (date === undefined) {
+    return undefined
+  }
+  return date.toISOString().split('T')[0]
+}
+
+function getISODateWithoutTZ(date: Date | null | undefined): string | undefined {
+  if (date === null) {
+    return undefined
+  }
+  if (date === undefined) {
+    return undefined
+  }
+
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+}
+
 function dateTimeFormat() {
   return Intl.DateTimeFormat(Intl.DateTimeFormat().resolvedOptions().locale)
 }
@@ -9,4 +30,4 @@ function getLocalDateFromString(date?: string): string {
   return dateTimeFormat().format(new Date(date))
 }
 
-export { dateTimeFormat, getLocalDateFromString }
+export { dateTimeFormat, getLocalDateFromString, getISODateFormat, getISODateWithoutTZ }

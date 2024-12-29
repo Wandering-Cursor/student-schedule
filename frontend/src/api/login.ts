@@ -1,9 +1,5 @@
-import { api } from '@/api/base.ts'
+import { api, getTokenAuthorization } from '@/api/base.ts'
 import type { Client as StudentScheduleClient } from '@/api/openapi.d.ts'
-
-function getTokenAuthorization(token: string) {
-  return { headers: { Authorization: `Token ${token}` } }
-}
 
 async function login(params: { username: string; password: string }) {
   const client = await api.getClient<StudentScheduleClient>()

@@ -19,6 +19,7 @@ const items = ref([
 <template>
   <main>
     <Menu :model="items">
+      <!-- @vue-ignore -->
       <template #submenulabel="{ item }">
         <span :class="item.icon" />
         <span>{{ $t(item.label as string) }}</span>

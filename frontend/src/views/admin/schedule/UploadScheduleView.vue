@@ -1,5 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import UploadScheduleForm from '@/components/admin/UploadScheduleForm.vue'
+</script>
 
 <template>
-  <main>Look at https://primevue.org/fileupload/ and https://primevue.org/datepicker/</main>
+  <main>
+    <div class="contained-wrapper">
+      <Panel :header="$t('admin.schedule.upload.title')">
+        {{ $t('admin.schedule.upload.description') }}
+      </Panel>
+      <Panel>
+        <UploadScheduleForm />
+      </Panel>
+    </div>
+  </main>
 </template>

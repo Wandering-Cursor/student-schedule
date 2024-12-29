@@ -73,7 +73,18 @@ const menuItems = ref([
       </div>
     </div>
   </div>
-  <Toast />
+  <Toast>
+    <template #message="slotProps">
+      <div class="p-toast-message-text" data-pc-section="messagetext">
+        <span class="p-toast-summary" data-pc-section="summary">{{
+          $t(slotProps.message.summary)
+        }}</span>
+        <div class="p-toast-detail" data-pc-section="detail">
+          <span>{{ $t(slotProps.message.detail) }}</span>
+        </div>
+      </div>
+    </template>
+  </Toast>
 </template>
 
 <style scoped>

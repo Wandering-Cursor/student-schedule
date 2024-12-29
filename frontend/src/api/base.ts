@@ -16,4 +16,10 @@ const api = new OpenAPIClientAxios({
 })
 api.init()
 
-export { api }
+function getTokenAuthorization(token: string): {
+  headers: { Authorization: string; 'Content-Type': string | undefined }
+} {
+  return { headers: { Authorization: `Token ${token}`, 'Content-Type': undefined } }
+}
+
+export { api, getTokenAuthorization }
