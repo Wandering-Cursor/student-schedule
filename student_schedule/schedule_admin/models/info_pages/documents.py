@@ -4,6 +4,12 @@ from schedule_admin.models.base import BaseModel
 
 
 class Document(BaseModel):
+    display_name = models.CharField(
+        max_length=255,
+        verbose_name=_("Display name"),
+        help_text=_("The name of the file as it will be displayed on the website"),
+    )
+
     file = models.FileField(
         verbose_name=_("File"),
         upload_to="info_pages/documents/",
@@ -11,7 +17,7 @@ class Document(BaseModel):
     )
 
     def __str__(self: "Document") -> str:
-        return f"File: {self.file.name}"
+        return f"File: {self.display_name} - {self.file.name}"
 
     class Meta:
         verbose_name = _("Document")

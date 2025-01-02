@@ -23,16 +23,24 @@ router.register(
     views.TeacherViewSet,
 )
 router.register(
-    r"schedule",
+    r"schedule/schedule",
     schedule_api.views.schedule.common.ScheduleViewSet,
 )
 router.register(
-    r"photo_schedule",
+    r"schedule/photo",
     schedule_api.views.schedule.photo.PhotoScheduleViewSet,
 )
 router.register(
-    r"group_schedule",
+    r"schedule/group",
     schedule_api.views.schedule.group.GroupScheduleViewSet,
+)
+router.register(
+    r"info_page/page",
+    views.InfoPageViewSet,
+)
+router.register(
+    r"info_page/tag",
+    views.TagViewSet,
 )
 
 

@@ -1,5 +1,6 @@
 from .auth import LoginView
 from .group import GroupViewSet
+from .info_page import InfoPageViewSet, TagViewSet
 from .schedule.common import ScheduleViewSet
 from .schedule.group import GroupScheduleViewSet
 from .schedule.photo import PhotoScheduleViewSet
@@ -15,4 +16,6 @@ __all__ = [
     "TeacherViewSet",
     "UploadScheduleView",
     "LoginView",
+    "InfoPageViewSet",
+    "TagViewSet",
 ]

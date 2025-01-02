@@ -7,7 +7,7 @@ from schedule_api.serializers.schedule.common import ScheduleSerializer
 
 class ScheduleViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    Allows to view Schedules of the organization
+    Allows to view Schedules of the organization. Combined view of Photo/Group schedules for a date.
     """
 
     queryset = Schedule.objects.all()
