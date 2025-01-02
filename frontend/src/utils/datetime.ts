@@ -30,4 +30,15 @@ function getLocalDateFromString(date?: string): string {
   return dateTimeFormat().format(new Date(date))
 }
 
-export { dateTimeFormat, getLocalDateFromString, getISODateFormat, getISODateWithoutTZ }
+function getLocalizedDateTime(data: string): string {
+  const date = new Date(data)
+  return date.toLocaleString()
+}
+
+export {
+  dateTimeFormat,
+  getLocalDateFromString,
+  getISODateFormat,
+  getISODateWithoutTZ,
+  getLocalizedDateTime,
+}

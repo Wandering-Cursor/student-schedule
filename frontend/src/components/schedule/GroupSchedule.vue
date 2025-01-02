@@ -38,10 +38,10 @@ onMounted(() => {
       />
       <p>
         {{
-          $t('groupSchedule.forDate', { date: getLocalDateFromString(groupScheduleInfo.for_date) })
+          $t('schedule.group.forDate', { date: getLocalDateFromString(groupScheduleInfo.for_date) })
         }}
       </p>
-      <p>{{ $t('groupSchedule.pairsList') }}</p>
+      <p>{{ $t('schedule.group.pairsList') }}</p>
       <div v-for="pair in groupScheduleInfo.lessons" :key="pair.uuid">
         <Card>
           <template #title> {{ pair.pair.name }} - {{ pair.name }} </template>
@@ -49,7 +49,7 @@ onMounted(() => {
           <template #content>
             <p>{{ $t('schedule.teacherName') }}: {{ pair.teacher.name }}</p>
           </template>
-          <template #footer> {{ $t('schedule.roomName') }}: {{ pair.room }} </template>
+          <template #footer> {{ $t('schedule.room') }}: {{ pair.room }} </template>
         </Card>
         <Divider />
       </div>

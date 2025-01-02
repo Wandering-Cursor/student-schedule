@@ -49,33 +49,30 @@ const messages = {
     schedule: {
       title: 'Розклад',
       description: 'Виберіть вашу групу та семестр для перегляду розкладу.',
-      photo: 'Фото розклад',
-      group: 'Розклад для груп',
-      view: 'Переглянути',
       combined: 'Загальний рокзалд',
       teacherName: "Ім'я викладача",
-      roomName: 'Аудиторія',
+      room: 'Аудиторія',
       filters: {
         forDate: 'Фільтр за датою',
         fromDate: 'З дати',
         toDate: 'По дату',
       },
-    },
-    photoSchedule: {
-      title: 'Фото розклад',
-      noPhotos: 'Фотографій розкладу не знайдено.',
-      description: 'Тут зібрані фотографії розкладу для всіх груп.',
-    },
-    groupSchedule: {
-      forDate: 'Розклад на {date}',
-      pairsList: 'Список пар:',
-      title: 'Розклад для групи',
-      description: 'Тут ви можете знайти розклад для вашої групи.',
+      photo: {
+        title: 'Фото розклад',
+        noPhotos: 'Фотографій розкладу не знайдено.',
+        description: 'Тут зібрані фотографії розкладу для всіх груп.',
+      },
+      group: {
+        title: 'Розклад для групи',
+        forDate: 'Розклад на {date}',
+        pairsList: 'Список пар:',
+        description: 'Тут ви можете знайти розклад для вашої групи.',
+      },
     },
     labels: {
       home: 'Головна',
       schedule: 'Розклад',
-      docs: 'Документи',
+      info: 'Інформація',
       login: 'Увійти',
       logout: 'Вийти',
       loggingOut: 'Вихід...',
@@ -85,6 +82,8 @@ const messages = {
       filters: 'Фільтри',
       applyFilters: 'Застосувати фільтри',
       pageDoesNotExist: 'Сторінка яку ви шукаєте не існує.',
+      view: 'Переглянути',
+      error: 'Помилка',
     },
     specialty: {
       formatted: 'Спеціальність: {name}',
@@ -92,6 +91,11 @@ const messages = {
         name: 'Код',
         entity: 'Спеціальність',
       },
+    },
+    info: {
+      title: 'Інформація',
+      description: 'Тут ви можете знайти корисну інформацію про ВНЗ.',
+      relatedFiles: "Пов'язані файли",
     },
   },
 }

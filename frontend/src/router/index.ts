@@ -81,6 +81,21 @@ const router = createRouter({
       ],
     },
     {
+      path: '/info',
+      children: [
+        {
+          path: '',
+          name: 'info-list',
+          component: () => import('../views/info/InfoView.vue'),
+        },
+        {
+          path: ':id',
+          name: 'info-detail',
+          component: () => import('../views/info/InfoDetailView.vue'),
+        },
+      ],
+    },
+    {
       path: '/login',
       name: 'login',
       component: () => import('../views/auth/LoginView.vue'),

@@ -49,7 +49,7 @@ onMounted(() => {
       </Galleria>
     </div>
     <div v-else>
-      <p>{{ $t('photoSchedule.noPhotos') }}</p>
+      <p>{{ $t('schedule.photo.noPhotos') }}</p>
     </div>
   </Panel>
 </template>
