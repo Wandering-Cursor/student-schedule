@@ -25,10 +25,10 @@ const props = defineProps({
         :to="`/schedule/photo/${getLastPart(schedule.photo_schedule)}`"
         v-if="schedule.photo_schedule"
       >
-        <h3>{{ $t('schedule.photo') }}</h3>
+        <h3>{{ $t('schedule.photo.title') }}</h3>
       </RouterLink>
       <div class="group-schedule" v-if="schedule.group_schedules">
-        {{ $t('schedule.group') }}
+        {{ $t('schedule.group.title') }}
         <div class="group-schedule-container">
           <Card v-for="item in schedule.group_schedules" :key="schedule.uuid">
             <template #content>
@@ -42,7 +42,7 @@ const props = defineProps({
             <template #footer>
               <Button
                 as="router-link"
-                :label="$t('schedule.view')"
+                :label="$t('labels.view')"
                 :to="`/schedule/group/${item.uuid}`"
                 class="group-schedule-item-content"
               />

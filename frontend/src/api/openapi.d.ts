@@ -15,6 +15,19 @@ declare namespace Components {
             username: string;
             password: string;
         }
+        export interface Document {
+            /**
+             * ID
+             */
+            uuid: string; // uuid
+            created_at: string; // date-time
+            updated_at: string; // date-time
+            /**
+             * The name of the file as it will be displayed on the website
+             */
+            display_name: string;
+            file: string; // uri
+        }
         export interface Group {
             url: string; // uri
             uuid: string; // uuid
@@ -31,6 +44,16 @@ declare namespace Components {
             created_at: string; // date-time
             updated_at: string; // date-time
             for_date: string; // date
+        }
+        export interface InfoPage {
+            url: string; // uri
+            uuid: string; // uuid
+            related_files: Document[];
+            tags: Tag[];
+            created_at: string; // date-time
+            updated_at: string; // date-time
+            title: string;
+            content: string;
         }
         export interface Lesson {
             /**
@@ -74,6 +97,24 @@ declare namespace Components {
             previous?: string | null; // uri
             results: Group[];
         }
+        export interface PaginatedInfoPageList {
+            /**
+             * example:
+             * 123
+             */
+            count: number;
+            /**
+             * example:
+             * http://api.example.org/accounts/?page=4
+             */
+            next?: string | null; // uri
+            /**
+             * example:
+             * http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null; // uri
+            results: InfoPage[];
+        }
         export interface PaginatedScheduleList {
             /**
              * example:
@@ -109,6 +150,24 @@ declare namespace Components {
              */
             previous?: string | null; // uri
             results: Specialty[];
+        }
+        export interface PaginatedTagList {
+            /**
+             * example:
+             * 123
+             */
+            count: number;
+            /**
+             * example:
+             * http://api.example.org/accounts/?page=4
+             */
+            next?: string | null; // uri
+            /**
+             * example:
+             * http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null; // uri
+            results: Tag[];
         }
         export interface PaginatedTeacherList {
             /**
@@ -206,6 +265,18 @@ declare namespace Components {
             name: string;
             full_name: string;
         }
+        export interface Tag {
+            url: string; // uri
+            uuid: string; // uuid
+            created_at: string; // date-time
+            updated_at: string; // date-time
+            name: string;
+            /**
+             * HEX color code
+             * Example: #d48804
+             */
+            color: string;
+        }
         export interface Teacher {
             url: string; // uri
             uuid: string; // uuid
@@ -273,7 +344,18 @@ declare namespace Paths {
             }
         }
     }
-    namespace GroupScheduleRetrieve {
+    namespace InfoPagePageList {
+        namespace Parameters {
+            export type Page = number;
+        }
+        export interface QueryParameters {
+            page?: Parameters.Page;
+        }
+        namespace Responses {
+            export type $200 = Components.Schemas.PaginatedInfoPageList;
+        }
+    }
+    namespace InfoPagePageRetrieve {
         namespace Parameters {
             /**
              * ID
@@ -284,7 +366,32 @@ declare namespace Paths {
             uuid: /* ID */ Parameters.Uuid /* uuid */;
         }
         namespace Responses {
-            export type $200 = Components.Schemas.GroupSchedule;
+            export type $200 = Components.Schemas.InfoPage;
+        }
+    }
+    namespace InfoPageTagList {
+        namespace Parameters {
+            export type Page = number;
+        }
+        export interface QueryParameters {
+            page?: Parameters.Page;
+        }
+        namespace Responses {
+            export type $200 = Components.Schemas.PaginatedTagList;
+        }
+    }
+    namespace InfoPageTagRetrieve {
+        namespace Parameters {
+            /**
+             * ID
+             */
+            export type Uuid = string; // uuid
+        }
+        export interface PathParameters {
+            uuid: /* ID */ Parameters.Uuid /* uuid */;
+        }
+        namespace Responses {
+            export type $200 = Components.Schemas.Tag;
         }
     }
     namespace OrgGroupList {
@@ -372,7 +479,21 @@ declare namespace Paths {
             export type $200 = Components.Schemas.Teacher;
         }
     }
-    namespace PhotoScheduleRetrieve {
+    namespace ScheduleGroupRetrieve {
+        namespace Parameters {
+            /**
+             * ID
+             */
+            export type Uuid = string; // uuid
+        }
+        export interface PathParameters {
+            uuid: /* ID */ Parameters.Uuid /* uuid */;
+        }
+        namespace Responses {
+            export type $200 = Components.Schemas.GroupSchedule;
+        }
+    }
+    namespace SchedulePhotoRetrieve {
         namespace Parameters {
             /**
              * ID
@@ -386,7 +507,7 @@ declare namespace Paths {
             export type $200 = Components.Schemas.PhotoSchedule;
         }
     }
-    namespace ScheduleList {
+    namespace ScheduleScheduleList {
         namespace Parameters {
             export type DateGte = string; // date
             export type DateLte = string; // date
@@ -403,7 +524,7 @@ declare namespace Paths {
             export type $200 = Components.Schemas.PaginatedScheduleList;
         }
     }
-    namespace ScheduleRetrieve {
+    namespace ScheduleScheduleRetrieve {
         namespace Parameters {
             /**
              * ID
@@ -462,13 +583,37 @@ export interface OperationMethods {
     config?: AxiosRequestConfig  
   ): OperationResponse<Paths.AuthLogoutallCreate.Responses.$200>
   /**
-   * group_schedule_retrieve - Allows to view Schedules of the organization
+   * info_page_page_list - Allows to view Documents of the organization
    */
-  'group_schedule_retrieve'(
-    parameters: Parameters<Paths.GroupScheduleRetrieve.PathParameters>,
+  'info_page_page_list'(
+    parameters?: Parameters<Paths.InfoPagePageList.QueryParameters> | null,
     data?: any,
     config?: AxiosRequestConfig  
-  ): OperationResponse<Paths.GroupScheduleRetrieve.Responses.$200>
+  ): OperationResponse<Paths.InfoPagePageList.Responses.$200>
+  /**
+   * info_page_page_retrieve - Allows to view Documents of the organization
+   */
+  'info_page_page_retrieve'(
+    parameters: Parameters<Paths.InfoPagePageRetrieve.PathParameters>,
+    data?: any,
+    config?: AxiosRequestConfig  
+  ): OperationResponse<Paths.InfoPagePageRetrieve.Responses.$200>
+  /**
+   * info_page_tag_list - Allows to view Documents of the organization
+   */
+  'info_page_tag_list'(
+    parameters?: Parameters<Paths.InfoPageTagList.QueryParameters> | null,
+    data?: any,
+    config?: AxiosRequestConfig  
+  ): OperationResponse<Paths.InfoPageTagList.Responses.$200>
+  /**
+   * info_page_tag_retrieve - Allows to view Documents of the organization
+   */
+  'info_page_tag_retrieve'(
+    parameters: Parameters<Paths.InfoPageTagRetrieve.PathParameters>,
+    data?: any,
+    config?: AxiosRequestConfig  
+  ): OperationResponse<Paths.InfoPageTagRetrieve.Responses.$200>
   /**
    * org_group_list - Allows to view Groups of some Specialty
    */
@@ -518,29 +663,37 @@ export interface OperationMethods {
     config?: AxiosRequestConfig  
   ): OperationResponse<Paths.OrgTeacherRetrieve.Responses.$200>
   /**
-   * photo_schedule_retrieve - Allows to view Schedules of the organization
+   * schedule_group_retrieve - Allows to view Schedules of the organization
    */
-  'photo_schedule_retrieve'(
-    parameters: Parameters<Paths.PhotoScheduleRetrieve.PathParameters>,
+  'schedule_group_retrieve'(
+    parameters: Parameters<Paths.ScheduleGroupRetrieve.PathParameters>,
     data?: any,
     config?: AxiosRequestConfig  
-  ): OperationResponse<Paths.PhotoScheduleRetrieve.Responses.$200>
+  ): OperationResponse<Paths.ScheduleGroupRetrieve.Responses.$200>
   /**
-   * schedule_list - Allows to view Schedules of the organization
+   * schedule_photo_retrieve - Allows to view Schedules of the organization
    */
-  'schedule_list'(
-    parameters?: Parameters<Paths.ScheduleList.QueryParameters> | null,
+  'schedule_photo_retrieve'(
+    parameters: Parameters<Paths.SchedulePhotoRetrieve.PathParameters>,
     data?: any,
     config?: AxiosRequestConfig  
-  ): OperationResponse<Paths.ScheduleList.Responses.$200>
+  ): OperationResponse<Paths.SchedulePhotoRetrieve.Responses.$200>
   /**
-   * schedule_retrieve - Allows to view Schedules of the organization
+   * schedule_schedule_list - Allows to view Schedules of the organization. Combined view of Photo/Group schedules for a date.
    */
-  'schedule_retrieve'(
-    parameters: Parameters<Paths.ScheduleRetrieve.PathParameters>,
+  'schedule_schedule_list'(
+    parameters?: Parameters<Paths.ScheduleScheduleList.QueryParameters> | null,
     data?: any,
     config?: AxiosRequestConfig  
-  ): OperationResponse<Paths.ScheduleRetrieve.Responses.$200>
+  ): OperationResponse<Paths.ScheduleScheduleList.Responses.$200>
+  /**
+   * schedule_schedule_retrieve - Allows to view Schedules of the organization. Combined view of Photo/Group schedules for a date.
+   */
+  'schedule_schedule_retrieve'(
+    parameters: Parameters<Paths.ScheduleScheduleRetrieve.PathParameters>,
+    data?: any,
+    config?: AxiosRequestConfig  
+  ): OperationResponse<Paths.ScheduleScheduleRetrieve.Responses.$200>
 }
 
 export interface PathsDictionary {
@@ -595,15 +748,45 @@ export interface PathsDictionary {
       config?: AxiosRequestConfig  
     ): OperationResponse<Paths.AuthLogoutallCreate.Responses.$200>
   }
-  ['/api/group_schedule/{uuid}/']: {
+  ['/api/info_page/page/']: {
     /**
-     * group_schedule_retrieve - Allows to view Schedules of the organization
+     * info_page_page_list - Allows to view Documents of the organization
      */
     'get'(
-      parameters: Parameters<Paths.GroupScheduleRetrieve.PathParameters>,
+      parameters?: Parameters<Paths.InfoPagePageList.QueryParameters> | null,
       data?: any,
       config?: AxiosRequestConfig  
-    ): OperationResponse<Paths.GroupScheduleRetrieve.Responses.$200>
+    ): OperationResponse<Paths.InfoPagePageList.Responses.$200>
+  }
+  ['/api/info_page/page/{uuid}/']: {
+    /**
+     * info_page_page_retrieve - Allows to view Documents of the organization
+     */
+    'get'(
+      parameters: Parameters<Paths.InfoPagePageRetrieve.PathParameters>,
+      data?: any,
+      config?: AxiosRequestConfig  
+    ): OperationResponse<Paths.InfoPagePageRetrieve.Responses.$200>
+  }
+  ['/api/info_page/tag/']: {
+    /**
+     * info_page_tag_list - Allows to view Documents of the organization
+     */
+    'get'(
+      parameters?: Parameters<Paths.InfoPageTagList.QueryParameters> | null,
+      data?: any,
+      config?: AxiosRequestConfig  
+    ): OperationResponse<Paths.InfoPageTagList.Responses.$200>
+  }
+  ['/api/info_page/tag/{uuid}/']: {
+    /**
+     * info_page_tag_retrieve - Allows to view Documents of the organization
+     */
+    'get'(
+      parameters: Parameters<Paths.InfoPageTagRetrieve.PathParameters>,
+      data?: any,
+      config?: AxiosRequestConfig  
+    ): OperationResponse<Paths.InfoPageTagRetrieve.Responses.$200>
   }
   ['/api/org/group/']: {
     /**
@@ -665,35 +848,45 @@ export interface PathsDictionary {
       config?: AxiosRequestConfig  
     ): OperationResponse<Paths.OrgTeacherRetrieve.Responses.$200>
   }
-  ['/api/photo_schedule/{uuid}/']: {
+  ['/api/schedule/group/{uuid}/']: {
     /**
-     * photo_schedule_retrieve - Allows to view Schedules of the organization
+     * schedule_group_retrieve - Allows to view Schedules of the organization
      */
     'get'(
-      parameters: Parameters<Paths.PhotoScheduleRetrieve.PathParameters>,
+      parameters: Parameters<Paths.ScheduleGroupRetrieve.PathParameters>,
       data?: any,
       config?: AxiosRequestConfig  
-    ): OperationResponse<Paths.PhotoScheduleRetrieve.Responses.$200>
+    ): OperationResponse<Paths.ScheduleGroupRetrieve.Responses.$200>
   }
-  ['/api/schedule/']: {
+  ['/api/schedule/photo/{uuid}/']: {
     /**
-     * schedule_list - Allows to view Schedules of the organization
+     * schedule_photo_retrieve - Allows to view Schedules of the organization
      */
     'get'(
-      parameters?: Parameters<Paths.ScheduleList.QueryParameters> | null,
+      parameters: Parameters<Paths.SchedulePhotoRetrieve.PathParameters>,
       data?: any,
       config?: AxiosRequestConfig  
-    ): OperationResponse<Paths.ScheduleList.Responses.$200>
+    ): OperationResponse<Paths.SchedulePhotoRetrieve.Responses.$200>
   }
-  ['/api/schedule/{uuid}/']: {
+  ['/api/schedule/schedule/']: {
     /**
-     * schedule_retrieve - Allows to view Schedules of the organization
+     * schedule_schedule_list - Allows to view Schedules of the organization. Combined view of Photo/Group schedules for a date.
      */
     'get'(
-      parameters: Parameters<Paths.ScheduleRetrieve.PathParameters>,
+      parameters?: Parameters<Paths.ScheduleScheduleList.QueryParameters> | null,
       data?: any,
       config?: AxiosRequestConfig  
-    ): OperationResponse<Paths.ScheduleRetrieve.Responses.$200>
+    ): OperationResponse<Paths.ScheduleScheduleList.Responses.$200>
+  }
+  ['/api/schedule/schedule/{uuid}/']: {
+    /**
+     * schedule_schedule_retrieve - Allows to view Schedules of the organization. Combined view of Photo/Group schedules for a date.
+     */
+    'get'(
+      parameters: Parameters<Paths.ScheduleScheduleRetrieve.PathParameters>,
+      data?: any,
+      config?: AxiosRequestConfig  
+    ): OperationResponse<Paths.ScheduleScheduleRetrieve.Responses.$200>
   }
 }
 

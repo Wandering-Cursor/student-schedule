@@ -27,3 +27,15 @@ a.p-button {
   flex-direction: column;
   gap: 1rem;
 }
+
+.contained-wrapper-rows {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+pre {
+  overflow-wrap: break-word;
+  overflow: hidden;
+  font-family: inherit;
+}

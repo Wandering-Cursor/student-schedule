@@ -16,8 +16,8 @@ const onLoaded = () => {
 
 <template>
   <main class="contained-wrapper">
-    <Panel :header="$t('groupSchedule.title')">
-      {{ $t('groupSchedule.description') }}
+    <Panel :header="$t('schedule.group.title')">
+      {{ $t('schedule.group.description') }}
     </Panel>
     <Skeleton v-if="isLoading" width="100%" height="50vh" />
     <GroupSchedule :groupScheduleID="route.params.id as string" :onLoading :onLoaded />

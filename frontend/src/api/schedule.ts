@@ -9,7 +9,7 @@ async function getSchedule(params: {
   page: number
 }) {
   const client = await api.getClient<StudentScheduleClient>()
-  return await client.schedule_list({
+  return await client.schedule_schedule_list({
     date__lte: getISODateWithoutTZ(params.dateTo),
     date__gte: getISODateWithoutTZ(params.dateFrom),
     for_date: getISODateWithoutTZ(params.forDate),
@@ -19,14 +19,14 @@ async function getSchedule(params: {
 
 async function getPhotoSchedule(params: { id: string }) {
   const client = await api.getClient<StudentScheduleClient>()
-  return await client.photo_schedule_retrieve({
+  return await client.schedule_photo_retrieve({
     uuid: params.id,
   })
 }
 
 async function getGroupSchedule(params: { id: string }) {
   const client = await api.getClient<StudentScheduleClient>()
-  return await client.group_schedule_retrieve({
+  return await client.schedule_group_retrieve({
     uuid: params.id,
   })
 }

@@ -2,7 +2,9 @@
 import { RouterView } from 'vue-router'
 import { ref } from 'vue'
 import { useUserStore } from './stores/login'
+import { usePrimeVue } from 'primevue/config'
 
+const PrimeVue = usePrimeVue()
 const userGroupStore = useUserStore()
 
 const menuItems = ref([
@@ -19,9 +21,9 @@ const menuItems = ref([
   },
   { label: 'labels.schedule', icon: 'pi pi-fw pi-calendar', route: '/schedule' },
   {
-    label: 'labels.docs',
+    label: 'labels.info',
     icon: 'pi pi-fw pi-file',
-    route: '/documents',
+    route: '/info',
   },
   {
     label: 'admin.label',
@@ -30,6 +32,8 @@ const menuItems = ref([
     visible: () => userGroupStore.isAdmin(),
   },
 ])
+
+PrimeVue.config.ripple = true
 </script>
 
 <template>
