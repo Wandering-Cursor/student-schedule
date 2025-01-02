@@ -9,6 +9,8 @@ services:
       - "8002:8000"
     volumes:
       - /var/www/schedule/media:/app/media
+    depends_on:
+      - database: { condition: service_healthy }
 
   database:
     image: postgres:17
@@ -22,6 +24,11 @@ services:
       - POSTGRES_DB
       - POSTGRES_USER
       - POSTGRES_PASSWORD
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   
   # pgAdmin:
   #   image: dpage/pgadmin4

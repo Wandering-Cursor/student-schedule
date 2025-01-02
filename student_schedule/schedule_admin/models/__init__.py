@@ -1,4 +1,4 @@
-from . import schedule, specialty, teacher
+from . import info_pages, schedule, specialty, teacher
 from .user import User
 
 __all__ = [
