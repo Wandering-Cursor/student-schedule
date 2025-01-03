@@ -34,6 +34,11 @@ onMounted(loadInfoPage)
     <Panel
       v-if="infoPage !== undefined && infoPage.related_files"
       :header="$t('info.relatedFiles')"
+      :pt="{
+        content: {
+          class: 'grid-container',
+        },
+      }"
     >
       <Button
         v-for="file in infoPage.related_files"

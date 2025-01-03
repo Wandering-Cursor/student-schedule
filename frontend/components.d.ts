@@ -36,6 +36,7 @@ declare module 'vue' {
     Menu: typeof import('primevue/menu')['default']
     Menubar: typeof import('primevue/menubar')['default']
     Message: typeof import('primevue/message')['default']
+    MultiSelect: typeof import('primevue/multiselect')['default']
     Paginator: typeof import('primevue/paginator')['default']
     Panel: typeof import('primevue/panel')['default']
     PhotoSchedule: typeof import('./src/components/schedule/PhotoSchedule.vue')['default']
@@ -47,6 +48,7 @@ declare module 'vue' {
     SpecialtySelector: typeof import('./src/components/specialty/SpecialtySelector.vue')['default']
     TableSchedule: typeof import('./src/components/schedule/TableSchedule.vue')['default']
     Tag: typeof import('primevue/tag')['default']
+    TagSelector: typeof import('./src/components/info/TagSelector.vue')['default']
     Toast: typeof import('primevue/toast')['default']
     UploadScheduleForm: typeof import('./src/components/admin/UploadScheduleForm.vue')['default']
   }

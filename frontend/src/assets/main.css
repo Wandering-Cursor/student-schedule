@@ -34,8 +34,23 @@ a.p-button {
   gap: 1rem;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, calc(33% - 1rem)));
+  row-gap: 1rem;
+  column-gap: 1rem;
+  justify-content: center;
+}
+
 pre {
   overflow-wrap: break-word;
   overflow: hidden;
   font-family: inherit;
+}
+
+.filter-panel {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }

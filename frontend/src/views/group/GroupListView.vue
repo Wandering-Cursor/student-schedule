@@ -92,12 +92,3 @@ onMounted(loadPageData)
     />
   </main>
 </template>
-
-<style scoped>
-.filter-panel {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-</style>
