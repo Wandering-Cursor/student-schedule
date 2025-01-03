@@ -347,9 +347,13 @@ declare namespace Paths {
     namespace InfoPagePageList {
         namespace Parameters {
             export type Page = number;
+            export type Tags = string /* uuid */[];
+            export type Title = string;
         }
         export interface QueryParameters {
             page?: Parameters.Page;
+            tags?: Parameters.Tags;
+            title?: Parameters.Title;
         }
         namespace Responses {
             export type $200 = Components.Schemas.PaginatedInfoPageList;
@@ -371,9 +375,11 @@ declare namespace Paths {
     }
     namespace InfoPageTagList {
         namespace Parameters {
+            export type Name = string;
             export type Page = number;
         }
         export interface QueryParameters {
+            name?: Parameters.Name;
             page?: Parameters.Page;
         }
         namespace Responses {

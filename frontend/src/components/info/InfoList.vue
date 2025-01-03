@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { Components } from '@/api/openapi'
-import { onMounted, reactive, ref, type Ref } from 'vue'
+import { onMounted, reactive, ref, type Reactive, type Ref } from 'vue'
 import InfoItem from '@/components/info/InfoItem.vue'
 import { getInfoPages } from '@/api/info'
-import { useToast } from 'primevue'
+import { useToast, type MultiSelectChangeEvent } from 'primevue'
+import TagSelector from '@/components/info/TagSelector.vue'
 
 const toast = useToast()
 
@@ -16,9 +17,12 @@ const infoData: Ref<Components.Schemas.PaginatedInfoPageList> = ref({
   results: [],
 })
 
-const filters = reactive({
-  page: 1,
-})
+const filters: Reactive<{ page: number; title: string | undefined; tags: string[] | undefined }> =
+  reactive({
+    page: 1,
+    title: undefined,
+    tags: undefined,
+  })
 
 async function loadInfo() {
   loading.value = true
@@ -41,7 +45,29 @@ onMounted(loadInfo)
 
 <template>
   <Skeleton v-if="loading" height="75vh" width="100%" />
-  <Panel v-else>
+  <div class="contained-wrapper" :class="{ hidden: loading }">
+    <Panel :header="$t('labels.filters')" toggleable :collapsed="true">
+      <div class="filter-panel">
+        <InputGroup>
+          <InputText :placeholder="$t('info.filterBy.title')" v-model="filters.title" />
+        </InputGroup>
+        <InputGroup>
+          <TagSelector
+            @update:model-value="
+              (event: MultiSelectChangeEvent) => {
+                if (event.value === null) {
+                  filters.tags = []
+                  return
+                }
+
+                filters.tags = (event.value as Components.Schemas.Tag[]).map((tag) => tag.uuid)
+              }
+            "
+          />
+        </InputGroup>
+        <Button :label="$t('labels.applyFilters')" @click="loadInfo" :disabled="loading" />
+      </div>
+    </Panel>
     <DataView data-key="uuid" :value="infoData.results" :rows="10">
       <template #list="slotProps">
         <div v-for="info in slotProps.items">
@@ -61,5 +87,11 @@ onMounted(loadInfo)
       "
       :first
     />
-  </Panel>
+  </div>
 </template>
+
+<style scoped>
+.hidden {
+  display: none;
+}
+</style>

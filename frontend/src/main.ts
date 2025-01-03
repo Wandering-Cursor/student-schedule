@@ -96,6 +96,10 @@ const messages = {
       title: 'Інформація',
       description: 'Тут ви можете знайти корисну інформацію про ВНЗ.',
       relatedFiles: "Пов'язані файли",
+      filterBy: {
+        tags: 'Теги',
+        title: 'Назва',
+      },
     },
   },
 }

@@ -39,3 +39,10 @@ pre {
   overflow: hidden;
   font-family: inherit;
 }
+
+.filter-panel {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
