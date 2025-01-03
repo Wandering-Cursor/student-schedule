@@ -11,3 +11,6 @@ class TagViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
     permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        return super().get_queryset().order_by("name")

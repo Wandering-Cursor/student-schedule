@@ -19,11 +19,13 @@ class InfoPage(BaseModel):
         Tag,
         verbose_name=_("Tags"),
         related_name="info_pages",
+        blank=True,
     )
     related_files: "models.QuerySet[Document]" = models.ManyToManyField(
         Document,
         verbose_name=_("Related files"),
         related_name="info_pages",
+        blank=True,
     )
 
     def __str__(self: "InfoPage") -> str:

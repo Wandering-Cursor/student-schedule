@@ -11,3 +11,6 @@ class InfoPageViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = InfoPage.objects.all()
     serializer_class = InfoPageSerializer
     permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        return super().get_queryset().order_by("-created_at")
