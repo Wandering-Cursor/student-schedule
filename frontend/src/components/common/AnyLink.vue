@@ -63,5 +63,6 @@ const buttonClass = () => {
 .link-button h6,
 .link-button p {
   margin-top: 0;
+  margin-bottom: 0;
 }
 </style>
