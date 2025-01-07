@@ -10,7 +10,9 @@ services:
       - backendData:/app
     command: /bin/sh -c "while sleep 1000; do :; done"
     depends_on:
-      - database: { condition: service_healthy }
+      database:
+        condition: service_healthy
+        restart: true
 
   database:
     image: postgres:17
