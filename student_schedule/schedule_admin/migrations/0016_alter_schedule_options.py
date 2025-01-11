@@ -4,14 +4,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('schedule_admin', '0015_rename_scheduledpair_lesson_and_more'),
+        ("schedule_admin", "0015_rename_scheduledpair_lesson_and_more"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='schedule',
-            options={'ordering': ['-for_date'], 'verbose_name': 'Schedule', 'verbose_name_plural': 'Schedules'},
+            name="schedule",
+            options={
+                "ordering": ["-for_date"],
+                "verbose_name": "Schedule",
+                "verbose_name_plural": "Schedules",
+            },
         ),
     ]

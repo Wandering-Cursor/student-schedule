@@ -35,6 +35,11 @@ router.register(
     schedule_api.views.schedule.group.GroupScheduleViewSet,
 )
 router.register(
+    r"schedule/week/group",
+    schedule_api.views.schedule.common.WeekScheduleForGroupViewSet,
+    basename="week_schedule_for_group",
+)
+router.register(
     r"info_page/page",
     views.InfoPageViewSet,
 )

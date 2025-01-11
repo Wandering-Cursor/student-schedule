@@ -31,4 +31,9 @@ async function getGroupSchedule(params: { id: string }) {
   })
 }
 
-export { getSchedule, getPhotoSchedule, getGroupSchedule }
+async function getWeekScheduleForGroupList(params: { group: string | undefined }) {
+  const client = await api.getClient<StudentScheduleClient>()
+  return await client.schedule_week_group_list(params)
+}
+
+export { getSchedule, getPhotoSchedule, getGroupSchedule, getWeekScheduleForGroupList }

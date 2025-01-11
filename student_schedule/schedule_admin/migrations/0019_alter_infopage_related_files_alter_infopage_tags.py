@@ -4,20 +4,29 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('schedule_admin', '0018_document_display_name'),
+        ("schedule_admin", "0018_document_display_name"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='infopage',
-            name='related_files',
-            field=models.ManyToManyField(blank=True, related_name='info_pages', to='schedule_admin.document', verbose_name='Related files'),
+            model_name="infopage",
+            name="related_files",
+            field=models.ManyToManyField(
+                blank=True,
+                related_name="info_pages",
+                to="schedule_admin.document",
+                verbose_name="Related files",
+            ),
         ),
         migrations.AlterField(
-            model_name='infopage',
-            name='tags',
-            field=models.ManyToManyField(blank=True, related_name='info_pages', to='schedule_admin.tag', verbose_name='Tags'),
+            model_name="infopage",
+            name="tags",
+            field=models.ManyToManyField(
+                blank=True,
+                related_name="info_pages",
+                to="schedule_admin.tag",
+                verbose_name="Tags",
+            ),
         ),
     ]
