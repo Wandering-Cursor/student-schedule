@@ -4,16 +4,20 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('schedule_admin', '0017_document_tag_infopage'),
+        ("schedule_admin", "0017_document_tag_infopage"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='document',
-            name='display_name',
-            field=models.CharField(default='', help_text='The name of the file as it will be displayed on the website', max_length=255, verbose_name='Display name'),
+            model_name="document",
+            name="display_name",
+            field=models.CharField(
+                default="",
+                help_text="The name of the file as it will be displayed on the website",
+                max_length=255,
+                verbose_name="Display name",
+            ),
             preserve_default=False,
         ),
     ]

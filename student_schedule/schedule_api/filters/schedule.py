@@ -15,3 +15,13 @@ class ScheduleFilter(django_filters.FilterSet):
     class Meta:
         model = Schedule
         fields = ["for_date"]
+
+
+class WeekScheduleForGroupFilter(django_filters.FilterSet):
+    group = django_filters.UUIDFilter(
+        field_name="group_schedules__group",
+    )
+
+    class Meta:
+        model = Schedule
+        fields = ["group"]
