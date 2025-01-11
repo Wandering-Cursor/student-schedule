@@ -187,6 +187,24 @@ declare namespace Components {
             previous?: string | null; // uri
             results: Teacher[];
         }
+        export interface PaginatedWeekScheduleForGroupList {
+            /**
+             * example:
+             * 123
+             */
+            count: number;
+            /**
+             * example:
+             * http://api.example.org/accounts/?page=4
+             */
+            next?: string | null; // uri
+            /**
+             * example:
+             * http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null; // uri
+            results: WeekScheduleForGroup[];
+        }
         export interface Pair {
             /**
              * * `1` - First
@@ -311,6 +329,15 @@ declare namespace Components {
                 url: string; // uri
                 name: string;
             } | null;
+        }
+        export interface WeekScheduleForGroup {
+            url: string; // uri
+            uuid: string; // uuid
+            group_schedules: ShortGroupScheduleInfo[];
+            created_at: string; // date-time
+            updated_at: string; // date-time
+            for_date?: string; // date
+            photo_schedule?: string | null; // uri
         }
     }
 }
@@ -544,6 +571,19 @@ declare namespace Paths {
             export type $200 = Components.Schemas.Schedule;
         }
     }
+    namespace ScheduleWeekGroupList {
+        namespace Parameters {
+            export type Group = string; // uuid
+            export type Page = number;
+        }
+        export interface QueryParameters {
+            group?: Parameters.Group /* uuid */;
+            page?: Parameters.Page;
+        }
+        namespace Responses {
+            export type $200 = Components.Schemas.PaginatedWeekScheduleForGroupList;
+        }
+    }
 }
 
 export interface OperationMethods {
@@ -700,6 +740,14 @@ export interface OperationMethods {
     data?: any,
     config?: AxiosRequestConfig  
   ): OperationResponse<Paths.ScheduleScheduleRetrieve.Responses.$200>
+  /**
+   * schedule_week_group_list
+   */
+  'schedule_week_group_list'(
+    parameters?: Parameters<Paths.ScheduleWeekGroupList.QueryParameters> | null,
+    data?: any,
+    config?: AxiosRequestConfig  
+  ): OperationResponse<Paths.ScheduleWeekGroupList.Responses.$200>
 }
 
 export interface PathsDictionary {
@@ -893,6 +941,16 @@ export interface PathsDictionary {
       data?: any,
       config?: AxiosRequestConfig  
     ): OperationResponse<Paths.ScheduleScheduleRetrieve.Responses.$200>
+  }
+  ['/api/schedule/week/group/']: {
+    /**
+     * schedule_week_group_list
+     */
+    'get'(
+      parameters?: Parameters<Paths.ScheduleWeekGroupList.QueryParameters> | null,
+      data?: any,
+      config?: AxiosRequestConfig  
+    ): OperationResponse<Paths.ScheduleWeekGroupList.Responses.$200>
   }
 }
 

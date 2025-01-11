@@ -1,7 +1,7 @@
 import { api, getTokenAuthorization } from '@/api/base.ts'
 import type { Client as StudentScheduleClient } from '@/api/openapi.d.ts'
 import { useUserStore } from '@/stores/login.ts'
-import { getISODateFormat } from '@/utils/datetime'
+import { getISODateWithoutTZ } from '@/utils/datetime'
 
 async function uploadSchedule(params: {
   forDate: Date
@@ -17,7 +17,9 @@ async function uploadSchedule(params: {
   let options = getTokenAuthorization(token as string)
 
   const formData = new FormData()
-  formData.append('for_date', getISODateFormat(params.forDate) as string)
+  debugger
+  formData.append('for_date', getISODateWithoutTZ(params.forDate) as string)
+  debugger
   formData.append('name', params.name)
   params.photos.forEach((photo, index) => {
     formData.append(`photos[${index}]`, photo)
