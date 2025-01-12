@@ -138,7 +138,7 @@ class UploadScheduleSerializer(serializers.Serializer):
 
         lesson_entity, _ = Lesson.objects.get_or_create(
             pair=pair_entity,
-            name=pair_entity.name,
+            name=pair.name,
             teacher=teacher,
             room=pair.room,
         )
