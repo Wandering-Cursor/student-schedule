@@ -1,1 +1,0 @@
-import{S as e}from"./index-DEXWhyHr.js";async function n(t){return await(await e.getClient()).org_specialty_list(t)}async function c(t){return await(await e.getClient()).org_specialty_retrieve(t)}export{c as a,n as g};
