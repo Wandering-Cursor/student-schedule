@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import type { Components } from '@/api/openapi'
 import type { PropType } from 'vue'
-import { defineProps } from 'vue'
+import { defineProps, onMounted, ref } from 'vue'
 import { getLocalDateFromString } from '@/utils/datetime'
-import GroupLink from '@/components/groups/GroupLink.vue'
 import Variant from '@/enums/Variant'
 import { getLastPart } from '@/utils/urls'
-import AnyLink from '../common/AnyLink.vue'
+import AnyLink from '@/components/common/AnyLink.vue'
+import GroupScheduleItem from '@/components/schedule/GroupScheduleItem.vue'
+import type { VirtualScrollerLazyEvent } from 'primevue'
 
 const props = defineProps({
   schedule: {
@@ -33,24 +34,7 @@ const props = defineProps({
         <div class="group-schedule" v-if="schedule.group_schedules.length > 0">
           {{ $t('schedule.group.title') }}
           <div class="group-schedule-container">
-            <Card v-for="item in schedule.group_schedules" :key="schedule.uuid">
-              <template #content>
-                <GroupLink
-                  :group-i-d="item.group.uuid"
-                  :group-name="item.group.name"
-                  :variant="Variant.P"
-                  class="group-schedule-item-content"
-                />
-              </template>
-              <template #footer>
-                <Button
-                  as="router-link"
-                  :label="$t('labels.view')"
-                  :to="`/schedule/group/${item.uuid}`"
-                  class="group-schedule-item-content"
-                />
-              </template>
-            </Card>
+            <GroupScheduleItem :schedule="item" v-for="item in schedule.group_schedules" />
           </div>
         </div>
       </div>
@@ -63,9 +47,18 @@ const props = defineProps({
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-}
-.group-schedule-item-content {
   width: 100%;
+  min-height: 10rem;
+  max-height: 15rem;
+  overflow-y: scroll;
+}
+
+@media (max-width: 600px) {
+  .group-schedule-container {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
 }
 .group-schedule {
   width: 100%;
