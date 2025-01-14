@@ -25,6 +25,7 @@ declare module 'vue' {
     GroupItem: typeof import('./src/components/groups/GroupItem.vue')['default']
     GroupLink: typeof import('./src/components/groups/GroupLink.vue')['default']
     GroupSchedule: typeof import('./src/components/schedule/GroupSchedule.vue')['default']
+    GroupScheduleItem: typeof import('./src/components/schedule/GroupScheduleItem.vue')['default']
     HomeComponent: typeof import('./src/components/HomeComponent.vue')['default']
     IftaLabel: typeof import('primevue/iftalabel')['default']
     InfoItem: typeof import('./src/components/info/InfoItem.vue')['default']
@@ -51,6 +52,7 @@ declare module 'vue' {
     TagSelector: typeof import('./src/components/info/TagSelector.vue')['default']
     Toast: typeof import('primevue/toast')['default']
     UploadScheduleForm: typeof import('./src/components/admin/UploadScheduleForm.vue')['default']
+    VirtualScroller: typeof import('primevue/virtualscroller')['default']
   }
   export interface ComponentCustomProperties {
     Ripple: typeof import('primevue/ripple')['default']
