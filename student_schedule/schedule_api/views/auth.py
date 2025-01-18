@@ -50,5 +50,9 @@ class UserInfoView(APIView):
         return Response(
             UserInfoResponseSerializer(
                 input_serializer.validated_data,
+                context={
+                    "request": request,
+                    "view": self,
+                },
             ).data,
         )
