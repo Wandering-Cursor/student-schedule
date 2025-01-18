@@ -1,6 +1,6 @@
 [project]
 name = "student-schedule"
-version = "1.4.2"
+version = "1.4.3"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -11,12 +11,12 @@ dependencies = [
     "pydantic-settings>=2.7, <2.8",
     "pydantic>=2.10.1, <2.11",
     "djangorestframework>=3.15.2, <3.16",
-    "django-filter>=24.3",
-    "pillow>=11.0.0",
-    "django-cors-headers>=4.6.0",
-    "drf-spectacular>=0.28.0",
-    "django-rest-knox>=5.0.2",
-    "gunicorn>=23.0.0",
+    "django-filter>=24.3, <25",
+    "pillow>=11.1.0, <11.2",
+    "django-cors-headers>=4.6.0, <4.7",
+    "drf-spectacular>=0.28.0, <0.29",
+    "django-rest-knox>=5.0.2, <5.1",
+    "gunicorn>=23.0.0, <23.1",
 ]
 
 [dependency-groups]
