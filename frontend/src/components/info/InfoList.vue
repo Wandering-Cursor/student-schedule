@@ -68,25 +68,27 @@ onMounted(loadInfo)
         <Button :label="$t('labels.applyFilters')" @click="loadInfo" :disabled="loading" />
       </div>
     </Panel>
-    <DataView data-key="uuid" :value="infoData.results" :rows="10">
-      <template #list="slotProps">
-        <div v-for="info in slotProps.items">
-          <InfoItem :infoPage="info" />
-          <Divider />
-        </div>
-      </template>
-    </DataView>
-    <Paginator
-      :total-records="infoData.count"
-      :rows="10"
-      @page="
-        (event) => {
-          filters.page = event.page + 1
-          loadInfo()
-        }
-      "
-      :first
-    />
+    <Panel>
+      <DataView data-key="uuid" :value="infoData.results" :rows="10">
+        <template #list="slotProps">
+          <div v-for="info in slotProps.items">
+            <InfoItem :infoPage="info" />
+            <Divider />
+          </div>
+        </template>
+      </DataView>
+      <Paginator
+        :total-records="infoData.count"
+        :rows="10"
+        @page="
+          (event) => {
+            filters.page = event.page + 1
+            loadInfo()
+          }
+        "
+        :first
+      />
+    </Panel>
   </div>
 </template>
 

@@ -17,9 +17,7 @@ async function uploadSchedule(params: {
   let options = getTokenAuthorization(token as string)
 
   const formData = new FormData()
-  debugger
   formData.append('for_date', getISODateWithoutTZ(params.forDate) as string)
-  debugger
   formData.append('name', params.name)
   params.photos.forEach((photo, index) => {
     formData.append(`photos[${index}]`, photo)

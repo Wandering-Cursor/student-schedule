@@ -5,6 +5,7 @@ import { onMounted, reactive, ref, type Reactive, type Ref } from 'vue'
 import { getGroups } from '@/api/group'
 import type { Components } from '@/api/openapi'
 import SpecialtySelector from '@/components/specialty/SpecialtySelector.vue'
+import { Panel } from 'primevue'
 
 const firstItem = ref(0)
 const page = ref(1)
@@ -71,24 +72,26 @@ onMounted(loadPageData)
         <Button :label="$t('labels.applyFilters')" @click="loadGroupData" :disabled="loading" />
       </div>
     </Panel>
-    <DataView data-key="uuid" :value="groupData.results" :rows="10">
-      <template #list="slotProps">
-        <div v-for="item in slotProps.items">
-          <GroupItem :group="item" />
-          <Divider />
-        </div>
-      </template>
-    </DataView>
-    <Paginator
-      :total-records="groupData.count"
-      :rows="10"
-      @page="
-        (event) => {
-          page = event.page + 1
-          loadGroupData()
-        }
-      "
-      :first="firstItem"
-    />
+    <Panel>
+      <DataView data-key="uuid" :value="groupData.results" :rows="10">
+        <template #list="slotProps">
+          <div v-for="item in slotProps.items">
+            <GroupItem :group="item" />
+            <Divider />
+          </div>
+        </template>
+      </DataView>
+      <Paginator
+        :total-records="groupData.count"
+        :rows="10"
+        @page="
+          (event) => {
+            page = event.page + 1
+            loadGroupData()
+          }
+        "
+        :first="firstItem"
+      />
+    </Panel>
   </main>
 </template>

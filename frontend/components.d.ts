@@ -22,6 +22,7 @@ declare module 'vue' {
     FileUpload: typeof import('primevue/fileupload')['default']
     FloatLabel: typeof import('primevue/floatlabel')['default']
     Galleria: typeof import('primevue/galleria')['default']
+    GroupInfoPanel: typeof import('./src/components/groups/GroupInfoPanel.vue')['default']
     GroupItem: typeof import('./src/components/groups/GroupItem.vue')['default']
     GroupLink: typeof import('./src/components/groups/GroupLink.vue')['default']
     GroupSchedule: typeof import('./src/components/schedule/GroupSchedule.vue')['default']
@@ -53,6 +54,7 @@ declare module 'vue' {
     Toast: typeof import('primevue/toast')['default']
     UploadScheduleForm: typeof import('./src/components/admin/UploadScheduleForm.vue')['default']
     VirtualScroller: typeof import('primevue/virtualscroller')['default']
+    WeekScheduleDataView: typeof import('./src/components/schedule/WeekScheduleDataView.vue')['default']
   }
   export interface ComponentCustomProperties {
     Ripple: typeof import('primevue/ripple')['default']
