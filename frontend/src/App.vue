@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
 import { ref } from 'vue'
 import { useUserStore } from './stores/login'
 import { usePrimeVue } from 'primevue/config'
+import type { MenuItem } from 'primevue/menuitem'
 
 const PrimeVue = usePrimeVue()
 const userGroupStore = useUserStore()
+const route = useRoute()
 
 const menuItems = ref([
   {
@@ -13,6 +15,12 @@ const menuItems = ref([
     root: true,
     icon: 'pi pi-fw pi-home',
     route: '/',
+  },
+  {
+    label: 'labels.profile',
+    icon: 'pi pi-fw pi-user',
+    route: '/profile',
+    visible: () => userGroupStore.isGroupSet(),
   },
   {
     label: 'labels.groups',
@@ -33,20 +41,35 @@ const menuItems = ref([
   },
 ])
 
-PrimeVue.config.ripple = true
+function activeRoute(value: string) {
+  return value === route.path
+}
 </script>
 
 <template>
   <div class="app-container">
     <Menubar :model="menuItems">
       <template #item="{ item, props, hasSubmenu }">
-        <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
+        <router-link
+          v-if="item.route"
+          v-slot="{ href, navigate }"
+          :to="item.route"
+          custom
+          :class="activeRoute(item.route) ? 'active-route' : ''"
+        >
           <a v-ripple :href="href" v-bind="props.action" @click="navigate">
             <span :class="item.icon" />
             <span>{{ $t(item.label as string) }}</span>
           </a>
         </router-link>
-        <a v-else v-ripple :href="item.url" :target="item.target" v-bind="props.action">
+        <a
+          v-else
+          v-ripple
+          :href="item.url"
+          :target="item.target"
+          v-bind="props.action"
+          :class="activeRoute(item.route) ? 'active-route' : ''"
+        >
           <span :class="item.icon" />
           <span>{{ $t(item.label as string) }}</span>
           <span v-if="hasSubmenu" class="pi pi-fw pi-angle-down" />
@@ -125,5 +148,9 @@ PrimeVue.config.ripple = true
   .menu-items {
     flex-direction: column;
   }
+}
+
+.active-route {
+  color: var(--p-primary-color);
 }
 </style>

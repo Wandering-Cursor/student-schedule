@@ -46,30 +46,26 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main>
-    <Panel :header="$t('schedule.combined')">
-      <Skeleton v-if="loading" width="100%" height="50vh" />
-      <Panel v-if="!loading" :header="$t('labels.filters')" toggleable :collapsed="true">
-        <div class="filter-panel">
-          <FloatLabel variant="on" class="flex">
-            <DatePicker v-model="filters.forDate" id="for-date-input" showButtonBar />
-            <label for="for-date-input">{{ $t('schedule.filters.forDate') }}</label>
-          </FloatLabel>
-          <FloatLabel variant="on" class="flex">
-            <DatePicker v-model="filters.dateFrom" id="from-date-input" showButtonBar />
-            <label for="from-date-input">{{ $t('schedule.filters.fromDate') }}</label>
-          </FloatLabel>
-          <FloatLabel variant="on" class="flex">
-            <DatePicker v-model="filters.dateTo" id="to-date-input" showButtonBar />
-            <label for="to-date-input">{{ $t('schedule.filters.toDate') }}</label>
-          </FloatLabel>
-          <Button
-            :label="$t('labels.applyFilters')"
-            @click="loadScheduleData"
-            :disabled="loading"
-          />
-        </div>
-      </Panel>
+  <main class="contained-wrapper">
+    <Skeleton v-if="loading" width="100%" height="50vh" />
+    <Panel v-if="!loading" :header="$t('labels.filters')" toggleable :collapsed="true">
+      <div class="filter-panel">
+        <FloatLabel variant="on" class="flex">
+          <DatePicker v-model="filters.forDate" id="for-date-input" showButtonBar />
+          <label for="for-date-input">{{ $t('schedule.filters.forDate') }}</label>
+        </FloatLabel>
+        <FloatLabel variant="on" class="flex">
+          <DatePicker v-model="filters.dateFrom" id="from-date-input" showButtonBar />
+          <label for="from-date-input">{{ $t('schedule.filters.fromDate') }}</label>
+        </FloatLabel>
+        <FloatLabel variant="on" class="flex">
+          <DatePicker v-model="filters.dateTo" id="to-date-input" showButtonBar />
+          <label for="to-date-input">{{ $t('schedule.filters.toDate') }}</label>
+        </FloatLabel>
+        <Button :label="$t('labels.applyFilters')" @click="loadScheduleData" :disabled="loading" />
+      </div>
+    </Panel>
+    <Panel>
       <DataView v-if="!loading" :value="data" data-key="uuid" :rows="10">
         <template #list="slotProps">
           <div v-for="item in slotProps.items">

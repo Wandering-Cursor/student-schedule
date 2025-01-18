@@ -39,7 +39,10 @@ export const useUserStore = defineStore('login', () => {
   }
 
   function isGroupSet() {
-    return user.value?.related_group !== null
+    if (!user.value) {
+      return false
+    }
+    return user.value.related_group !== null
   }
   function getGroup() {
     let userValue = user.value

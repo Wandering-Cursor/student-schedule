@@ -17,28 +17,29 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="contained-wrapper">
-    <Panel v-if="specialtyEntity">
+  <main v-if="specialtyEntity" class="contained-wrapper">
+    <Panel>
       <template #header>
         <h1>{{ specialtyEntity.name }}</h1>
       </template>
       <template #default>
         <p>{{ $t('specialty.formatted', { name: specialtyEntity.full_name }) }}</p>
-        <p>{{ $t('groups.list') }}</p>
-        <DataView data-key="uuid" :value="specialtyEntity.groups" paginator :rows="10">
-          <template #list="slotProps">
-            <div class="contained-wrapper">
-              <GroupLink
-                :group-i-d="value.uuid"
-                :groupName="value.name"
-                v-for="value in slotProps.items"
-                v-bind:key="value.uuid"
-              />
-            </div>
-          </template>
-        </DataView>
       </template>
     </Panel>
-    <Skeleton v-else width="100%" height="50vh" />
+    <Panel :header="$t('groups.list')">
+      <DataView data-key="uuid" :value="specialtyEntity.groups" paginator :rows="10">
+        <template #list="slotProps">
+          <div class="contained-wrapper">
+            <GroupLink
+              :group-i-d="value.uuid"
+              :groupName="value.name"
+              v-for="value in slotProps.items"
+              v-bind:key="value.uuid"
+            />
+          </div>
+        </template>
+      </DataView>
+    </Panel>
   </main>
+  <Skeleton v-else width="100%" height="50vh" />
 </template>

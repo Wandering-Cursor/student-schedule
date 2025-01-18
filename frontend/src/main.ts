@@ -84,6 +84,7 @@ const messages = {
       pageDoesNotExist: 'Сторінка яку ви шукаєте не існує.',
       view: 'Переглянути',
       error: 'Помилка',
+      profile: 'Профіль',
     },
     specialty: {
       formatted: 'Спеціальність: {name}',

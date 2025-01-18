@@ -108,7 +108,7 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'profile',
-      component: () => import('../views/auth/LoginView.vue'),
+      component: () => import('../views/profile/ProfileView.vue'),
     },
     {
       path: '/:pathMatch(.*)*',
