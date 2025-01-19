@@ -1,1 +1,0 @@
-function r(e){if(e!==null&&e!==void 0)return`${e.getFullYear()}-${e.getMonth()+1}-${e.getDate()}`}function t(){return Intl.DateTimeFormat(Intl.DateTimeFormat().resolvedOptions().locale)}function i(e){return!e||e===void 0?"":t().format(new Date(e))}function o(e){return new Date(e).toLocaleString()}export{i as a,o as b,r as g};
