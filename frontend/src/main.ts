@@ -67,6 +67,7 @@ const messages = {
         forDate: 'Розклад на {date}',
         pairsList: 'Список пар:',
         description: 'Тут ви можете знайти розклад для вашої групи.',
+        count: 'Розклад для {count} груп',
       },
     },
     labels: {
