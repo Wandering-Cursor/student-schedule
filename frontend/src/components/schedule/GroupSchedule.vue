@@ -5,10 +5,11 @@ import { onMounted, ref } from 'vue'
 import { getLocalDateFromString } from '@/utils/datetime'
 import GroupLink from '@/components/groups/GroupLink.vue'
 import Variant from '@/enums/Variant'
+import GroupLessonList from '@/components/schedule/group/GroupLessonList.vue'
 
 const groupScheduleInfo = ref<Components.Schemas.GroupSchedule>()
 
-async function fetchPhotoSchedule() {
+async function fetchGroupSchedule() {
   props.onLoading()
   if (props.groupScheduleID) {
     const response = await getGroupSchedule({ id: props.groupScheduleID })
@@ -24,7 +25,7 @@ const props = defineProps<{
 }>()
 
 onMounted(() => {
-  fetchPhotoSchedule()
+  fetchGroupSchedule()
 })
 </script>
 
@@ -42,17 +43,7 @@ onMounted(() => {
         }}
       </p>
       <p>{{ $t('schedule.group.pairsList') }}</p>
-      <div v-for="pair in groupScheduleInfo.lessons" :key="pair.uuid">
-        <Card>
-          <template #title> {{ pair.pair.name }} - {{ pair.name }} </template>
-          <template #subtitle> {{ pair.pair.start_time }} - {{ pair.pair.end_time }} </template>
-          <template #content>
-            <p>{{ $t('schedule.teacherName') }}: {{ pair.teacher.name }}</p>
-          </template>
-          <template #footer> {{ $t('schedule.room') }}: {{ pair.room }} </template>
-        </Card>
-        <Divider />
-      </div>
+      <GroupLessonList :groupSchedule="groupScheduleInfo" />
     </template>
   </Panel>
 </template>

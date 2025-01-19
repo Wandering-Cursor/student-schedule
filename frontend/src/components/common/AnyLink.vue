@@ -55,13 +55,13 @@ const buttonClass = () => {
   padding: 0;
   margin: 0;
 }
-.link-button h1,
-.link-button h2,
-.link-button h3,
-.link-button h4,
-.link-button h5,
-.link-button h6,
-.link-button p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin-top: 0;
   margin-bottom: 0;
 }

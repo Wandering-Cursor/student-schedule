@@ -88,7 +88,7 @@ const uploadSchedule = async () => {
 </template>
 
 <style scoped>
-.flex {
+.input-field {
   display: flex;
   flex-direction: column;
 }

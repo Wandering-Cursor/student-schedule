@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { Components } from '@/api/openapi'
-import { getSchedule } from '@/api/schedule'
+import { getScheduleList } from '@/api/schedule'
 import { onMounted, reactive, ref, type Ref } from 'vue'
-import CombinedScheduleItem from '@/components/schedule/CombinedScheduleItem.vue'
+import ShortCombinedScheduleItem from '@/components/schedule/ShortCombinedScheduleItem.vue'
+import ScheduleFilters from '@/components/schedule/ScheduleFilters.vue'
 
 const firstItem = ref(0)
 const loading = ref(false)
@@ -25,7 +26,7 @@ const filters = reactive({
 const loadScheduleData = async () => {
   loading.value = true
   try {
-    const response = await getSchedule(filters)
+    const response = await getScheduleList(filters)
     scheduleData.value = response.data
     data.value = response.data.results
     firstItem.value = filters.page * 10 - 10
@@ -48,28 +49,17 @@ onMounted(async () => {
 <template>
   <main class="contained-wrapper">
     <Skeleton v-if="loading" width="100%" height="50vh" />
-    <Panel v-if="!loading" :header="$t('labels.filters')" toggleable :collapsed="true">
-      <div class="filter-panel">
-        <FloatLabel variant="on" class="flex">
-          <DatePicker v-model="filters.forDate" id="for-date-input" showButtonBar />
-          <label for="for-date-input">{{ $t('schedule.filters.forDate') }}</label>
-        </FloatLabel>
-        <FloatLabel variant="on" class="flex">
-          <DatePicker v-model="filters.dateFrom" id="from-date-input" showButtonBar />
-          <label for="from-date-input">{{ $t('schedule.filters.fromDate') }}</label>
-        </FloatLabel>
-        <FloatLabel variant="on" class="flex">
-          <DatePicker v-model="filters.dateTo" id="to-date-input" showButtonBar />
-          <label for="to-date-input">{{ $t('schedule.filters.toDate') }}</label>
-        </FloatLabel>
-        <Button :label="$t('labels.applyFilters')" @click="loadScheduleData" :disabled="loading" />
-      </div>
-    </Panel>
+    <ScheduleFilters
+      v-else
+      :filters="filters"
+      :loading="loading"
+      @update:filters="loadScheduleData"
+    />
     <Panel>
       <DataView v-if="!loading" :value="data" data-key="uuid" :rows="10">
         <template #list="slotProps">
           <div v-for="item in slotProps.items">
-            <CombinedScheduleItem :schedule="item" />
+            <ShortCombinedScheduleItem :schedule="item" />
             <Divider />
           </div>
         </template>
@@ -88,16 +78,3 @@ onMounted(async () => {
     </Panel>
   </main>
 </template>
-
-<style scoped>
-.filter-panel {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.flex {
-  display: flex;
-  flex-direction: column;
-}
-</style>

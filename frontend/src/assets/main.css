@@ -54,3 +54,7 @@ pre {
   flex-direction: column;
   gap: 1rem;
 }
+
+.full-width {
+  width: 100%;
+}

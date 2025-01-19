@@ -9,13 +9,21 @@ export const useUserStore = defineStore('login', () => {
     localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : null,
   )
 
-  async function setToken(newToken: string) {
-    localStorage.setItem('token', newToken)
-    token.value = newToken
-    const response = await getUserInfo({ token: token.value })
-    localStorage.setItem('user', JSON.stringify(response.data))
-    user.value = response.data
+  function writeToLocalStorage() {
+    localStorage.setItem('token', token.value as string)
+    localStorage.setItem('user', JSON.stringify(user.value))
   }
+
+  async function setToken(newToken: string) {
+    token.value = newToken
+
+    const response = await getUserInfo({ token: token.value })
+
+    user.value = response.data
+
+    writeToLocalStorage()
+  }
+
   function clearAuth() {
     token.value = null
     user.value = null
@@ -23,12 +31,15 @@ export const useUserStore = defineStore('login', () => {
     localStorage.removeItem('token')
     localStorage.removeItem('user')
   }
+
   function getToken() {
     return token.value
   }
+
   function isTokenSet() {
     return token.value !== null
   }
+
   async function logout() {
     try {
       await apiLogout({ token: token.value as string })
@@ -44,6 +55,7 @@ export const useUserStore = defineStore('login', () => {
     }
     return user.value.related_group !== null
   }
+
   function getGroup() {
     let userValue = user.value
     if (!userValue) {
@@ -51,6 +63,7 @@ export const useUserStore = defineStore('login', () => {
     }
     return userValue.related_group
   }
+
   function isAdmin() {
     let userValue = user.value
     if (!userValue) {
@@ -58,6 +71,7 @@ export const useUserStore = defineStore('login', () => {
     }
     return userValue.is_staff
   }
+
   function getUsername() {
     let userValue = user.value
     if (!userValue) {

@@ -69,6 +69,11 @@ const router = createRouter({
           component: () => import('../views/schedule/ScheduleView.vue'),
         },
         {
+          path: ':id',
+          name: 'schedule-detail',
+          component: () => import('../views/schedule/ScheduleDetailView.vue'),
+        },
+        {
           path: 'photo/:id',
           name: 'photo-schedule',
           component: () => import('../views/schedule/PhotoScheduleView.vue'),
