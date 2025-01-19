@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Components } from '@/api/openapi'
-import { getSchedule } from '@/api/schedule'
+import { getScheduleList } from '@/api/schedule'
 import { onMounted, reactive, ref, type Ref } from 'vue'
 import ShortCombinedScheduleItem from '@/components/schedule/ShortCombinedScheduleItem.vue'
 import ScheduleFilters from '@/components/schedule/ScheduleFilters.vue'
@@ -26,7 +26,7 @@ const filters = reactive({
 const loadScheduleData = async () => {
   loading.value = true
   try {
-    const response = await getSchedule(filters)
+    const response = await getScheduleList(filters)
     scheduleData.value = response.data
     data.value = response.data.results
     firstItem.value = filters.page * 10 - 10

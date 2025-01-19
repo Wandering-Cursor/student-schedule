@@ -30,6 +30,12 @@ function getLocalDateFromString(date?: string): string {
   return dateTimeFormat().format(new Date(date))
 }
 
+function getLocalDayOfWeek(dateString: string): string {
+  const date = new Date(dateString)
+
+  return date.toLocaleDateString('en-US', { weekday: 'long' })
+}
+
 function getLocalizedDateTime(data: string): string {
   const date = new Date(data)
   return date.toLocaleString()
@@ -41,4 +47,5 @@ export {
   getISODateFormat,
   getISODateWithoutTZ,
   getLocalizedDateTime,
+  getLocalDayOfWeek,
 }

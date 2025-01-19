@@ -7,6 +7,7 @@ import Variant from '@/enums/Variant'
 import { getLastPart } from '@/utils/urls'
 import AnyLink from '@/components/common/AnyLink.vue'
 import { useUserStore } from '@/stores/login'
+import GroupLessonList from '@/components/schedule/group/GroupLessonList.vue'
 
 const props = defineProps({
   schedule: {
@@ -54,6 +55,7 @@ const userGroupIncludedText = () => {
           linkTo="photo-schedule"
           :variant="Variant.H3"
         />
+        <GroupLessonList :group-schedule-i-d="schedule.group_schedules[0].uuid" />
         <AnyLink
           :id-field="schedule.uuid"
           :name-field="$t('labels.view')"

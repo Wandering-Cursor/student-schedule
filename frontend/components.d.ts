@@ -24,6 +24,7 @@ declare module 'vue' {
     Galleria: typeof import('primevue/galleria')['default']
     GroupInfoPanel: typeof import('./src/components/groups/GroupInfoPanel.vue')['default']
     GroupItem: typeof import('./src/components/groups/GroupItem.vue')['default']
+    GroupLessonList: typeof import('./src/components/schedule/group/GroupLessonList.vue')['default']
     GroupLink: typeof import('./src/components/groups/GroupLink.vue')['default']
     GroupSchedule: typeof import('./src/components/schedule/GroupSchedule.vue')['default']
     GroupScheduleItem: typeof import('./src/components/schedule/GroupScheduleItem.vue')['default']
@@ -57,6 +58,7 @@ declare module 'vue' {
     UploadScheduleForm: typeof import('./src/components/admin/UploadScheduleForm.vue')['default']
     VirtualScroller: typeof import('primevue/virtualscroller')['default']
     WeekScheduleDataView: typeof import('./src/components/schedule/WeekScheduleDataView.vue')['default']
+    WeekScheduleItem: typeof import('./src/components/schedule/WeekScheduleItem.vue')['default']
   }
   export interface ComponentCustomProperties {
     Ripple: typeof import('primevue/ripple')['default']

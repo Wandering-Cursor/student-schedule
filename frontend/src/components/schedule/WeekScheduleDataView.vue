@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Components } from '@/api/openapi'
 import type { PropType } from 'vue'
+import WeekScheduleItem from '@/components/schedule/WeekScheduleItem.vue'
 
 defineProps({
   weekSchedule: {
@@ -15,7 +16,7 @@ defineProps({
     <DataView :value="weekSchedule.results" data-key="uuid" :rows="10">
       <template #list="slotProps">
         <div v-for="item in slotProps.items">
-          <CombinedScheduleItem :schedule="item" />
+          <WeekScheduleItem :schedule="item" />
           <Divider />
         </div>
       </template>

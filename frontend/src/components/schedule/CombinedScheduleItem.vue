@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import type { Components } from '@/api/openapi'
 import type { PropType } from 'vue'
-import { defineProps, onMounted, ref } from 'vue'
+import { defineProps } from 'vue'
 import { getLocalDateFromString } from '@/utils/datetime'
-import Variant from '@/enums/Variant'
 import { getLastPart } from '@/utils/urls'
-import AnyLink from '@/components/common/AnyLink.vue'
 import GroupScheduleItem from '@/components/schedule/GroupScheduleItem.vue'
-import type { VirtualScrollerLazyEvent } from 'primevue'
+import PhotoSchedule from './PhotoSchedule.vue'
+import { useUserStore } from '@/stores/login'
+
+const user = useUserStore()
+const userGroup = user.getGroup()
 
 const props = defineProps({
   schedule: {
@@ -15,31 +17,39 @@ const props = defineProps({
     required: true,
   },
 })
+
+// Show user's group first
+if (userGroup) {
+  props.schedule.group_schedules.sort((a, b) => {
+    if (a.group.uuid === userGroup.uuid) return -1
+    if (b.group.uuid === userGroup.uuid) return 1
+    return 0
+  })
+}
 </script>
 
 <template>
-  <Card>
-    <template #title>
-      {{ getLocalDateFromString(schedule.for_date) }}
-    </template>
-    <template #content>
-      <div class="contained-wrapper schedule-item">
-        <AnyLink
-          v-if="schedule.photo_schedule"
-          :id-field="getLastPart(schedule.photo_schedule)"
-          :name-field="$t('schedule.photo.title')"
-          linkTo="photo-schedule"
-          :variant="Variant.H3"
+  <main class="contained-wrapper">
+    <Panel :header="getLocalDateFromString(schedule.for_date)">
+      {{ $t('schedule.group.count', { count: schedule.group_schedules.length }) }}
+    </Panel>
+    <PhotoSchedule
+      v-if="schedule.photo_schedule"
+      :photoScheduleID="getLastPart(schedule.photo_schedule)"
+      :onLoading="() => {}"
+      :onLoaded="() => {}"
+    />
+    <Panel :header="$t('schedule.group.titlePlural')">
+      <div class="group-schedule-container">
+        <GroupScheduleItem
+          v-for="groupSchedule in schedule.group_schedules"
+          :key="groupSchedule.uuid"
+          :schedule="groupSchedule"
+          class="group-schedule"
         />
-        <div class="group-schedule" v-if="schedule.group_schedules.length > 0">
-          {{ $t('schedule.group.title') }}
-          <div class="group-schedule-container">
-            <GroupScheduleItem :schedule="item" v-for="item in schedule.group_schedules" />
-          </div>
-        </div>
       </div>
-    </template>
-  </Card>
+    </Panel>
+  </main>
 </template>
 
 <style scoped>
@@ -48,9 +58,6 @@ const props = defineProps({
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
   width: 100%;
-  min-height: 10rem;
-  max-height: 15rem;
-  overflow-y: scroll;
 }
 
 @media (max-width: 600px) {
