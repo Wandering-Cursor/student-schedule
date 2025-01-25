@@ -1,1 +1,0 @@
-import{D as t,V as s,ax as a,o as r,c as n,b as u,t as l}from"./index-DZlmqPSJ.js";const i=t({__name:"LogoutView",setup(c){const e=s();return setTimeout(()=>{e.logout(),a.push({name:"home"})},2e3),(o,m)=>(r(),n("main",null,[u("h1",null,l(o.$t("labels.loggingOut")),1)]))}});export{i as default};
