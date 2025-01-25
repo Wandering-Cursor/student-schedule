@@ -2,12 +2,13 @@ from drf_spectacular.utils import extend_schema
 from rest_framework import permissions
 from rest_framework.request import Request
 from rest_framework.response import Response
+from rest_framework.viewsets import ViewSet
 from schedule_api.serializers.schedule.common import ScheduleSerializer
 from schedule_api.serializers.schedule.upload import UploadScheduleSerializer
 from schedule_api.views.base import AuthenticatedView
 
 
-class UploadScheduleAPIView(AuthenticatedView):
+class UploadScheduleAPIView(ViewSet, AuthenticatedView):
     permission_classes = (
         *AuthenticatedView.permission_classes,
         permissions.IsAdminUser,
@@ -21,7 +22,7 @@ class UploadScheduleAPIView(AuthenticatedView):
             "application/json": UploadScheduleSerializer,
         }
     )
-    def post(self, request: "Request", *args, **kwargs):
+    def create(self, request: "Request", *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         schedule = serializer.create(serializer.validated_data)

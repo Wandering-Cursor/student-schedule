@@ -1,5 +1,6 @@
 import django_filters
 from schedule_admin.models.schedule.schedule import Schedule
+from schedule_admin.models.teacher.schedule import TeacherSchedule
 
 
 class ScheduleFilter(django_filters.FilterSet):
@@ -14,6 +15,12 @@ class ScheduleFilter(django_filters.FilterSet):
 
     class Meta:
         model = Schedule
+        fields = ["for_date"]
+
+
+class TeacherScheduleFilter(ScheduleFilter):
+    class Meta:
+        model = TeacherSchedule
         fields = ["for_date"]
 
 

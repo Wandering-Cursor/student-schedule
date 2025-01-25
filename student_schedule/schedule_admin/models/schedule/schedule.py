@@ -37,6 +37,9 @@ class Schedule(BaseModel):
         blank=True,
     )
 
+    def __str__(self) -> str:
+        return f"{_('Schedule for')} {self.for_date}"
+
     class Meta:
         verbose_name = _("Schedule")
         verbose_name_plural = _("Schedules")
