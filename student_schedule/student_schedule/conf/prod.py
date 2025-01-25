@@ -1,5 +1,5 @@
 from .base import *  # noqa: F403
-from .base import LOGGING, settings
+from .base import LOGGING, SPECTACULAR_SETTINGS, settings
 
 DEBUG = False
 
@@ -20,3 +20,6 @@ MEDIA_URL = "/schedule/media/"
 
 STATIC_ROOT = "/app/static/"
 MEDIA_ROOT = "/app/media/"
+
+# Because of how the server is configured, we need to set a prefix for the schema
+SPECTACULAR_SETTINGS["SCHEMA_PATH_PREFIX_INSERT"] = "/schedule"
