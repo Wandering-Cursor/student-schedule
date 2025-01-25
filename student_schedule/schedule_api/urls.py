@@ -1,6 +1,7 @@
 import schedule_api.views.schedule.common
 import schedule_api.views.schedule.group
 import schedule_api.views.schedule.photo
+import schedule_api.views.schedule.teacher
 import schedule_api.views.schedule.upload
 from django.urls import include, path
 from knox.views import LogoutAllView, LogoutView
@@ -35,6 +36,10 @@ router.register(
     schedule_api.views.schedule.group.GroupScheduleViewSet,
 )
 router.register(
+    r"schedule/teacher",
+    schedule_api.views.schedule.teacher.TeacherScheduleViewSet,
+)
+router.register(
     r"schedule/week/group",
     schedule_api.views.schedule.common.WeekScheduleForGroupViewSet,
     basename="week_schedule_for_group",
@@ -47,17 +52,17 @@ router.register(
     r"info_page/tag",
     views.TagViewSet,
 )
+router.register(
+    r"admin/schedule",
+    schedule_api.views.schedule.upload.UploadScheduleAPIView,
+    basename="upload_schedule_api",
+)
 
 
 urlpatterns = [
     path(
         "",
         include(router.urls),
-    ),
-    path(
-        "admin/schedule/",
-        view=schedule_api.views.schedule.upload.UploadScheduleAPIView.as_view(),
-        name="upload_schedule_api",
     ),
     path(
         "auth/login/",

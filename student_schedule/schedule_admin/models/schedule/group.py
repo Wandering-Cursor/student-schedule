@@ -3,6 +3,7 @@ import typing
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from schedule_admin.models.base import BaseModel
+from schedule_admin.models.group import Group
 
 if typing.TYPE_CHECKING:
     from schedule_admin.models.schedule.pairs import Pair
@@ -55,7 +56,7 @@ class Lesson(BaseModel):
 
 
 class GroupSchedule(BaseModel):
-    group = models.ForeignKey(
+    group: "Group" = models.ForeignKey(
         "schedule_admin.Group",
         on_delete=models.PROTECT,
         verbose_name=_("Group"),
@@ -64,7 +65,7 @@ class GroupSchedule(BaseModel):
         verbose_name=_("For Date"),
     )
 
-    lessons = models.ManyToManyField(
+    lessons: "models.Manager[Lesson]" = models.ManyToManyField(
         "schedule_admin.Lesson",
         verbose_name=_("Lessons"),
         blank=True,

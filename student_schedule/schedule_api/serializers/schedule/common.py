@@ -1,6 +1,14 @@
+from collections import defaultdict
 from copy import deepcopy
 
+from rest_framework import serializers
 from schedule_admin.models.schedule.schedule import Schedule
+from schedule_admin.models.teacher.teacher import Teacher
+from schedule_api.schemas.teacher_schedule import (
+    ScheduleForTeacher,
+    TeacherLesson,
+    TeacherSchedule,
+)
 from schedule_api.serializers.base import HyperlinkedUUIDSerializer
 from schedule_api.serializers.schedule.group import ShortGroupScheduleInfo
 
@@ -44,3 +52,48 @@ class WeekScheduleForGroupSerializer(HyperlinkedUUIDSerializer):
         model = Schedule
         fields = "__all__"
         read_only_fields = ["uuid", "created_at", "updated_at"]
+
+
+class StudentScheduleToTeacherScheduleSerializer(serializers.Serializer):
+    student_schedule = serializers.UUIDField(
+        required=True,
+    )
+
+    def validate_student_schedule(self, value) -> "Schedule":
+        try:
+            return Schedule.objects.get(uuid=value)
+        except Schedule.DoesNotExist:
+            raise serializers.ValidationError("Student schedule does not exist")
+
+    def create(self, validated_data: dict) -> TeacherSchedule:
+        teachers: dict[Teacher, list[TeacherLesson]] = defaultdict(list)
+        schedule: Schedule = validated_data["student_schedule"]
+
+        group_schedules = schedule.group_schedules.all()
+        for per_group in group_schedules:
+            lessons = per_group.lessons.all()
+            for lesson in lessons:
+                pair = lesson.pair
+                teacher = lesson.teacher
+
+                teachers[teacher].append(
+                    TeacherLesson(
+                        pair=pair.name,
+                        start_time=pair.start_time,
+                        end_time=pair.end_time,
+                        room=lesson.room,
+                        group_name=per_group.group.name,
+                    )
+                )
+
+        teacher_schedules = [
+            ScheduleForTeacher(
+                first_name=teacher.first_name,
+                last_name=teacher.last_name,
+                middle_name=teacher.middle_name,
+                lessons=lessons,
+            )
+            for teacher, lessons in teachers.items()
+        ]
+
+        return TeacherSchedule(teachers=teacher_schedules)

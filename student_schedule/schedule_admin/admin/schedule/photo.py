@@ -5,11 +5,11 @@ from schedule_admin.models.schedule.photo import PhotoSchedule, SchedulePhoto
 
 
 @admin.register(PhotoSchedule)
-class PhotoScheduleAdmin(BaseAdmin):
+class ScheduleFromPhotos(BaseAdmin):
     fieldsets = [
         *BaseAdmin.fieldsets,
         (
-            _("Photo Schedule"),
+            _("Photographic Schedule"),
             {
                 "fields": [
                     "name",
@@ -29,11 +29,11 @@ class PhotoScheduleAdmin(BaseAdmin):
 
 
 @admin.register(SchedulePhoto)
-class PhotoSchedulePhotoAdmin(BaseAdmin):
+class PhotoStorageAdmin(BaseAdmin):
     fieldsets = [
         *BaseAdmin.fieldsets,
         (
-            _("Photo Schedule Photo"),
+            _("Photos for Schedule"),
             {
                 "fields": [
                     "file",

@@ -9,6 +9,7 @@ from schedule_admin.models.schedule.pairs import Pair
 from schedule_admin.models.schedule.photo import PhotoSchedule, SchedulePhoto
 from schedule_admin.models.schedule.schedule import Schedule
 from schedule_admin.models.teacher import Teacher
+from schedule_admin.models.teacher.schedule import TeacherSchedule
 
 
 class LessonRepresentation:
@@ -60,6 +61,10 @@ class UploadScheduleSerializer(serializers.Serializer):
     )
 
     photos = serializers.ListField(
+        required=False,
+        child=serializers.ImageField(),
+    )
+    teacher_schedule_photos = serializers.ListField(
         required=False,
         child=serializers.ImageField(),
     )
@@ -194,6 +199,9 @@ class UploadScheduleSerializer(serializers.Serializer):
         for_date: datetime.date = validated_data["for_date"]
 
         photos: list["InMemoryUploadedFile"] = validated_data.get("photos")
+        teacher_schedule_photos: list["InMemoryUploadedFile"] = validated_data.get(
+            "teacher_schedule_photos"
+        )
         groups_schedules: list[GroupSchedule] = validated_data["groups_schedules"]
 
         photo_schedule: PhotoSchedule | None = None
@@ -222,5 +230,18 @@ class UploadScheduleSerializer(serializers.Serializer):
             schedule.photo_schedule = photo_schedule
 
         schedule.save()
+
+        teacher_schedule = TeacherSchedule.objects.create(
+            for_date=for_date,
+            student_schedule=schedule,
+        )
+
+        for photo in teacher_schedule_photos:
+            photo_object = SchedulePhoto(file=photo)
+            photo_object.save()
+
+            teacher_schedule.photos.add(photo_object)
+
+        teacher_schedule.save()
 
         return schedule
