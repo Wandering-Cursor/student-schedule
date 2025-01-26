@@ -6,11 +6,12 @@ import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config'
 import Aura from '@primevue/themes/aura'
 import { definePreset } from '@primevue/themes'
-import { createI18n } from 'vue-i18n'
+import { createI18n, type VueMessageType } from 'vue-i18n'
 import ToastService from 'primevue/toastservice'
 
 import App from './App.vue'
 import router from './router'
+import Ripple from 'primevue/ripple'
 
 const messages = {
   ua: {
@@ -34,6 +35,7 @@ const messages = {
           date: 'Дата розкладу',
           file: 'Файл з розкладом',
           success: 'Розклад успішно завантажено.',
+          teacherSchedulePhotos: 'Фотографії розкладу викладачів',
         },
       },
     },
@@ -49,7 +51,7 @@ const messages = {
     schedule: {
       title: 'Розклад',
       description: 'Виберіть вашу групу та семестр для перегляду розкладу.',
-      combined: 'Загальний рокзалд',
+      combined: 'Загальний розклад',
       teacherName: "Ім'я викладача",
       room: 'Аудиторія',
       filters: {
@@ -70,6 +72,17 @@ const messages = {
         description: 'Тут ви можете знайти розклад для вашої групи.',
         count: 'Розклад для груп відсутній | Розклад для однієї групи | Розклад для {count} груп',
         userGroupIncluded: 'Є розклад для вашої групи',
+      },
+      teacher: {
+        label: 'Розклад для викладачів',
+        title: 'Розклад для викладачів',
+        description: 'Тут ви можете знайти фотографії розкладу для викладачів.',
+        types: {
+          generated: 'Згенерована таблиця',
+          photo: 'Фото розкладу викладачів',
+        },
+        forDate: 'Розклад на {date}',
+        lessonCount: 'Заняття відсутні | Одне заняття | {count} занять',
       },
     },
     labels: {
@@ -105,12 +118,32 @@ const messages = {
         title: 'Назва',
       },
     },
+    teacher: {
+      fullName: '{lastName} {firstName} {middleName}',
+      // Currently doesn't work :(
+      initials: '{lastName} @.firstCharacter:{firstName}',
+    },
+    lesson: {
+      pairTitle: 'Пара {pairName}',
+      duration: 'Початок о {startTime} та закінчення о {endTime}',
+      durationShort: 'З {startTime} по {endTime}',
+      group: 'Група: {groupName}',
+      room: 'Аудиторія: {roomName}',
+    },
   },
 }
 
 const i18n = createI18n({
   locale: 'ua',
   messages: messages,
+  modifiers: {
+    firstCharacter: (str: VueMessageType) => {
+      if (!str) {
+        return ''
+      }
+      return (str as string)[0]
+    },
+  },
 })
 
 const app = createApp(App)
@@ -785,6 +818,7 @@ app.use(PrimeVue, {
     },
   },
 })
+app.directive('ripple', Ripple)
 app.use(ToastService)
 
 app.mount('#app')

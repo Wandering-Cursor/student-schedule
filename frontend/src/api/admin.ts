@@ -6,6 +6,7 @@ import { getISODateWithoutTZ } from '@/utils/datetime'
 async function uploadSchedule(params: {
   forDate: Date
   photos: File[]
+  teacherSchedulePhotos: File[]
   file: File | null
   name: string
 }) {
@@ -17,11 +18,21 @@ async function uploadSchedule(params: {
   let options = getTokenAuthorization(token as string)
 
   const formData = new FormData()
+
   formData.append('for_date', getISODateWithoutTZ(params.forDate) as string)
+
+  // Sets title for the Schedule Photos
   formData.append('name', params.name)
+
+  // Add Schedule Photos
   params.photos.forEach((photo, index) => {
     formData.append(`photos[${index}]`, photo)
   })
+  // Add Teacher Schedule Photos
+  params.teacherSchedulePhotos.forEach((photo, index) => {
+    formData.append(`teacher_schedule_photos[${index}]`, photo)
+  })
+
   if (params.file) {
     formData.append('file', params.file)
   }

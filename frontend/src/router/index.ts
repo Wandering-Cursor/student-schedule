@@ -25,6 +25,21 @@ const router = createRouter({
               name: 'schedule-upload',
               component: () => import('../views/admin/schedule/UploadScheduleView.vue'),
             },
+            {
+              path: 'teacher',
+              children: [
+                {
+                  path: '',
+                  name: 'teacher-schedule',
+                  component: () => import('../views/admin/schedule/TeacherScheduleView.vue'),
+                },
+                {
+                  path: ':id',
+                  name: 'teacher-schedule-detail',
+                  component: () => import('../views/admin/schedule/TeacherScheduleDetail.vue'),
+                },
+              ],
+            },
           ],
         },
       ],

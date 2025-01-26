@@ -3,7 +3,7 @@ import type { Components } from '@/api/openapi'
 import { getSchedule } from '@/api/schedule'
 import { onMounted, ref, type Ref } from 'vue'
 import { useRoute } from 'vue-router'
-import CombinedScheduleItem from '@/components/schedule/CombinedScheduleItem.vue'
+import CombinedScheduleItem from '@/components/schedule/combined/CombinedScheduleItem.vue'
 
 const route = useRoute()
 

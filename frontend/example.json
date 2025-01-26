@@ -1,0 +1,461 @@
+{
+    "url": "https://pavp.pp.ua/schedule/api/schedule/teacher/5eab1412-8ee1-41ed-9004-af8785631c95/",
+    "uuid": "5eab1412-8ee1-41ed-9004-af8785631c95",
+    "photos": [],
+    "schedule": {
+        "teachers": [
+            {
+                "first_name": "Марія",
+                "last_name": "Іванова",
+                "middle_name": "Іванівна",
+                "lessons": [
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 222",
+                        "group_name": "КД-211"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Каб. 222",
+                        "group_name": "КД-211"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Зала №1",
+                        "group_name": "КД-211"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Зала №1",
+                        "group_name": "КП-221"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Зала №1",
+                        "group_name": "КП-222"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Каб. 310",
+                        "group_name": "КП-231"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Каб. 310",
+                        "group_name": "КП-232"
+                    },
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 222",
+                        "group_name": "КП-241"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Каб. 222",
+                        "group_name": "КП-241"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Зала №1",
+                        "group_name": "КП-241"
+                    },
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 222",
+                        "group_name": "КП-242"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Каб. 222",
+                        "group_name": "КП-242"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Зала №1",
+                        "group_name": "КП-242"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Зала №1",
+                        "group_name": "КС-221"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Каб. 310",
+                        "group_name": "КС-231"
+                    },
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 222",
+                        "group_name": "КС-241"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Каб. 222",
+                        "group_name": "КС-241"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Зала №2",
+                        "group_name": "КС-241"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Зала №1",
+                        "group_name": "АК-211"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Каб. 310",
+                        "group_name": "АК-221"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Каб. 310",
+                        "group_name": "АК-231"
+                    },
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 222",
+                        "group_name": "АК-241"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Каб. 222",
+                        "group_name": "АК-241"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Зала №1",
+                        "group_name": "АК-241"
+                    },
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 222",
+                        "group_name": "АМ-211"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Каб. 222",
+                        "group_name": "АМ-211"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Зала №2",
+                        "group_name": "АМ-211"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Зала №1",
+                        "group_name": "АМ-241"
+                    }
+                ]
+            },
+            {
+                "first_name": "Іван",
+                "last_name": "Іванов",
+                "middle_name": "Іванович",
+                "lessons": [
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Каб. 123",
+                        "group_name": "КД-221"
+                    },
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 123",
+                        "group_name": "КД-221"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Зала №1",
+                        "group_name": "КД-221"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Каб. 231",
+                        "group_name": "КД-221"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Каб. 231",
+                        "group_name": "КД-231"
+                    },
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 231",
+                        "group_name": "КД-231"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Зала №1",
+                        "group_name": "КД-231"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Каб. 123",
+                        "group_name": "КД-231"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Каб. 123",
+                        "group_name": "КД-241"
+                    },
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 123",
+                        "group_name": "КД-241"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Зала №1",
+                        "group_name": "КД-241"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Каб. 231",
+                        "group_name": "КД-241"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Каб. 123",
+                        "group_name": "КП-181"
+                    },
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 123",
+                        "group_name": "КП-181"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Зала №1",
+                        "group_name": "КП-181"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Каб. 231",
+                        "group_name": "КП-181"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Каб. 231",
+                        "group_name": "КП-182"
+                    },
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 231",
+                        "group_name": "КП-182"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Зала №1",
+                        "group_name": "КП-182"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Каб. 123",
+                        "group_name": "КП-182"
+                    },
+                    {
+                        "pair": "1",
+                        "start_time": "08:00:00",
+                        "end_time": "09:20:00",
+                        "room": "Каб. 123",
+                        "group_name": "КС-181"
+                    },
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 123",
+                        "group_name": "КС-181"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Зала №1",
+                        "group_name": "КС-181"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Каб. 231",
+                        "group_name": "КС-181"
+                    }
+                ]
+            },
+            {
+                "first_name": "Наталія",
+                "last_name": "Гарбузняк",
+                "middle_name": "Денісівна",
+                "lessons": [
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 125",
+                        "group_name": "КП-211"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Каб. 125",
+                        "group_name": "КП-211"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Каб. 125",
+                        "group_name": "КП-222"
+                    },
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 125",
+                        "group_name": "КС-211"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Каб. 125",
+                        "group_name": "КС-211"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Каб. 125",
+                        "group_name": "КС-221"
+                    },
+                    {
+                        "pair": "2",
+                        "start_time": "09:30:00",
+                        "end_time": "10:50:00",
+                        "room": "Каб. 125",
+                        "group_name": "АМ-231"
+                    },
+                    {
+                        "pair": "4",
+                        "start_time": "12:50:00",
+                        "end_time": "14:10:00",
+                        "room": "Каб. 125",
+                        "group_name": "АМ-231"
+                    },
+                    {
+                        "pair": "3",
+                        "start_time": "11:20:00",
+                        "end_time": "12:40:00",
+                        "room": "Каб. 125",
+                        "group_name": "АМ-241"
+                    }
+                ]
+            }
+        ]
+    },
+    "created_at": "2025-01-25T14:49:20.561836Z",
+    "updated_at": "2025-01-25T14:49:20.561844Z",
+    "for_date": "2025-01-27",
+    "student_schedule": "https://pavp.pp.ua/schedule/api/schedule/schedule/ca8256f3-247e-4960-b668-26e7fd07b7ff/"
+}

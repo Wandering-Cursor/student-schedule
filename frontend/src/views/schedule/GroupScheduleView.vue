@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import GroupSchedule from '@/components/schedule/GroupSchedule.vue'
+import GroupSchedule from '@/components/schedule/group/GroupSchedule.vue'
 
 const isLoading = ref(true)
 const route = useRoute()

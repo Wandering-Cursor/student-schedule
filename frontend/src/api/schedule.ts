@@ -1,5 +1,6 @@
-import { api } from '@/api/base.ts'
+import { api, getTokenAuthorization } from '@/api/base.ts'
 import type { Client as StudentScheduleClient } from '@/api/openapi.d.ts'
+import { useUserStore } from '@/stores/login'
 import { getISODateWithoutTZ } from '@/utils/datetime'
 
 async function getScheduleList(params: {
@@ -43,10 +44,65 @@ async function getWeekScheduleForGroupList(params: { group: string | undefined }
   return await client.schedule_week_group_list(params)
 }
 
+function getTokenOrError(userStore: ReturnType<typeof useUserStore> | undefined) {
+  let token = userStore?.getToken()
+
+  if (!token) {
+    token = useUserStore().getToken()
+  }
+  if (token === null) {
+    throw new Error('Token not set')
+  }
+
+  return token
+}
+
+async function getTeachersScheduleList(
+  params: {
+    page: number
+    dateFrom?: Date
+    dateTo?: Date
+    forDate?: Date
+  },
+  userStore: ReturnType<typeof useUserStore> | undefined,
+) {
+  const client = await api.getClient<StudentScheduleClient>()
+  const token = getTokenOrError(userStore)
+
+  return await client.schedule_teacher_list(
+    {
+      date__lte: getISODateWithoutTZ(params.dateTo),
+      date__gte: getISODateWithoutTZ(params.dateFrom),
+      for_date: getISODateWithoutTZ(params.forDate),
+      page: params.page,
+    },
+    null,
+    getTokenAuthorization(token),
+  )
+}
+
+async function getTeachersSchedule(
+  params: { id: string },
+  userStore: ReturnType<typeof useUserStore> | undefined,
+) {
+  const client = await api.getClient<StudentScheduleClient>()
+  const token = getTokenOrError(userStore)
+
+  return await client.schedule_teacher_retrieve(
+    {
+      uuid: params.id,
+    },
+    null,
+    getTokenAuthorization(token),
+  )
+}
+
 export {
   getScheduleList,
   getPhotoSchedule,
   getGroupSchedule,
   getWeekScheduleForGroupList,
   getSchedule,
+  getTeachersScheduleList,
+  getTeachersSchedule,
 }

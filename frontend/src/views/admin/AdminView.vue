@@ -11,6 +11,11 @@ const items = ref([
         icon: 'pi pi-fw pi-upload',
         route: '/admin/schedule/upload',
       },
+      {
+        label: 'schedule.teacher.label',
+        icon: 'pi pi-fw pi-calendar',
+        route: '/admin/schedule/teacher',
+      },
     ],
   },
 ])

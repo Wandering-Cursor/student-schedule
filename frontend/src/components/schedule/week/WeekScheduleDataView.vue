@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Components } from '@/api/openapi'
 import type { PropType } from 'vue'
-import WeekScheduleItem from '@/components/schedule/WeekScheduleItem.vue'
+import WeekScheduleItem from '@/components/schedule/week/WeekScheduleItem.vue'
 
 defineProps({
   weekSchedule: {

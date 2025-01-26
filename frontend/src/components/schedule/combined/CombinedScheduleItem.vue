@@ -4,8 +4,8 @@ import type { PropType } from 'vue'
 import { defineProps } from 'vue'
 import { getLocalDateFromString } from '@/utils/datetime'
 import { getLastPart } from '@/utils/urls'
-import GroupScheduleItem from '@/components/schedule/GroupScheduleItem.vue'
-import PhotoSchedule from './PhotoSchedule.vue'
+import GroupScheduleItem from '@/components/schedule/group/GroupScheduleItem.vue'
+import PhotoSchedule from '@/components/schedule/photo/PhotoSchedule.vue'
 import { useUserStore } from '@/stores/login'
 
 const user = useUserStore()

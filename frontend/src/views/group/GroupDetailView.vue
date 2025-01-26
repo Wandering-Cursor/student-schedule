@@ -5,7 +5,7 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { getWeekScheduleForGroupList } from '@/api/schedule'
 import GroupInfoPanel from '@/components/groups/GroupInfoPanel.vue'
-import WeekScheduleDataView from '@/components/schedule/WeekScheduleDataView.vue'
+import WeekScheduleDataView from '@/components/schedule/week/WeekScheduleDataView.vue'
 
 const route = useRoute()
 

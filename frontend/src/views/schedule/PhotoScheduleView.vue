@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import PhotoSchedule from '@/components/schedule/PhotoSchedule.vue'
+import PhotoSchedule from '@/components/schedule/photo/PhotoSchedule.vue'
 
 const isLoading = ref(true)
 const route = useRoute()
