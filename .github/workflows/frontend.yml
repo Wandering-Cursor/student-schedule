@@ -71,6 +71,7 @@ jobs:
         with:
           directory: ./frontend
           envkey_VITE_API_URL: ${{ vars.VITE_API_URL }}
+          envkey_VITE_SCHEMA_URL: ${{ vars.VITE_SCHEMA_URL }}
 
       - name: Build
         run: npm run build-only -- --base="/student-schedule/"
