@@ -2,6 +2,7 @@
 import type { Components } from '@/api/openapi'
 import { getPhotoSchedule } from '@/api/schedule'
 import { onMounted, ref } from 'vue'
+import PhotoGalleria from './PhotoGalleria.vue'
 
 const photoScheduleInfo = ref<Components.Schemas.PhotoSchedule>()
 
@@ -34,19 +35,7 @@ onMounted(() => {
     }"
   >
     <div v-if="photoScheduleInfo.photos">
-      <Galleria
-        :value="photoScheduleInfo.photos"
-        :numVisible="3"
-        :showThumbnails="false"
-        :showIndicators="true"
-        :showItemNavigators="true"
-      >
-        <template #item="slotProps">
-          <a :href="slotProps.item.file" target="_blank">
-            <img :src="slotProps.item.file" class="image" />
-          </a>
-        </template>
-      </Galleria>
+      <PhotoGalleria :photos="photoScheduleInfo.photos" />
     </div>
     <div v-else>
       <p>{{ $t('schedule.photo.noPhotos') }}</p>
@@ -60,10 +49,5 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-}
-.image {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
 }
 </style>

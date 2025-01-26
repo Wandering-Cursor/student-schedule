@@ -5,7 +5,7 @@ const baseAPIUrl = import.meta.env.VITE_API_URL
   : 'http://localhost:8000'
 
 const api = new OpenAPIClientAxios({
-  definition: `${baseAPIUrl}/api/schema/`,
+  definition: import.meta.env.VITE_SCHEMA_URL,
   axiosConfigDefaults: {
     baseURL: baseAPIUrl,
     headers: {

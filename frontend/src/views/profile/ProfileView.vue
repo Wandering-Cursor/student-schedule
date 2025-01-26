@@ -6,7 +6,7 @@ import GroupInfoPanel from '@/components/groups/GroupInfoPanel.vue'
 import { useUserStore } from '@/stores/login'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import WeekScheduleDataView from '@/components/schedule/WeekScheduleDataView.vue'
+import WeekScheduleDataView from '@/components/schedule/week/WeekScheduleDataView.vue'
 
 const userGroupStore = useUserStore()
 const router = useRouter()

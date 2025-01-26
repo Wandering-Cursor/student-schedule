@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CombinedSchedule from '@/components/schedule/CombinedSchedule.vue'
+import CombinedSchedule from '@/components/schedule/combined/CombinedSchedule.vue'
 </script>
 
 <template>

@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { RouterView, useRoute } from 'vue-router'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useUserStore } from './stores/login'
-import { usePrimeVue } from 'primevue/config'
-import type { MenuItem } from 'primevue/menuitem'
+import { usePrimeVue } from 'primevue'
 
-const PrimeVue = usePrimeVue()
 const userGroupStore = useUserStore()
 const route = useRoute()
+const primevue = usePrimeVue()
 
 const menuItems = ref([
   {
@@ -44,6 +43,10 @@ const menuItems = ref([
 function activeRoute(value: string) {
   return value === route.path
 }
+
+onMounted(() => {
+  primevue.config.ripple = true
+})
 </script>
 
 <template>

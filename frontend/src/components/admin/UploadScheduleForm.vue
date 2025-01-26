@@ -17,10 +17,15 @@ const getTomorrow = () => {
 const date = ref<Date>(getTomorrow())
 const photoScheduleName = ref<string>('')
 const images = ref<File[]>([])
+const teacherSchedulePhotos = ref<File[]>([])
 const file = ref<File | null>(null)
 
 const onImagesSelected = (event: FileUploadSelectEvent) => {
   images.value = event.files
+}
+
+const onTeacherSchedulePhotosSelected = (event: FileUploadSelectEvent) => {
+  teacherSchedulePhotos.value = event.files
 }
 
 const onFileSelect = (event: FileUploadSelectEvent) => {
@@ -33,6 +38,7 @@ const uploadSchedule = async () => {
     await apiUploadSchedule({
       forDate: date.value,
       photos: images.value,
+      teacherSchedulePhotos: teacherSchedulePhotos.value,
       file: file.value,
       name: photoScheduleName.value,
     })
@@ -67,6 +73,16 @@ const uploadSchedule = async () => {
 
       <FileUpload
         @select="onImagesSelected"
+        :multiple="true"
+        customUpload
+        accept="image/*"
+        :maxFileSize="1000000"
+        :show-upload-button="false"
+      />
+    </Fieldset>
+    <Fieldset :legend="$t('admin.schedule.upload.teacherSchedulePhotos')">
+      <FileUpload
+        @select="onTeacherSchedulePhotosSelected"
         :multiple="true"
         customUpload
         accept="image/*"

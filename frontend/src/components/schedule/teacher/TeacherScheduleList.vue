@@ -1,20 +1,11 @@
 <script setup lang="ts">
 import type { Components } from '@/api/openapi'
-import { getScheduleList } from '@/api/schedule'
+import { getTeachersScheduleList } from '@/api/schedule'
 import { onMounted, reactive, ref, type Ref } from 'vue'
-import ShortCombinedScheduleItem from '@/components/schedule/ShortCombinedScheduleItem.vue'
-import ScheduleFilters from '@/components/schedule/ScheduleFilters.vue'
+import CompactTeacherScheduleItem from '@/components/schedule/teacher/CompactTeacherScheduleItem.vue'
 
+const loading = ref(true)
 const firstItem = ref(0)
-const loading = ref(false)
-
-const data: Ref<Components.Schemas.Schedule[] | undefined> = ref()
-const scheduleData: Ref<Components.Schemas.PaginatedScheduleList> = ref({
-  count: 0,
-  next: null,
-  previous: null,
-  results: [],
-})
 
 const filters = reactive({
   page: 1,
@@ -22,30 +13,28 @@ const filters = reactive({
   dateTo: undefined,
   dateFrom: undefined,
 })
+const teacherSchedule: Ref<Components.Schemas.PaginatedTeacherScheduleList | undefined> = ref()
 
-const loadScheduleData = async () => {
+const loadTeacherSchedule = async () => {
   loading.value = true
   try {
-    const response = await getScheduleList(filters)
-    scheduleData.value = response.data
-    data.value = response.data.results
+    const response = await getTeachersScheduleList(filters, undefined)
+    teacherSchedule.value = response.data
     firstItem.value = filters.page * 10 - 10
   } catch (error) {
     if (filters.page != 1) {
       filters.page = 1
       console.debug('Error loading page, retrying with page 1')
-      return loadScheduleData()
+      return loadTeacherSchedule()
     }
+    console.error('Error loading teacher schedule', error)
     throw error
   }
   loading.value = false
 }
 
-onMounted(async () => {
-  await loadScheduleData()
-})
+onMounted(loadTeacherSchedule)
 </script>
-
 <template>
   <main class="contained-wrapper">
     <Skeleton v-if="loading" width="100%" height="50vh" />
@@ -53,24 +42,24 @@ onMounted(async () => {
       v-else
       :filters="filters"
       :loading="loading"
-      @update:filters="loadScheduleData"
+      @update:filters="loadTeacherSchedule"
     />
-    <Panel>
-      <DataView v-if="!loading" :value="data" data-key="uuid" :rows="10">
+    <Panel v-if="!loading">
+      <DataView :value="teacherSchedule?.results" data-key="uuid" :rows="10">
         <template #list="slotProps">
           <div v-for="item in slotProps.items">
-            <ShortCombinedScheduleItem :schedule="item" />
+            <CompactTeacherScheduleItem :schedule="item" />
             <Divider />
           </div>
         </template>
       </DataView>
       <Paginator
-        :total-records="scheduleData.count"
+        :total-records="teacherSchedule?.count"
         :rows="10"
         @page="
           (event) => {
             filters.page = event.page + 1
-            loadScheduleData()
+            loadTeacherSchedule()
           }
         "
         :first="firstItem"
