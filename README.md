@@ -1,6 +1,6 @@
 <p align="center">
     <img max-width="256px" width="15rem" src="logo.svg" alt="Student Schedule Logo">
-    Student Schedule
+    <h1 align="center">Student Schedule</h1>
 </p>
 
 # Student Schedule
