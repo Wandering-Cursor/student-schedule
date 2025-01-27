@@ -32,7 +32,7 @@ SECRET_KEY_FALLBACKS = [
 ]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = settings.debug
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -148,7 +148,7 @@ LOGGING = {
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = settings.timezone
 
 USE_I18N = True
 
