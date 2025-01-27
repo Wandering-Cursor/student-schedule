@@ -1,8 +1,8 @@
 <p align="center">
-    <img max-width="256px" width="15rem" src="logo.svg" alt="Student Schedule Logo">
+    <img src="logo.svg" alt="Student Schedule Logo" style="max-width: 256px; width: 15rem;">
+    <h1 align="center">Student Schedule</h1>
 </p>
 
-# Student Schedule
 A two-side service for posting schedule for your educational institution.
 Share your schedule with students and teachers, and let them see it in a nice and clean way.
 
