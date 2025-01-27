@@ -1,4 +1,8 @@
-![Logo](/logo.svg)
+<p align="center">
+    <img max-width="256px" width="15rem" src="logo.svg" alt="Student Schedule Logo">
+    Student Schedule
+</p>
+
 # Student Schedule
 A two-side service for posting schedule for your educational institution.
 Share your schedule with students and teachers, and let them see it in a nice and clean way.
