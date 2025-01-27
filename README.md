@@ -1,11 +1,35 @@
-# student-schedule
-A repo with a simple service for posting and viewing schedule. Customizable.
+![Logo](/logo.svg)
+# Student Schedule
+A two-side service for posting schedule for your educational institution.
+Share your schedule with students and teachers, and let them see it in a nice and clean way.
 
 # Deployment
 
-## Frontend Deployment
+Since this project is a combination of a Frontend and a Backend, you'll need to deploy both parts.
 
-## Backend Deplyoment
+## Frontend
+
+Since the Frontend is a SPA (Single Page Application) written in Vue.js, you can deploy it to any static hosting service.
+For example - GitHub Pages.
+Right now there's a [build workflow](/.github/workflows/frontend.yml) that builds the frontend and pushes it to the `gh-pages` branch.
+You can add your own domain to the GitHub Pages settings and you're good to go.
+
+If you will want to use a different service - you can use the same workflow file as a reference.
+It has the build steps and the deployment steps.
+
+## Backend
+
+For deploying the backend, you can use the provided Dockerfile and docker-compose.yml files.
+You'll need to provide a .env file with the necessary environment variables. (see [this](#environment-variablessettings-setup) section for more info).
+Then run the compose and you should be good to go.
+
+You can take a look at the workflow files in the [`.github/workflows`](/.github/workflows/) directory for some inspiration on how to deploy the backend.
+If you don't want to use docker-compose - be sure to spin up the PostgreSQL database and run the migrations.
+
+Server requirements are not that high, but you should have at least 1GB of RAM and 1 CPU core for the backend.
+Depending on the amount of data you expect to store, you may want to get a larger storage volume.
+*P.S. Right now this service works just fine (alongside a few others) on a server with 2GB of ram and 2 CPU cores (cpx11 on Hetzner)*
+
 
 # Development
 Some useful insights on how to develop this system.
