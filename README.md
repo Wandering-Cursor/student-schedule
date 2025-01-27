@@ -1,13 +1,35 @@
 # student-schedule
-A repo with a "simple" service for posting and viewing schedule. Customizable.
+A repo with a simple service for posting and viewing schedule. Customizable.
 
-# Frontend
-## Generating API Client for Frontend
+# Deployment
+
+## Frontend Deployment
+
+## Backend Deplyoment
+
+# Development
+Some useful insights on how to develop this system.
+
+Generally speaking it contains two projects in one repository.
+1. Frontend application (SPA) written in [Vue.js version 3](https://vuejs.org/) with use of [PrimeVue](https://primevue.org/);
+2. Backend application written in Python with use of Django for both - administrative tasks and REST API.
+
+Notes from original development team:
+- It's possible to rewrite this whole project as a "simplistic" React application with some Backend;
+- It's possible to rewrite just the frontend part with React and utilize SSR (Server Side Rendering), if that's your jazz;
+- Django is quite good despite what you may hear about it.
+
+And now some small tips for developers.
+
+## Frontend
+### Generating API Client for Frontend
 ```bash
 npx typegen http://backend:8000/api/schema/ > src/api/openapi.d.ts
 ```
+Replace `http://backend:8000/api/schema/` with the URL with which you can obtain the OpenAPI schema from Backend app.
+This will refresh the types and provide you with a client for Axios. (You don't need to write API integration from scratch for each request)
 
-## Environment Variables
+### Environment Variables
 ```bash
 VITE_API_URL=https://root.api.url/
 VITE_SCHEMA_URL=https://api.url/to/openapi/schema/
@@ -16,8 +38,26 @@ The separation of `VITE_API_URL` and `VITE_SCHEMA_URL` is to allow for the front
 This may be useful if you are using a CDN for the schema, but the API is hosted on a different server.
 Or if your Backend and Frontend are hosted on different domains.
 
-# Backend
-## Running pylint
+## Backend
+Most configuration and tips for backend would be in how you should configure your settings file for Django.
+But there's also this:
+### Running pylint
 ```bash
 uv run pylint student_schedule/ --source-roots=student_schedule/
 ```
+
+Don't worry about it too much. Use it (mostly) as a tool to figure out why some things may break.
+And use ruff for the linting/formatting.
+
+### Environment Variables/Settings setup
+Create a `.env` file (or add one at `/run/secrets/env_file`), and in it you can change:
+- debug (boolean) - if you want to enable the debug mode; (Keep in mind that `prod.py` settings file may simply ignore that one)
+- timezone (string, one of valid timezones for Django (pytz?));
+- default_admin_username (string) - Mainly used in Production env. to create a default admin;
+- default_admin_password (string) - Same;
+- secret_key (string) - A secret key for Django, in [settings.py](/student_schedule/student_schedule/settings.py) there's a description with a script for generating it;
+- allowed_hosts (List of strings) - A list of hosts that are allowed to access Django Admin;
+- trusted_origins (List of strings) - A list of hosts for CSRF;
+- allowed_cors_origins (List of strings) - A list of hosts to which CORS requests are allowed (Not used);
+- database_url (string) - A URL (with credentials) to a PostgreSQL database used for the application;
+- settings_module (string) - full setting module name to use;
