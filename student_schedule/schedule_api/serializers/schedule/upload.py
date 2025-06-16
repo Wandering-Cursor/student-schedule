@@ -199,10 +199,18 @@ class UploadScheduleSerializer(serializers.Serializer):
         for_date: datetime.date = validated_data["for_date"]
 
         photos: list["InMemoryUploadedFile"] = validated_data.get("photos")
+        if not photos:
+            photos = []
+
         teacher_schedule_photos: list["InMemoryUploadedFile"] = validated_data.get(
             "teacher_schedule_photos"
         )
+        if not teacher_schedule_photos:
+            teacher_schedule_photos = []
+
         groups_schedules: list[GroupSchedule] = validated_data["groups_schedules"]
+        if not groups_schedules:
+            groups_schedules = []
 
         photo_schedule: PhotoSchedule | None = None
 
@@ -218,9 +226,8 @@ class UploadScheduleSerializer(serializers.Serializer):
 
             photo_schedule.save()
 
-        if groups_schedules:
-            for schedule in groups_schedules:
-                schedule.save()
+        for schedule in groups_schedules:
+            schedule.save()
 
         schedule, _ = Schedule.objects.get_or_create(for_date=for_date)
 

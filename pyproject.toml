@@ -6,12 +6,12 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "dj-database-url>=2.3.0, <2.4",
-    "django>=5.1.5, <5.2",
+    "django>=5.2, <6",
     "psycopg[binary]>=3.2.4, <3.3",
-    "pydantic-settings>=2.7, <2.8",
-    "pydantic>=2.10.1, <2.11",
+    "pydantic-settings>=2.7, <2.10",
+    "pydantic>=2.10.1, <2.12",
     "djangorestframework>=3.15.2, <3.16",
-    "django-filter>=24.3, <25",
+    "django-filter>=24.3, <26",
     "pillow>=11.1.0, <11.2",
     "django-cors-headers>=4.6.0, <4.7",
     "drf-spectacular>=0.28.0, <0.29",
@@ -21,7 +21,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "ipython>=8.29.0",
+    "ipython>=9.3.0",
     "pylint>=3.3.3",
-    "ruff>=0.8.0",
+    "ruff>=0.11.13",
 ]
