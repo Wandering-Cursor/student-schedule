@@ -13,6 +13,8 @@ services:
       database:
         condition: service_healthy
         restart: true
+    networks:
+      - shared-network
 
   database:
     image: postgres:17
@@ -39,3 +41,7 @@ services:
 volumes:
   backendData:
   databaseData:
+
+networks:
+  shared-network:
+    external: true
