@@ -18,7 +18,7 @@ jobs:
         run: docker pull ghcr.io/wandering-cursor/student-schedule:latest
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           clean: false
 
